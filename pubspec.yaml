@@ -1,0 +1,55 @@
+name: pick_champ
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ^3.7.2
+dependencies:
+
+  animation_search_bar: ^0.0.10
+  auto_route: 7.8.4
+  connectivity_plus: ^4.0.1
+  cupertino_icons: ^1.0.6
+  dio: ^5.8.0+1
+  easy_localization: ^3.0.7
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.2.1
+  flutter_riverpod: ^2.6.1
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.14
+  freezed_annotation: ^2.4.1
+  google_fonts: ^6.2.1
+  google_sign_in: ^6.1.6
+  image_cropper: ^9.1.0
+  image_picker: ^1.1.2
+  json_annotation: ^4.9.0
+  lottie: ^2.6.0
+  permission_handler: ^11.3.1
+  shared_preferences: ^2.0.15
+  sign_in_with_apple: ^6.1.4
+  stylish_bottom_bar: ^1.1.1
+  # unity_ads_plugin: ^0.3.21
+  url_launcher: ^6.3.1
+
+
+
+
+dev_dependencies:
+  auto_route_generator: ^7.3.2
+  build_runner: ^2.4.11
+  flutter_lints: ^3.0.0
+  flutter_test:
+      sdk: flutter
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+  very_good_analysis: ^6.0.0
+
+flutter:
+    uses-material-design: true
+    assets:
+      - asset/image/
+      - .env
+      - asset/json/
+      - asset/translation/
