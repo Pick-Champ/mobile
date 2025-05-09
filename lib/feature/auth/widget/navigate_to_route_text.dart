@@ -27,7 +27,7 @@ class NavigateToRouteText extends StatelessWidget {
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: Text(
             LocaleKeys.privacyContractAgree.tr(),
-            style: context.textTheme.labelLarge?.copyWith(
+            style: context.textTheme.labelMedium?.copyWith(
               color: Colors.black,
             ),
           ),
@@ -42,7 +42,7 @@ class NavigateToRouteText extends StatelessWidget {
                 },
                 child: Text(
                   LocaleKeys.privacyContract.tr(),
-                  style: context.textTheme.labelLarge?.copyWith(
+                  style: context.textTheme.labelMedium?.copyWith(
                     color: Colors.black,
                     decoration: TextDecoration.underline,
                   ),
@@ -57,7 +57,7 @@ class NavigateToRouteText extends StatelessWidget {
                 },
                 child: Text(
                   LocaleKeys.termsOfUse.tr(),
-                  style: context.textTheme.labelLarge?.copyWith(
+                  style: context.textTheme.labelMedium?.copyWith(
                     decoration: TextDecoration.underline,
                   ),
                 ),
@@ -70,7 +70,7 @@ class NavigateToRouteText extends StatelessWidget {
           children: [
             Text(
               text1,
-              style: context.textTheme.labelLarge?.copyWith(
+              style: context.textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -84,7 +84,7 @@ class NavigateToRouteText extends StatelessWidget {
               },
               child: Text(
                 text2,
-                style: context.textTheme.labelLarge?.copyWith(
+                style: context.textTheme.labelMedium?.copyWith(
                   fontWeight: FontWeight.w900,
                   color: Colors.blueAccent,
                 ),

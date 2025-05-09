@@ -49,8 +49,8 @@ class HomeDrawer extends ConsumerWidget {
                     return ListTile(
                       leading: Image.asset(
                         category.photo,
-                        width: 40.w,
-                        height: 40.h,
+                        width: 30.w,
+                        height: 30.h,
                         fit: BoxFit.cover,
                       ),
                       title: Text(

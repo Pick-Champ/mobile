@@ -10,6 +10,7 @@ import 'package:pick_champ/feature/home/widget/home_app_bar.dart';
 import 'package:pick_champ/feature/home/widget/home_drawer.dart';
 import 'package:pick_champ/feature/home/widget/home_quiz_card.dart';
 import 'package:pick_champ/feature/home/widget/text_divider.dart';
+import 'package:pick_champ/feature/profile/controller/profile_body_controller.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -41,6 +42,10 @@ class HomeView extends ConsumerWidget {
                     title: LocaleKeys.editorsPick.tr(),
                     quizList: viewModel.editorsPick!,
                   ),
+                TextButton(onPressed: (){
+                  print(ref.watch(profileProvider));
+                  print(ref.watch(profileBodyProvider));
+                }, child: Text('ALDASKLASŞDK')),
                 if (viewModel.latest!.isNotEmpty)
                   _ScrollBuilder(
                     title: LocaleKeys.latest.tr(),

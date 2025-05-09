@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/widget/async_value_handler.dart';
-import 'package:pick_champ/core/widget/no_data_widget.dart';
 import 'package:pick_champ/feature/profile/controller/profile_body_controller.dart';
 import 'package:pick_champ/feature/profile/widget/quizzes_list_view.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class ProfileBody extends ConsumerStatefulWidget {
-  const ProfileBody({required this.userId, super.key});
-  final String userId;
+  const ProfileBody({ super.key});
   @override
   ConsumerState createState() => _ProfileBodyState();
 }
@@ -34,14 +32,11 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
   @override
   Widget build(BuildContext context) {
     final bodyVm = ref.watch(profileBodyProvider);
-    final bodyFuture = ref.watch(profileBodyFutureProvider(widget.userId));
+    final bodyFuture = ref.watch(profileBodyFutureProvider);
 
     return AsyncValueHandler(
       value: bodyFuture,
       onData: (_) {
-        if (bodyVm.result == null || !bodyVm.success) {
-          return const NoDataWidget();
-        }
         return SizedBox(
           height: context.screenHeight * 0.8,
           child: Column(

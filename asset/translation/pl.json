@@ -12,6 +12,8 @@
   "leaderboard": "Tabela wyników",
   "score": "Wynik",
   "points": "Punkty",
+  "coverImage": "Obraz okładki",
+  "title": "Tytuł",
   "displayNameMust5": "Nazwa wyświetlana musi mieć co najmniej 5 znaków",
   "usernameMust5": "Nazwa użytkownika musi mieć co najmniej 5 znaków",
   "category_animals": "Zwierzęta",

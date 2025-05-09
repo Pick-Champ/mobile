@@ -9,22 +9,19 @@ import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/auth/model/register_request.dart';
 import 'package:pick_champ/feature/auth/service/auth_service.dart';
 import 'package:pick_champ/feature/profile/controller/profile_body_controller.dart';
+import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/profile/service/user_service.dart';
 import 'package:pick_champ/feature/quiz/create/controller/create_quiz_controller.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class AuthController {
-  Future<void> login(BuildContext context, String mail, String pw) async {
+  Future<void> login(BuildContext context,WidgetRef ref, String mail, String pw) async {
     if (pw.isEmpty) {
       WarningAlert().show(context, LocaleKeys.warning.tr(), false);
     }
     final res = await AuthService.instance.login(mail, pw);
     if (res.success) {
-      CacheManager.instance.setUserId(res.result!.id!);
-      await context.router.pushAndPopUntil(
-        const MainRoute(),
-        predicate: (_) => false,
-      );
+      await _saveUserAndNavigate(context, ref, res.result!.id);
     } else {
       WarningAlert().show(
         context,
@@ -34,7 +31,7 @@ class AuthController {
     }
   }
 
-  Future<void> register(BuildContext context, RegisterRequest req) async {
+  Future<void> register(BuildContext context,WidgetRef ref, RegisterRequest req) async {
     if (req.displayName.trim().length < 5) {
       WarningAlert().show(
         context,
@@ -65,11 +62,7 @@ class AuthController {
     }
     final res = await AuthService.instance.register(req);
     if (res.success) {
-      CacheManager.instance.setUserId(res.result!.id!);
-      await context.router.pushAndPopUntil(
-        const MainRoute(),
-        predicate: (_) => false,
-      );
+     await _saveUserAndNavigate(context, ref, res.result!.id);
     } else {
       WarningAlert().show(
         context,
@@ -98,5 +91,18 @@ class AuthController {
         predicate: (_) => false,
       );
     }
+  }
+  Future<void> _saveUserAndNavigate(
+      BuildContext context,WidgetRef ref,
+      String? userId,
+      )async{
+    CacheManager.instance.setUserId(userId!);
+    await ref.read(profileProvider.notifier).getUser();
+    await ref.read(profileBodyProvider.notifier).get();
+    await context.router.pushAndPopUntil(
+      const MainRoute(),
+      predicate: (_) => false,
+    );
+
   }
 }

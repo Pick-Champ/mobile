@@ -7,6 +7,8 @@
   "doNotWorry":"Ne vous inquiétez pas, cela arrive.",
   "noResultsFound":"Aucun résultat trouvé",
   "loginText":"Bon retour! Heureux de vous revoir!",
+  "coverImage": "Image de couverture",
+  "title": "Titre",
   "RegisterText":"Bonjour! Inscrivez-vous pour commencer",
   "titleIsRequired":"Le titre est requis",
   "noTitle":"Pas de titre",

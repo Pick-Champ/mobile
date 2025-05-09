@@ -9,6 +9,8 @@
   "doNotWorry": "No te preocupes, pasa a veces.",
   "leaderboard": "Tabla de clasificación",
   "score": "Puntuación",
+  "coverImage": "Imagen de portada",
+  "title": "Título",
   "points": "Puntos",
   "displayNameMust5": "El nombre visible debe tener al menos 5 caracteres",
   "usernameMust5": "El nombre de usuario debe tener al menos 5 caracteres",

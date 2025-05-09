@@ -28,43 +28,46 @@ class RegisterView extends ConsumerWidget {
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    20.verticalSpace,
-                    Text(
-                      textAlign: TextAlign.center,
-                      LocaleKeys.RegisterText.tr(),
-                      style: context.textTheme.headlineLarge?.copyWith(
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 2,
+              child: Padding(
+                padding: const EdgeInsets.only(top:32),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+
+                      Text(
+                        textAlign: TextAlign.center,
+                        LocaleKeys.RegisterText.tr(),
+                        style: context.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 2,
+                        ),
                       ),
-                    ),
-                    10.verticalSpace,
-                    AuthTextField(
-                      controller: displayNameCnt,
-                      hintText: LocaleKeys.displayName.tr(),
-                      iconData: Icons.person_outline,
-                    ),
-                    10.verticalSpace,
-                    AuthTextField(
-                      controller: userNameCnt,
-                      hintText: LocaleKeys.username.tr(),
-                      iconData: Icons.perm_contact_cal_sharp,
-                    ),
-                    10.verticalSpace,
-                    AuthTextField(
-                      controller: emailCnt,
-                      hintText: LocaleKeys.email.tr(),
-                      iconData: Icons.mail,
-                    ),
-                    10.verticalSpace,
-                    PwTextField(
-                      isRegisterView: true,
-                      controller: pwCnt,
-                      hintText: LocaleKeys.password.tr(),
-                    ),
-                  ],
+                      10.verticalSpace,
+                      AuthTextField(
+                        controller: displayNameCnt,
+                        hintText: LocaleKeys.displayName.tr(),
+                        iconData: Icons.person_outline,
+                      ),
+                      10.verticalSpace,
+                      AuthTextField(
+                        controller: userNameCnt,
+                        hintText: LocaleKeys.username.tr(),
+                        iconData: Icons.perm_contact_cal_sharp,
+                      ),
+                      10.verticalSpace,
+                      AuthTextField(
+                        controller: emailCnt,
+                        hintText: LocaleKeys.email.tr(),
+                        iconData: Icons.mail,
+                      ),
+                      10.verticalSpace,
+                      PwTextField(
+                        isRegisterView: true,
+                        controller: pwCnt,
+                        hintText: LocaleKeys.password.tr(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -74,6 +77,7 @@ class RegisterView extends ConsumerWidget {
               onTap:
                   () async => AuthController().register(
                     context,
+                    ref,
                     RegisterRequest(
                       displayName: displayNameCnt.text,
                       userName: userNameCnt.text,

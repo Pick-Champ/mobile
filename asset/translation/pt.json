@@ -11,6 +11,8 @@
   "reportReceived": "Recebemos sua solicitação de relatório com sucesso",
   "reportError": "Erro ao enviar o relatório",
   "leaderboard": "Classificação",
+  "coverImage": "Imagem de capa",
+  "title": "Título",
   "score": "Pontuação",
   "points": "Pontos",
   "displayNameMust5": "O nome de exibição deve ter pelo menos 5 caracteres",

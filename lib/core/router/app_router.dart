@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
-import 'package:pick_champ/core/router/guard/connection_guard.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'View,Route')
 class AppRouter extends $AppRouter {
@@ -12,7 +11,6 @@ class AppRouter extends $AppRouter {
     AutoRoute(
       page: MainRoute.page,
       initial: true,
-      guards: [ConnectionGuard()],
       children: [
         AutoRoute(page: HomeRoute.page, initial: true),
         AutoRoute(page: FakeProfileRoute.page),

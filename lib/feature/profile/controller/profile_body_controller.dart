@@ -6,8 +6,8 @@ import 'package:riverpod/riverpod.dart';
 class ProfileBodyController extends StateNotifier<GetByUserResponse> {
   ProfileBodyController() : super(GetByUserResponse(success: false));
 
-  Future<bool> getUsersQuizzes(String userId) async {
-    final response = await QuizService.instance.getByUser(userId);
+  Future<bool> get() async {
+    final response = await QuizService.instance.getByUser();
     if (response.success) {
       state = response;
       return response.success;
@@ -30,9 +30,9 @@ final profileBodyProvider =
     );
 
 final profileBodyFutureProvider = FutureProvider.autoDispose
-    .family<bool, String>((ref, userId) async {
+    <bool>((ref) async {
       final success = await ref
           .read(profileBodyProvider.notifier)
-          .getUsersQuizzes(userId);
+          .get();
       return success;
     });

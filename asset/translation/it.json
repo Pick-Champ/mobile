@@ -9,6 +9,8 @@
   "created":"Creato",
   "played":"Giocato",
   "leaderboard": "Classifica",
+  "coverImage": "Immagine di copertina",
+  "title": "Titolo",
   "score": "Punteggio",
   "points": "Punti",
   "displayNameMust5": "Il nome visualizzato deve contenere almeno 5 caratteri",

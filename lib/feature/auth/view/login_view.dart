@@ -27,27 +27,27 @@ class LoginView extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                20.verticalSpace,
+                10.verticalSpace,
                 Text(
                   LocaleKeys.loginText.tr(),
-                  style: context.textTheme.headlineLarge?.copyWith(
+                  style: context.textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.w900,
                     letterSpacing: 2,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                20.verticalSpace,
+                10.verticalSpace,
                 AuthTextField(
                   controller: emailCnt,
                   hintText: LocaleKeys.email.tr(),
                   iconData: Icons.mail,
                 ),
-                20.verticalSpace,
+                10.verticalSpace,
                 PwTextField(
                   controller: pwCnt,
                   hintText: LocaleKeys.password.tr(),
                 ),
-                20.verticalSpace,
+                10.verticalSpace,
                 Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Align(
@@ -60,7 +60,7 @@ class LoginView extends ConsumerWidget {
                           ),
                       child: Text(
                         LocaleKeys.continueWithoutAccount.tr(),
-                        style: context.textTheme.labelLarge?.copyWith(
+                        style: context.textTheme.labelMedium?.copyWith(
                           color: Colors.grey,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0,
@@ -69,26 +69,27 @@ class LoginView extends ConsumerWidget {
                     ),
                   ),
                 ),
-                20.verticalSpace,
+                10.verticalSpace,
                 AuthButton(
                   text: LocaleKeys.login.tr(),
                   isDark: true,
                   onTap:
                       () async => AuthController().login(
                         context,
+                        ref,
                         emailCnt.text,
                         pwCnt.text,
                       ),
                 ),
-                20.verticalSpace,
+                10.verticalSpace,
                 const AppleGoogleRow(),
-                20.verticalSpace,
+                10.verticalSpace,
                 NavigateToRouteText(
                   text1: LocaleKeys.doNotYouHaveAnAccount.tr(),
                   text2: LocaleKeys.register.tr(),
                   route: const RegisterRoute(),
                 ),
-                20.verticalSpace,
+                10.verticalSpace,
               ],
             ),
           ),

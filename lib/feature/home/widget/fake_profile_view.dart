@@ -110,7 +110,7 @@ class _Body extends StatelessWidget {
                                         quiz.isAnonymous
                                             ? LocaleKeys.anonymous.tr()
                                             : quiz.displayNameSnapshot!,
-                                        style: context.textTheme.labelLarge
+                                        style: context.textTheme.labelSmall
                                             ?.copyWith(
                                               fontWeight: FontWeight.w700,
                                             ),
@@ -131,7 +131,7 @@ class _Body extends StatelessWidget {
                                     Expanded(
                                       child: Text(
                                         quiz.history!.length.toString(),
-                                        style: context.textTheme.labelLarge
+                                        style: context.textTheme.labelSmall
                                             ?.copyWith(
                                               fontWeight: FontWeight.w700,
                                             ),
@@ -145,7 +145,7 @@ class _Body extends StatelessWidget {
                         ),
                         Text(
                           quiz.title!,
-                          style: context.textTheme.headlineLarge?.copyWith(
+                          style: context.textTheme.labelLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -153,7 +153,7 @@ class _Body extends StatelessWidget {
                           child: Row(
                             children: [
                               Expanded(
-                                flex: 3,
+                                flex: 4,
                                 child: Row(
                                   children: [
                                     Expanded(
@@ -171,7 +171,7 @@ class _Body extends StatelessWidget {
                                           quiz.categoryId!,
                                         ),
                                         style:
-                                            context.textTheme.labelMedium,
+                                            context.textTheme.labelSmall,
                                       ),
                                     ),
                                   ],
@@ -193,7 +193,7 @@ class _Body extends StatelessWidget {
                                       child: Text(
                                         quiz.selections!.length.toString(),
                                         style:
-                                            context.textTheme.labelMedium,
+                                            context.textTheme.labelSmall,
                                       ),
                                     ),
                                   ],
@@ -215,7 +215,7 @@ class _Body extends StatelessWidget {
                                       child: Text(
                                         quiz.comments!.length.toString(),
                                         style:
-                                            context.textTheme.labelMedium,
+                                            context.textTheme.labelSmall,
                                       ),
                                     ),
                                   ],
@@ -236,7 +236,7 @@ class _Body extends StatelessWidget {
                                       child: Text(
                                         quiz.history!.length.toString(),
                                         style:
-                                            context.textTheme.labelMedium,
+                                            context.textTheme.labelSmall,
                                       ),
                                     ),
                                   ],

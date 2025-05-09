@@ -39,7 +39,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                     ),
                     if (CacheManager.instance.getUserId() != null)
                       Text(
-                        profileVm!.displayName ?? '',
+                        profileVm?.displayName ?? '',
                         style: context.textTheme.labelLarge?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),

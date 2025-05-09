@@ -57,7 +57,7 @@ class HomeQuizCard extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
                     quiz.title!,
-                    style: context.textTheme.headlineMedium?.copyWith(
+                    style: context.textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
