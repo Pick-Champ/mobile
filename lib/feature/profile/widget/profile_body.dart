@@ -31,7 +31,7 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
 
   @override
   Widget build(BuildContext context) {
-    final bodyVm = ref.watch(profileBodyProvider);
+    final viewModel = ref.watch(profileBodyProvider);
     final bodyFuture = ref.watch(profileBodyFutureProvider);
 
     return AsyncValueHandler(
@@ -52,19 +52,19 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
                   Tab(
                     child: _Card(
                       title: LocaleKeys.created.tr(),
-                      count: bodyVm.result!.created!.length.toString(),
+                      count: viewModel.result!.created!.length.toString(),
                     ),
                   ),
                   Tab(
                     child: _Card(
                       title: LocaleKeys.played.tr(),
-                      count: bodyVm.result!.played!.length.toString(),
+                      count: viewModel.result!.played!.length.toString(),
                     ),
                   ),
                   Tab(
                     child: _Card(
                       title: LocaleKeys.reactions.tr(),
-                      count: bodyVm.result!.reacted!.length.toString(),
+                      count: viewModel.result!.reacted!.length.toString(),
                     ),
                   ),
                 ],
@@ -73,9 +73,9 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    QuizzesListView(list: bodyVm.result!.created ?? []),
-                    QuizzesListView(list: bodyVm.result!.played ?? []),
-                    QuizzesListView(list: bodyVm.result!.reacted ?? []),
+                    QuizzesListView(list: viewModel.result!.created ?? []),
+                    QuizzesListView(list: viewModel.result!.played ?? []),
+                    QuizzesListView(list: viewModel.result!.reacted ?? []),
                   ],
                 ),
               ),
