@@ -26,7 +26,7 @@ class AuthController {
     }
     final res = await AuthService.instance.login(mail, pw);
     if (res.success) {
-      await _saveUserAndNavigate(context, ref, res.result!.id);
+      await saveUserAndNavigate(context, ref, res.result!.id);
     } else {
       WarningAlert().show(
         context,
@@ -71,7 +71,7 @@ class AuthController {
     }
     final res = await AuthService.instance.register(req);
     if (res.success) {
-      await _saveUserAndNavigate(context, ref, res.result!.id);
+      await saveUserAndNavigate(context, ref, res.result!.id);
     } else {
       WarningAlert().show(
         context,
@@ -102,7 +102,7 @@ class AuthController {
     }
   }
 
-  Future<void> _saveUserAndNavigate(
+  Future<void> saveUserAndNavigate(
     BuildContext context,
     WidgetRef ref,
     String? userId,

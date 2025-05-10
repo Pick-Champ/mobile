@@ -8,7 +8,8 @@ import 'package:pick_champ/feature/profile/widget/quizzes_list_view.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class ProfileBody extends ConsumerStatefulWidget {
-  const ProfileBody({ super.key});
+  const ProfileBody({super.key});
+
   @override
   ConsumerState createState() => _ProfileBodyState();
 }
@@ -37,6 +38,10 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
     return AsyncValueHandler(
       value: bodyFuture,
       onData: (_) {
+        final created = viewModel.result?.created ?? [];
+        final played = viewModel.result?.played ?? [];
+        final reacted = viewModel.result?.reacted ?? [];
+
         return SizedBox(
           height: context.screenHeight * 0.8,
           child: Column(
@@ -52,19 +57,19 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
                   Tab(
                     child: _Card(
                       title: LocaleKeys.created.tr(),
-                      count: viewModel.result!.created!.length.toString(),
+                      count: created.length.toString(),
                     ),
                   ),
                   Tab(
                     child: _Card(
                       title: LocaleKeys.played.tr(),
-                      count: viewModel.result!.played!.length.toString(),
+                      count: played.length.toString(),
                     ),
                   ),
                   Tab(
                     child: _Card(
                       title: LocaleKeys.reactions.tr(),
-                      count: viewModel.result!.reacted!.length.toString(),
+                      count: reacted.length.toString(),
                     ),
                   ),
                 ],
@@ -73,9 +78,9 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    QuizzesListView(list: viewModel.result!.created ?? []),
-                    QuizzesListView(list: viewModel.result!.played ?? []),
-                    QuizzesListView(list: viewModel.result!.reacted ?? []),
+                    QuizzesListView(list: created),
+                    QuizzesListView(list: played),
+                    QuizzesListView(list: reacted),
                   ],
                 ),
               ),

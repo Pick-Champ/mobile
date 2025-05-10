@@ -49,6 +49,7 @@ class ProfileQuizCard extends ConsumerWidget {
                                 onTap:
                                     () => DeleteQuiz().deleteQuiz(
                                       context,
+                                      ref,
                                       quiz.id!,
                                     ),
                               );

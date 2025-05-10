@@ -10,6 +10,7 @@ import 'package:pick_champ/feature/home/widget/home_app_bar.dart';
 import 'package:pick_champ/feature/home/widget/home_drawer.dart';
 import 'package:pick_champ/feature/home/widget/home_quiz_card.dart';
 import 'package:pick_champ/feature/home/widget/text_divider.dart';
+import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -21,6 +22,7 @@ class HomeView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(homeProvider).result;
     final homeFuture = ref.watch(homeFutureProvider);
+    ref.watch(profileFutureProvider);
     return AsyncValueHandler(
       value: homeFuture,
       onData: (_) {

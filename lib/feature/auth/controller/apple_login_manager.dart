@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
+import 'package:pick_champ/feature/auth/controller/auth_controller.dart';
 import 'package:pick_champ/feature/auth/controller/google_login_manager.dart';
 import 'package:pick_champ/feature/auth/service/auth_service.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -69,25 +69,23 @@ class AppleLoginManager {
   ) async {
     debugPrint('Apple User Identifier: ${credential.userIdentifier}');
 
-    final loginResult = await AuthService.instance.loginSocial(
+    final loginRes = await AuthService.instance.loginSocial(
       credential.userIdentifier ?? '',
       SocialAuthType.apple.value,
     );
-    if (!loginResult.success) {
+    if (!loginRes.success) {
       await handleNotFoundState(context, ref, credential);
       return;
     } else {
-      await saveUserAndNavigate(context, ref, loginResult.result!.id!);
-      final registerResult = await AuthService.instance.registerSocial(
+
+      await AuthController().saveUserAndNavigate(context, ref, loginRes.result!.id);
+
+      final registerRes = await AuthService.instance.registerSocial(
         credential.userIdentifier ?? '',
         SocialAuthType.apple.value,
       );
-      if (registerResult.success) {
-        await saveUserAndNavigate(
-          context,
-          ref,
-          registerResult.result!.id!,
-        );
+      if (registerRes.success) {
+        await AuthController().saveUserAndNavigate(context, ref, registerRes.result!.id);
       } else {
         WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
@@ -99,15 +97,15 @@ class AppleLoginManager {
     WidgetRef ref,
     AuthorizationCredentialAppleID credential,
   ) async {
-    final registerResult = await AuthService.instance.registerSocial(
+    final registerRes = await AuthService.instance.registerSocial(
       credential.userIdentifier ?? '',
       SocialAuthType.apple.value,
     );
-    if (registerResult.success) {
+    if (registerRes.success) {
       debugPrint(
         'Apple Kayıt: Kullanıcı başarıyla kaydedildi, yönlendiriliyor.',
       );
-      await saveUserAndNavigate(context, ref, registerResult.result!.id!);
+      await AuthController().saveUserAndNavigate(context, ref, registerRes.result!.id);
     } else {
       debugPrint(
         'Apple Kayıt: Kullanıcı kaydı başarısız, giriş sayfasına yönlendiriliyor.',
@@ -119,17 +117,4 @@ class AppleLoginManager {
     }
   }
 
-  Future<void> saveUserAndNavigate(
-    BuildContext context,
-    WidgetRef ref,
-    String userId,
-  ) async {
-    debugPrint('Apple Giriş Başarılı: Kullanıcı kaydediliyor.');
-    CacheManager.instance.setUserId(userId);
-    debugPrint('Apple Giriş Başarılı: Ana sayfaya yönlendiriliyor.');
-    await context.router.pushAndPopUntil(
-      const MainRoute(),
-      predicate: (_) => false,
-    );
-  }
 }
