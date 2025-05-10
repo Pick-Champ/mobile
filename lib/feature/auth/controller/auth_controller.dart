@@ -15,7 +15,12 @@ import 'package:pick_champ/feature/quiz/create/controller/create_quiz_controller
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class AuthController {
-  Future<void> login(BuildContext context,WidgetRef ref, String mail, String pw) async {
+  Future<void> login(
+    BuildContext context,
+    WidgetRef ref,
+    String mail,
+    String pw,
+  ) async {
     if (pw.isEmpty) {
       WarningAlert().show(context, LocaleKeys.warning.tr(), false);
     }
@@ -31,7 +36,11 @@ class AuthController {
     }
   }
 
-  Future<void> register(BuildContext context,WidgetRef ref, RegisterRequest req) async {
+  Future<void> register(
+    BuildContext context,
+    WidgetRef ref,
+    RegisterRequest req,
+  ) async {
     if (req.displayName.trim().length < 5) {
       WarningAlert().show(
         context,
@@ -62,7 +71,7 @@ class AuthController {
     }
     final res = await AuthService.instance.register(req);
     if (res.success) {
-     await _saveUserAndNavigate(context, ref, res.result!.id);
+      await _saveUserAndNavigate(context, ref, res.result!.id);
     } else {
       WarningAlert().show(
         context,
@@ -92,10 +101,12 @@ class AuthController {
       );
     }
   }
+
   Future<void> _saveUserAndNavigate(
-      BuildContext context,WidgetRef ref,
-      String? userId,
-      )async{
+    BuildContext context,
+    WidgetRef ref,
+    String? userId,
+  ) async {
     CacheManager.instance.setUserId(userId!);
     await ref.read(profileProvider.notifier).getUser();
     await ref.read(profileBodyProvider.notifier).get();
@@ -103,6 +114,5 @@ class AuthController {
       const MainRoute(),
       predicate: (_) => false,
     );
-
   }
 }
