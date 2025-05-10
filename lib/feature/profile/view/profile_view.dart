@@ -22,7 +22,7 @@ class ProfileView extends ConsumerWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            ProfilePicture(photoName: viewModel.photo!),
+            ProfilePicture(photoName: viewModel.photo ?? 'profile.png'),
             const ProfileBody(),
           ],
         ),

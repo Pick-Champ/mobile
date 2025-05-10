@@ -4,10 +4,27 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+
+	<key>GIDClientID</key>
+	<string>965193467721-3dp3jfu67tqvpamcbc13gc54m0e1inrl.apps.googleusercontent.com</string>
+
+	<key>CFBundleURLTypes</key>
+	<array>
+	  <dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+		  <string>com.googleusercontent.apps.965193467721-3dp3jfu67tqvpamcbc13gc54m0e1inrl</string>
+		</array>
+	  </dict>
+	</array>
+
 	<key>CFBundleDisplayName</key>
 	<string>Pick Champ</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,17 +34,22 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 
-	<key>NSPhotoLibraryUsageDescription </key>
-    <string>We need your permission for access your gallery by creating quiz</string>
-    <key>NSCameraUsageDescription </key>
-    <string>We need your permission for access your camera by creating quiz</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need your permission to access your gallery while creating a quiz.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need your permission to access your camera while creating a quiz.</string>
+
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

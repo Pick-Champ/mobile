@@ -17,7 +17,8 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
       elevation: 1,
       actions: const [SizedBox()],
       automaticallyImplyLeading: false,
-      title: Row(
+      title:
+      Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
@@ -53,7 +54,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   child: CircleAvatar(
                     radius: 27,
                     backgroundImage: NetworkImage(
-                      CreateImageUrl().user(profileVm!.photo!),
+                      CreateImageUrl().user(profileVm?.photo! ?? 'profile.png'),
                     ),
                   ),
                 ),
