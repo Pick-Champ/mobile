@@ -17,11 +17,16 @@ class BracketKingAppBar extends ConsumerWidget
   Widget build(BuildContext context, WidgetRef ref) {
     final currentMatch = quizVm.matches?[quizVm.currentRoundIndex ?? 0];
     return AppBar(
-      backgroundColor: context.themeData.scaffoldBackgroundColor,
-      title: Text(
-        currentMatch?.roundLabel ?? '',
-        style: context.textTheme.labelLarge?.copyWith(
-          fontWeight: FontWeight.w600,
+      backgroundColor: Colors.transparent,
+      title: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          text: currentMatch?.roundLabel ?? '',
+          style: context.textTheme.labelLarge?.copyWith(
+            fontWeight: FontWeight.w600,
+            backgroundColor: Colors.white10,
+            color: Colors.white,
+          ),
         ),
       ),
       leading: IconButton(
@@ -39,12 +44,12 @@ class BracketKingAppBar extends ConsumerWidget
         },
         icon: Icon(
           Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-          color: context.themeData.indicatorColor,
+          color: Colors.white,
         ),
       ),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight - 10);
 }

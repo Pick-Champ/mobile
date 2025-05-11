@@ -14,6 +14,7 @@ import 'package:pick_champ/feature/quiz/detail/widget/detail_count_row.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
 import 'package:pick_champ/feature/quiz/match/controller/bracket_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_app_bar.dart';
+import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_bg.dart';
 import 'package:pick_champ/feature/quiz/match/widget/celebrate_json.dart';
 import 'package:pick_champ/feature/quiz/service/quiz_service.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -30,6 +31,7 @@ class BracketWinnerView extends ConsumerWidget {
     }
     return Scaffold(
       appBar: BracketKingWinnerAppBar(quizVm: quizVm),
+      extendBodyBehindAppBar: true,
       body: CustomFutureBuilder(
         future: QuizService.instance.getById(quizVm.quizId!),
         child: (res) {
@@ -39,6 +41,7 @@ class BracketWinnerView extends ConsumerWidget {
             child: Stack(
               children: [
                 const CelebrateJson(),
+                BracketKingWinnerBg(path: quizVm.winner!.photo!),
                 Align(
                   alignment: Alignment.topCenter,
                   child: Container(
@@ -59,17 +62,28 @@ class BracketWinnerView extends ConsumerWidget {
                   left: 0,
                   right: 0,
                   top: context.screenHeight * 0.52,
-                  child: Column(
-                    children: [
-                      Text(
-                        quiz.title!,
-                        style: context.textTheme.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: Card(
+                    color: Colors.blue.shade400,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Text(
+                            quiz.title!,
+                            style: context.textTheme.headlineSmall
+                                ?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                          ),
+                          20.verticalSpace,
+                          DetailCountRow(
+                            textColor: Colors.white,
+                            quiz: quiz,
+                          ),
+                        ],
                       ),
-                      20.verticalSpace,
-                      DetailCountRow(quiz: quiz),
-                    ],
+                    ),
                   ),
                 ),
                 Positioned(

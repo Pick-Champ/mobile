@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
+import 'package:pick_champ/feature/profile/controller/profile_body_controller.dart';
 import 'package:pick_champ/feature/profile/widget/profile_quiz_card.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -23,12 +25,19 @@ class QuizzesListView extends ConsumerWidget {
         ),
       );
     }
-    return ListView.builder(
-      itemCount: list.length,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return ProfileQuizCard(quiz: list[index]);
+    return RefreshIndicator(
+      onRefresh: () async {
+        await HapticFeedback.lightImpact().then(
+          (_) => ref.refresh(profileBodyFutureProvider),
+        );
       },
+      child: ListView.builder(
+        itemCount: list.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return ProfileQuizCard(quiz: list[index]);
+        },
+      ),
     );
   }
 }

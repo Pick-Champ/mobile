@@ -60,6 +60,7 @@ class _Button extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
+              elevation: 0,
               backgroundColor: context.themeData.scaffoldBackgroundColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),

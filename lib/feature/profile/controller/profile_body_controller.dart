@@ -29,10 +29,9 @@ final profileBodyProvider =
       (ref) => ProfileBodyController(),
     );
 
-final profileBodyFutureProvider = FutureProvider.autoDispose
-    <bool>((ref) async {
-      final success = await ref
-          .read(profileBodyProvider.notifier)
-          .get();
-      return success;
-    });
+final profileBodyFutureProvider = FutureProvider.autoDispose<bool>((
+  ref,
+) async {
+  final success = await ref.read(profileBodyProvider.notifier).get();
+  return success;
+});

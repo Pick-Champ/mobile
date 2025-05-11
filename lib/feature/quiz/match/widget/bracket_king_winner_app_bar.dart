@@ -16,15 +16,21 @@ class BracketKingWinnerAppBar extends ConsumerWidget
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
+      backgroundColor: Colors.transparent,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: Text(
+            child: RichText(
               textAlign: TextAlign.center,
-              '${LocaleKeys.winner.tr()} : ${quizVm.winner!.description!}',
-              style: context.textTheme.labelLarge?.copyWith(
-                fontWeight: FontWeight.bold,
+              text: TextSpan(
+                text:
+                    '${LocaleKeys.winner.tr()} : ${quizVm.winner!.description!}',
+                style: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  backgroundColor: Colors.white10,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -38,7 +44,7 @@ class BracketKingWinnerAppBar extends ConsumerWidget
                     },
                     icon: const Icon(
                       Icons.emoji_emotions,
-                      color: Colors.blue,
+                      color: Colors.white,
                     ),
                   ),
             ),

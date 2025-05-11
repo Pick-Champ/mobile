@@ -18,6 +18,7 @@ class BlindRankView extends ConsumerWidget {
     final blindRankingState = ref.watch(blindRankingProvider);
     final bgImage = blindRankingState.currentBlindSelection?.photo;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: const BlindRankingAppBar(),
       body: Stack(
         fit: StackFit.expand,
@@ -63,12 +64,18 @@ class BlindRankView extends ConsumerWidget {
                                 : SizedBox(
                                   height: context.screenHeight / 6,
                                   child: Center(
-                                    child: Text(
-                                      (index + 1).toString(),
-                                      style: context.textTheme.labelLarge
-                                          ?.copyWith(
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                    child: RichText(
+                                      textAlign: TextAlign.center,
+                                      text: TextSpan(
+                                        text: (index + 1).toString(),
+                                        style: context.textTheme.labelLarge
+                                            ?.copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              backgroundColor:
+                                                  Colors.black,
+                                              color: Colors.white,
+                                            ),
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -41,7 +41,7 @@ class BlindRankWinnerView extends ConsumerWidget {
                       CreateImageUrl().selection(
                         quizVm.rankedSelections![index]!.photo!,
                       ),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                       height: 120,
                     ),
                     leading: Text(

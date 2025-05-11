@@ -1,7 +1,7 @@
 enum ReactionType { like, favorite, laugh, shocked, sad, angry }
 
 extension ReactionTypeExtension on ReactionType {
-  static ReactionType fromString(String? value) {
+  static ReactionType? fromString(String? value) {
     switch (value) {
       case 'like':
         return ReactionType.like;
@@ -16,7 +16,7 @@ extension ReactionTypeExtension on ReactionType {
       case 'angry':
         return ReactionType.angry;
       default:
-        return ReactionType.like;
+        return null;
     }
   }
 }

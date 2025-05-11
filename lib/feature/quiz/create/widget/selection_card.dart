@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
@@ -42,78 +44,92 @@ class _SelectionCardState extends State<SelectionCard> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: SizedBox(
-        height: context.screenHeight * 0.39,
-        width: context.screenWidth * 0.9,
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: GestureDetector(
-            onTap: handleTap,
-            child: AnimatedScale(
-              scale: scale,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 7,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 6),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: widget.color,
-                            width: 4,
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                              CreateImageUrl().selection(
-                                widget.selection!.photo!,
-                              ),
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Container(
-                        width: double.infinity,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: widget.color,
-                          border: Border.all(
-                            color: widget.color,
-                            width: 3,
-                          ),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        padding: const EdgeInsets.all(8),
-                        child: Text(
-                          widget.selection?.description ??
-                              LocaleKeys.undefined.tr(),
-                          textAlign: TextAlign.center,
-                          style: context.textTheme.labelLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Image.network(
+                CreateImageUrl().selection(widget.selection!.photo!),
+                fit: BoxFit.cover,
               ),
             ),
           ),
-        ),
+          Center(
+            child: SizedBox(
+              height: context.screenHeight * 0.35,
+              width: context.screenWidth * 0.8,
+              child: GestureDetector(
+                onTap: handleTap,
+                child: AnimatedScale(
+                  scale: scale,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: widget.color,
+                                width: 4,
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  CreateImageUrl().selection(
+                                    widget.selection!.photo!,
+                                  ),
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          child: Container(
+                            width: double.infinity,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: widget.color,
+                              border: Border.all(
+                                color: widget.color,
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              widget.selection?.description ??
+                                  LocaleKeys.undefined.tr(),
+                              textAlign: TextAlign.center,
+                              style: context.textTheme.labelMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

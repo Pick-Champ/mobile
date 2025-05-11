@@ -14,16 +14,16 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileVm = ref.watch(profileProvider).result;
     return AppBar(
+      backgroundColor: Colors.blue.shade300,
       elevation: 1,
       actions: const [SizedBox()],
       automaticallyImplyLeading: false,
-      title:
-      Row(
+      title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
             onPressed: Scaffold.of(context).openDrawer,
-            icon: Icon(Icons.category, color: context.themeData.cardColor),
+            icon: const Icon(Icons.category, color: Colors.white),
           ),
           Row(
             children: [
@@ -34,15 +34,17 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   children: [
                     Text(
                       LocaleKeys.haveANiceDay.tr(),
-                      style: context.textTheme.labelLarge?.copyWith(
+                      style: context.textTheme.labelMedium?.copyWith(
                         fontWeight: FontWeight.w500,
+                        color: Colors.white,
                       ),
                     ),
                     if (CacheManager.instance.getUserId() != null)
                       Text(
                         profileVm?.displayName ?? '',
-                        style: context.textTheme.labelLarge?.copyWith(
+                        style: context.textTheme.labelMedium?.copyWith(
                           fontWeight: FontWeight.w500,
+                          color: Colors.white,
                         ),
                       ),
                   ],
@@ -52,9 +54,11 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: CircleAvatar(
-                    radius: 27,
+                    radius: 24,
                     backgroundImage: NetworkImage(
-                      CreateImageUrl().user(profileVm?.photo! ?? 'profile.png'),
+                      CreateImageUrl().user(
+                        profileVm?.photo! ?? 'profile.png',
+                      ),
                     ),
                   ),
                 ),

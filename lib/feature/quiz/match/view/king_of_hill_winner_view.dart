@@ -13,6 +13,7 @@ import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/detail_count_row.dart';
 import 'package:pick_champ/feature/quiz/match/controller/king_of_hill_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_app_bar.dart';
+import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_bg.dart';
 import 'package:pick_champ/feature/quiz/match/widget/celebrate_json.dart';
 import 'package:pick_champ/feature/quiz/service/quiz_service.dart';
 
@@ -39,6 +40,7 @@ class KingOfHillWinnerView extends ConsumerWidget {
             child: Stack(
               children: [
                 const CelebrateJson(),
+                BracketKingWinnerBg(path: quizVm.winner!.photo!),
                 Align(
                   alignment: Alignment.topCenter,
                   child: Container(
@@ -65,10 +67,11 @@ class KingOfHillWinnerView extends ConsumerWidget {
                         quiz.title!,
                         style: context.textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       20.verticalSpace,
-                      DetailCountRow(quiz: quiz),
+                      DetailCountRow(textColor: Colors.white, quiz: quiz),
                     ],
                   ),
                 ),

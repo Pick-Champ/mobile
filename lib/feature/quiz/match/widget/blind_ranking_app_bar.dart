@@ -19,7 +19,7 @@ class BlindRankingAppBar extends ConsumerWidget
     final currentMatch = quizVm.matches?[quizVm.currentRoundIndex ?? 0];
 
     return AppBar(
-      backgroundColor: context.themeData.scaffoldBackgroundColor,
+      backgroundColor: Colors.transparent,
       title: Text(
         currentMatch?.roundLabel ?? '',
         style: context.textTheme.labelLarge?.copyWith(
@@ -41,7 +41,7 @@ class BlindRankingAppBar extends ConsumerWidget
         },
         icon: Icon(
           Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-          color: context.themeData.indicatorColor,
+          color: Colors.white,
         ),
       ),
     );

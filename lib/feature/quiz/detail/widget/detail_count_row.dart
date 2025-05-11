@@ -8,9 +8,14 @@ import 'package:pick_champ/feature/quiz/model/response/quiz_detail.dart';
 import 'package:pick_champ/generated/assets.dart';
 
 class DetailCountRow extends ConsumerWidget {
-  const DetailCountRow({required this.quiz, super.key});
+  const DetailCountRow({
+    required this.textColor,
+    required this.quiz,
+    super.key,
+  });
 
   final QuizDetail quiz;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,7 +38,9 @@ class DetailCountRow extends ConsumerWidget {
                     10.horizontalSpace,
                     Text(
                       GetCategoryDetail().name(quiz.categoryId!),
-                      style: context.textTheme.labelMedium,
+                      style: context.textTheme.labelMedium?.copyWith(
+                        color: textColor,
+                      ),
                     ),
                   ],
                 ),
@@ -43,7 +50,9 @@ class DetailCountRow extends ConsumerWidget {
                     10.horizontalSpace,
                     Text(
                       quiz.createdAt!.formattedDateTime,
-                      style: context.textTheme.labelMedium,
+                      style: context.textTheme.labelMedium?.copyWith(
+                        color: textColor,
+                      ),
                     ),
                   ],
                 ),
@@ -58,14 +67,17 @@ class DetailCountRow extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _IconTextRow(
+                    textColor: textColor,
                     imagePath: Assets.imageGallery,
                     text: quiz.selections!.length.toString(),
                   ),
                   _IconTextRow(
+                    textColor: textColor,
                     imagePath: Assets.imageComments,
                     text: (quiz.comments?.length ?? 0).toString(),
                   ),
                   _IconTextRow(
+                    textColor: textColor,
                     imagePath: Assets.imageFav,
                     text: quiz.reactionCount.toString(),
                   ),
@@ -80,9 +92,14 @@ class DetailCountRow extends ConsumerWidget {
 }
 
 class _IconTextRow extends StatelessWidget {
-  const _IconTextRow({required this.imagePath, required this.text});
+  const _IconTextRow({
+    required this.textColor,
+    required this.imagePath,
+    required this.text,
+  });
   final String imagePath;
   final String text;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +108,10 @@ class _IconTextRow extends StatelessWidget {
       children: [
         Image.asset(imagePath, height: 22),
         10.horizontalSpace,
-        Text(text, style: context.textTheme.labelMedium),
+        Text(
+          text,
+          style: context.textTheme.labelMedium?.copyWith(color: textColor),
+        ),
       ],
     );
   }

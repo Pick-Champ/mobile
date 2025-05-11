@@ -53,7 +53,10 @@ class QuizDetailView extends ConsumerWidget {
                   ),
                   10.verticalSpace,
 
-                  DetailCountRow(quiz: quiz),
+                  DetailCountRow(
+                    textColor: context.themeData.indicatorColor,
+                    quiz: quiz,
+                  ),
                   20.verticalSpace,
                   UserAndPlayedInfo(
                     photo: quiz.photoSnapshot!,

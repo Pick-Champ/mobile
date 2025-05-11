@@ -21,7 +21,7 @@ class HomeQuizCard extends StatelessWidget {
       child: Padding(
         padding: PaddingInsets().medium,
         child: Card(
-          elevation: 10,
+          elevation: 4,
           child: SizedBox(
             width: context.screenWidth * 0.7,
             height: context.screenHeight * 0.6,

@@ -65,7 +65,7 @@ class Assets {
   static const String jsonNoConnection = 'asset/json/no_connection.json';
   static const String jsonNoDataFound = 'asset/json/no_data_found.json';
   static const String jsonPlayQuiz = 'asset/json/play_quiz.json';
-  static const String mobile = '..env';
+  static const String mobile = '.env';
   static const String translationDe = 'asset/translation/de.json';
   static const String translationEn = 'asset/translation/en.json';
   static const String translationEs = 'asset/translation/es.json';

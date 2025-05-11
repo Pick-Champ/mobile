@@ -24,6 +24,7 @@ class BracketView extends ConsumerWidget {
       return const CustomCircular();
     }
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: BracketKingAppBar(quizVm: quizVm),
       body: WillPopScope(
         onWillPop: () async {
