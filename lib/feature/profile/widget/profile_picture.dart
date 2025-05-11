@@ -88,7 +88,7 @@ class ProfilePicture extends ConsumerWidget {
                                 Image.asset(Assets.imageScore, height: 30),
                                 15.horizontalSpace,
                                 Text(
-                                  user.score.toString(),
+                                  (user.score ?? 0).toString(),
                                   style: context.textTheme.labelMedium
                                       ?.copyWith(
                                         fontWeight: FontWeight.w700,

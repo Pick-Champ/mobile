@@ -3,9 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/widget/async_value_handler.dart';
-import 'package:pick_champ/core/widget/information_toast.dart';
-import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/auth/widget/auth_text_field.dart';
 import 'package:pick_champ/feature/profile/model/user.dart';
 import 'package:pick_champ/feature/settings/controller/edit_profile_controller.dart';
@@ -32,7 +31,6 @@ class EditProfileView extends ConsumerWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: SettingsAppBar(onTap: () => context.router.pop()),
-
       body: AsyncValueHandler(
         value: profileFuture,
         onData: (_) {
@@ -42,44 +40,75 @@ class EditProfileView extends ConsumerWidget {
           return SingleChildScrollView(
             child: Column(
               children: [
-                30.verticalSpace,
-                AuthTextField(
-                  controller: mailCnt,
-                  hintText: LocaleKeys.email.tr(),
-                  iconData: Icons.email,
+                20.verticalSpace,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text(
+                        LocaleKeys.email.tr(),
+                        style: context.textTheme.labelSmall,
+                      ),
+                    ),
+                    AuthTextField(
+                      controller: mailCnt,
+                      hintText: LocaleKeys.email.tr(),
+                      iconData: Icons.email,
+                    ),
+                  ],
                 ),
-                30.verticalSpace,
-                AuthTextField(
-                  controller: displayNameCnt,
-                  hintText: LocaleKeys.displayName.tr(),
-                  iconData: Icons.person_outline,
+                20.verticalSpace,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text(
+                        LocaleKeys.displayName.tr(),
+                        style: context.textTheme.labelSmall,
+                      ),
+                    ),
+                    AuthTextField(
+                      controller: displayNameCnt,
+                      hintText: LocaleKeys.displayName.tr(),
+                      iconData: Icons.person_outline,
+                    ),
+                  ],
                 ),
-                30.verticalSpace,
-                AuthTextField(
-                  controller: usernameCnt,
-                  hintText: LocaleKeys.displayName.tr(),
-                  iconData: Icons.contact_mail_outlined,
+                20.verticalSpace,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text(
+                        LocaleKeys.username.tr(),
+                        style: context.textTheme.labelSmall,
+                      ),
+                    ),
+                    AuthTextField(
+                      controller: usernameCnt,
+                      hintText: LocaleKeys.displayName.tr(),
+                      iconData: Icons.contact_mail_outlined,
+                    ),
+                  ],
                 ),
-                30.verticalSpace,
+                20.verticalSpace,
                 SettingsConfirmButton(
                   text: LocaleKeys.updateProfile.tr(),
                   onTap: () async {
-                    final success = await ref
+                    await ref
                         .read(editProfileProvider.notifier)
-                        .updateProfile(User());
-                    if (success) {
-                      //  ref.read(profileProvider);
-                      InformationToast().show(
-                        context,
-                        LocaleKeys.profileUpdated.tr(),
-                      );
-                    } else {
-                      WarningAlert().show(
-                        context,
-                        LocaleKeys.error.tr(),
-                        true,
-                      );
-                    }
+                        .update(
+                          context,
+                          ref,
+                          User(
+                            displayName: displayNameCnt.text,
+                            email: mailCnt.text,
+                            userName: usernameCnt.text,
+                          ),
+                        );
                   },
                 ),
               ],

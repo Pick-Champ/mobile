@@ -30,7 +30,7 @@ class UserService {
     final userId = CacheManager.instance.getUserId();
     final response = await NetworkManager.instance.baseRequest(
       EndPointEnums.updateUser,
-      data: {'id': userId, 'updateData': update.toJsonWithoutId()},
+      data: {'id': userId, 'updateData': update.updateRequest()},
     );
     return response != null
         ? UserResponse.fromJson(response)

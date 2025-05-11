@@ -16,14 +16,20 @@ class MainView extends ConsumerWidget {
     return AutoTabsScaffold(
       floatingActionButtonBuilder:
           (context, tabsRouter) => FloatingActionButton(
+            backgroundColor: Colors.black87,
             onPressed: () {
               CacheManager.instance.getUserId() == null
                   ? NotLoggedInDialog().show(context)
                   : context.router.push(const CreateQuizRoute());
             },
 
-            child: Image.asset(Assets.imageAdd, height: 25,color: Colors.white,),
+            child: Image.asset(
+              Assets.imageAdd,
+              height: 25,
+              color: Colors.blue,
+            ),
           ),
+
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,
       extendBody: true,

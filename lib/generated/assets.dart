@@ -15,6 +15,7 @@ class Assets {
   static const String imageBeauty = 'asset/image/beauty.png';
   static const String imageCalendar = 'asset/image/calendar.png';
   static const String imageComments = 'asset/image/comments.png';
+  static const String imageDarkBg = 'asset/image/dark_bg.svg';
   static const String imageEntertainment = 'asset/image/entertainment.png';
   static const String imageExplore = 'asset/image/explore.png';
   static const String imageFashion = 'asset/image/fashion.png';
@@ -33,6 +34,7 @@ class Assets {
   static const String imageLeader = 'asset/image/leader.png';
   static const String imageLeaderboard = 'asset/image/leaderboard.png';
   static const String imageLifestyles = 'asset/image/lifestyles.png';
+  static const String imageLightBg = 'asset/image/light_bg.svg';
   static const String imageLike = 'asset/image/like.png';
   static const String imageLove = 'asset/image/love.png';
   static const String imageMovie = 'asset/image/movie.png';

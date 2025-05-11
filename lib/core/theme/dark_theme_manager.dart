@@ -10,6 +10,7 @@ class DarkThemeManager implements CustomTheme {
     useMaterial3: true,
     indicatorColor: Colors.white,
     canvasColor: const Color(0XFF4b5a60ff),
+    scaffoldBackgroundColor: const Color(0xFF121212),
     primaryColor: Colors.brown,
     primaryColorDark: Colors.blue.shade200,
     dividerColor: Colors.white70,

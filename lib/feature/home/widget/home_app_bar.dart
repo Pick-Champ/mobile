@@ -15,7 +15,6 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final profileVm = ref.watch(profileProvider).result;
     return AppBar(
       backgroundColor: const Color(0xFF20232A),
-
       elevation: 1,
       actions: const [SizedBox()],
       automaticallyImplyLeading: false,
@@ -57,7 +56,9 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   child: CircleAvatar(
                     radius: 24,
                     backgroundImage: NetworkImage(
-                      CreateImageUrl().user(profileVm?.photo! ?? 'profile.png'),
+                      CreateImageUrl().user(
+                        profileVm?.photo! ?? 'profile.png',
+                      ),
                     ),
                   ),
                 ),

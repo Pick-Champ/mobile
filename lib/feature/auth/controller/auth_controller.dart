@@ -49,8 +49,8 @@ class AuthController {
       );
       return;
     }
-    if (req.userName.trim().length < 5) {
-      WarningAlert().show(context, LocaleKeys.usernameMust5.tr(), false);
+    if (!RegexType.username.regex.hasMatch(req.userName)) {
+      WarningAlert().show(context, 'Invalid username format', false);
       return;
     }
     if (!RegexType.eMail.regex.hasMatch(req.email)) {
