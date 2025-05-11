@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/generated/assets.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
@@ -22,7 +21,7 @@ class AppNavBar extends StatelessWidget {
         iconStyle: IconStyle.animated,
         barAnimation: BarAnimation.transform3D,
       ),
-      backgroundColor: context.themeData.scaffoldBackgroundColor,
+      backgroundColor: const Color(0xFF151414),
       fabLocation: StylishBarFabLocation.center,
       hasNotch: true,
       currentIndex: tabsRouter.activeIndex,
@@ -30,11 +29,19 @@ class AppNavBar extends StatelessWidget {
       items: [
         BottomBarItem(
           title: const Text(''),
-          icon: SvgPicture.asset(Assets.assetImageExplore, width: 30),
+          icon: SvgPicture.asset(
+            Assets.assetImageExplore,
+            width: 30,
+            color: Colors.white,
+          ),
         ),
         BottomBarItem(
           title: const Text(''),
-          icon: SvgPicture.asset(Assets.assetImageProfile, width: 30),
+          icon: SvgPicture.asset(
+            Assets.assetImageProfile,
+            width: 30,
+            color: Colors.white,
+          ),
         ),
       ],
     );

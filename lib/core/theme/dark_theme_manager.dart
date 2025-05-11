@@ -4,7 +4,6 @@ import 'package:pick_champ/core/theme/app_color_scheme.dart';
 import 'package:pick_champ/core/theme/app_text_style.dart';
 import 'package:pick_champ/core/theme/custom_theme.dart';
 
-/// Custom light theme for project design
 class DarkThemeManager implements CustomTheme {
   @override
   ThemeData get themeData => ThemeData(

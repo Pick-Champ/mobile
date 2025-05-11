@@ -1,11 +1,12 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+
 import 'package:pick_champ/feature/comment/controller/word_data.dart';
 
 class BadWordGuard {
   BadWordGuard() {
     _badWords = _decodeBadWords();
   }
+
   late final List<String> _badWords;
 
   List<String> _decodeBadWords() {
@@ -14,10 +15,8 @@ class BadWordGuard {
   }
 
   bool isContain(String input) {
-    debugPrint('Checking for bad words in: $input');
     for (final badWord in _badWords) {
       if (_containsExactWord(input, badWord)) {
-        debugPrint('Matched bad word: $badWord');
         return true;
       }
     }
@@ -29,10 +28,7 @@ class BadWordGuard {
 
     for (final badWord in _badWords) {
       result = result.replaceAllMapped(
-        RegExp(
-          r'\b' + RegExp.escape(badWord) + r'\b',
-          caseSensitive: false,
-        ),
+        RegExp(r'\b' + RegExp.escape(badWord) + r'\b', caseSensitive: false),
         (match) => '*' * match.group(0)!.length,
       );
     }

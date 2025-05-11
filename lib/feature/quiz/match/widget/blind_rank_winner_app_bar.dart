@@ -41,9 +41,17 @@ class BlindRankWinnerAppBar extends ConsumerWidget
                       ref.read(commentFutureProvider(quizVm.quizId!));
                       Scaffold.of(newContext).openEndDrawer();
                     },
-                    icon: const Icon(
-                      Icons.emoji_emotions,
-                      color: Colors.blue,
+                    icon: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black54,
+                        border: Border.all(color: Colors.white, width: 0.5),
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: const Icon(
+                        Icons.emoji_emotions,
+                        color: Colors.yellow,
+                      ),
                     ),
                   ),
             ),

@@ -22,7 +22,7 @@ class MainView extends ConsumerWidget {
                   : context.router.push(const CreateQuizRoute());
             },
 
-            child: Image.asset(Assets.imageAdd, height: 25),
+            child: Image.asset(Assets.imageAdd, height: 25,color: Colors.white,),
           ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,

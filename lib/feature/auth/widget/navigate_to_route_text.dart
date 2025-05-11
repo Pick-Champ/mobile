@@ -27,9 +27,7 @@ class NavigateToRouteText extends StatelessWidget {
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: Text(
             LocaleKeys.privacyContractAgree.tr(),
-            style: context.textTheme.labelMedium?.copyWith(
-              color: Colors.black,
-            ),
+            style: context.textTheme.labelMedium
           ),
         ),
         20.verticalSpace,
@@ -43,7 +41,6 @@ class NavigateToRouteText extends StatelessWidget {
                 child: Text(
                   LocaleKeys.privacyContract.tr(),
                   style: context.textTheme.labelMedium?.copyWith(
-                    color: Colors.black,
                     decoration: TextDecoration.underline,
                   ),
                 ),

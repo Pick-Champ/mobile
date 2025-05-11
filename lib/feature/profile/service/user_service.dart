@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:pick_champ/core/const/enums/end_point.dart';
 import 'package:pick_champ/core/const/extensions/image_mime_type_extension.dart';
+import 'package:pick_champ/core/const/extensions/user_json_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/init/network_manager.dart';
 import 'package:pick_champ/feature/profile/model/score_board_response.dart';
@@ -11,6 +13,7 @@ import 'package:pick_champ/feature/profile/model/user_response.dart';
 
 class UserService {
   UserService._();
+
   static final UserService instance = UserService._();
 
   Future<UserResponse> get(String id) async {
@@ -27,7 +30,7 @@ class UserService {
     final userId = CacheManager.instance.getUserId();
     final response = await NetworkManager.instance.baseRequest(
       EndPointEnums.updateUser,
-      data: {'id': userId, 'updateData': update},
+      data: {'id': userId, 'updateData': update.toJsonWithoutId()},
     );
     return response != null
         ? UserResponse.fromJson(response)

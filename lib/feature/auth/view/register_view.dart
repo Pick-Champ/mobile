@@ -42,25 +42,25 @@ class RegisterView extends ConsumerWidget {
                           letterSpacing: 2,
                         ),
                       ),
-                      10.verticalSpace,
+                      5.verticalSpace,
                       AuthTextField(
                         controller: displayNameCnt,
                         hintText: LocaleKeys.displayName.tr(),
                         iconData: Icons.person_outline,
                       ),
-                      10.verticalSpace,
+                      5.verticalSpace,
                       AuthTextField(
                         controller: userNameCnt,
                         hintText: LocaleKeys.username.tr(),
                         iconData: Icons.perm_contact_cal_sharp,
                       ),
-                      10.verticalSpace,
+                      5.verticalSpace,
                       AuthTextField(
                         controller: emailCnt,
                         hintText: LocaleKeys.email.tr(),
                         iconData: Icons.mail,
                       ),
-                      10.verticalSpace,
+                      5.verticalSpace,
                       PwTextField(
                         isRegisterView: true,
                         controller: pwCnt,
@@ -86,7 +86,6 @@ class RegisterView extends ConsumerWidget {
                     ),
                   ),
             ),
-            16.verticalSpace,
             const AppleGoogleRow(),
             NavigateToRouteText(
               text1: LocaleKeys.alreadyHaveAnAccount.tr(),

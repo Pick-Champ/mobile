@@ -33,7 +33,7 @@ class AuthButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: context.textTheme.labelLarge?.copyWith(
+        style: context.textTheme.labelMedium?.copyWith(
           fontWeight: FontWeight.w900,
           color: isDark ? Colors.white : Colors.black,
         ),

@@ -28,7 +28,7 @@ class BracketKingWinnerAppBar extends ConsumerWidget
                     '${LocaleKeys.winner.tr()} : ${quizVm.winner!.description!}',
                 style: context.textTheme.labelLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.white10,
+                  backgroundColor: Colors.black26,
                   color: Colors.white,
                 ),
               ),
@@ -42,9 +42,17 @@ class BracketKingWinnerAppBar extends ConsumerWidget
                       ref.read(commentFutureProvider(quizVm.quizId!));
                       Scaffold.of(newContext).openEndDrawer();
                     },
-                    icon: const Icon(
-                      Icons.emoji_emotions,
-                      color: Colors.white,
+                    icon: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.black54,
+                        border: Border.all(color: Colors.white, width: 0.5),
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: const Icon(
+                        Icons.emoji_emotions,
+                        color: Colors.yellow,
+                      ),
                     ),
                   ),
             ),
