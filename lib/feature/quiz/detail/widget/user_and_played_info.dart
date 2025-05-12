@@ -17,6 +17,7 @@ class UserAndPlayedInfo extends StatelessWidget {
   final String name;
   final bool isAnonymous;
   final int history;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,69 +29,77 @@ class UserAndPlayedInfo extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(4),
-          child: Column(
-            children: [
-              Text(
-                LocaleKeys.createdBy.tr(),
-                style: context.textTheme.labelSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
+          child: SizedBox(
+            height: 60,
+            child: Column(
+              children: [
+                Expanded(
+                  child: Text(
+                    LocaleKeys.createdBy.tr(),
+                    style: context.textTheme.labelSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundImage:
-                                isAnonymous
-                                    ? NetworkImage(
-                                      CreateImageUrl().user('profile.png'),
-                                    )
-                                    : NetworkImage(
-                                      CreateImageUrl().user(photo),
-                                    ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Text(
-                              isAnonymous
-                                  ? LocaleKeys.anonymous.tr()
-                                  : name,
-                              style: context.textTheme.labelMedium
-                                  ?.copyWith(fontWeight: FontWeight.w700),
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundImage:
+                                    isAnonymous
+                                        ? NetworkImage(
+                                          CreateImageUrl().user('profile.png'),
+                                        )
+                                        : NetworkImage(
+                                          CreateImageUrl().user(photo),
+                                        ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        const Expanded(
-                          child: Icon(Icons.play_arrow_outlined),
-                        ),
-                        Expanded(
-                          child: Text(
-                            history.toString(),
-                            style: context.textTheme.labelMedium?.copyWith(
-                              fontWeight: FontWeight.w700,
+                            Expanded(
+                              flex: 2,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Text(
+                                  isAnonymous
+                                      ? LocaleKeys.anonymous.tr()
+                                      : name,
+                                  style: context.textTheme.labelMedium
+                                      ?.copyWith(fontWeight: FontWeight.w700),
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            const Expanded(
+                              child: Icon(Icons.play_arrow_outlined),
+                            ),
+                            Expanded(
+                              child: Text(
+                                history.toString(),
+                                style: context.textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

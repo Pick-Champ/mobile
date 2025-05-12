@@ -57,13 +57,14 @@ class PreviewDrawer extends ConsumerWidget {
                         padding: const EdgeInsets.all(8),
                         child: Text(
                           viewModel.title!,
-                          style: context.textTheme.headlineMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
+                          style: context.textTheme.labelLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Text(
                         viewModel.description ?? '',
-                        style: context.textTheme.labelLarge?.copyWith(
+                        style: context.textTheme.labelMedium?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -103,10 +104,8 @@ class PreviewDrawer extends ConsumerWidget {
                                 left: 0,
                                 child: Text(
                                   viewModel.selections![index].description,
-                                  style: context.textTheme.labelLarge
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                  style: context.textTheme.labelMedium
+                                      ?.copyWith(fontWeight: FontWeight.bold),
                                 ),
                               ),
                               Positioned(
@@ -114,7 +113,7 @@ class PreviewDrawer extends ConsumerWidget {
                                 bottom: 5,
                                 child: Text(
                                   '${LocaleKeys.selectionNumberText.tr()} : ${index + 1}',
-                                  style: context.textTheme.labelLarge,
+                                  style: context.textTheme.labelMedium,
                                 ),
                               ),
                               Positioned(
@@ -125,19 +124,13 @@ class PreviewDrawer extends ConsumerWidget {
                                       () => QuestionAlert().show(
                                         context,
                                         bodyText:
-                                            LocaleKeys
-                                                .confirmDeleteSelection
+                                            LocaleKeys.confirmDeleteSelection
                                                 .tr(),
                                         buttonText: LocaleKeys.delete.tr(),
                                         onTap: () {
                                           ref
-                                              .read(
-                                                createQuizProvider
-                                                    .notifier,
-                                              )
-                                              .removeSelectionAtIndex(
-                                                index,
-                                              );
+                                              .read(createQuizProvider.notifier)
+                                              .removeSelectionAtIndex(index);
                                           context.router.pop();
                                         },
                                       ),

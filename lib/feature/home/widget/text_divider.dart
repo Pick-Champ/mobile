@@ -3,6 +3,7 @@ import 'package:pick_champ/core/const/extensions/context_extension.dart';
 
 class TextDivider extends StatelessWidget {
   const TextDivider({required this.text, super.key});
+
   final String text;
 
   @override
@@ -14,7 +15,7 @@ class TextDivider extends StatelessWidget {
         ),
         Text(
           text,
-          style: context.textTheme.headlineMedium?.copyWith(
+          style: context.textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),

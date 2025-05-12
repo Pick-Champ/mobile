@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/information_toast.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/home/controller/home_controller.dart';
+import 'package:pick_champ/feature/profile/controller/profile_body_controller.dart';
+import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/quiz/model/request/create_quiz.dart';
 import 'package:pick_champ/feature/quiz/service/quiz_service.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -23,10 +26,14 @@ class CreateQuizController extends StateNotifier<CreateQuiz> {
       );
       state = CreateQuiz();
       await ref.read(homeProvider.notifier).get();
-      await context.router.pushAndPopUntil(
-        const MainRoute(),
-        predicate: (_) => false,
-      );
+      await ref.read(profileProvider.notifier).getUser();
+      await ref.read(profileBodyProvider.notifier).get();
+      if (context.mounted) {
+        await context.router.pushAndPopUntil(
+          const MainRoute(),
+          predicate: (_) => false,
+        );
+      }
     } else {
       WarningAlert().show(
         context,
@@ -88,6 +95,6 @@ class CreateQuizController extends StateNotifier<CreateQuiz> {
 }
 
 final createQuizProvider =
-    StateNotifierProvider<CreateQuizController, CreateQuiz>(
+StateNotifierProvider<CreateQuizController, CreateQuiz>(
       (ref) => CreateQuizController(),
-    );
+);

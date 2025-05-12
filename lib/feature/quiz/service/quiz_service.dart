@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:pick_champ/core/const/enums/end_point.dart';
@@ -9,6 +10,7 @@ import 'package:pick_champ/feature/quiz/model/index.dart';
 
 class QuizService {
   QuizService._();
+
   static final QuizService instance = QuizService._();
 
   Future<QuizResponse> create(CreateQuiz req) async {

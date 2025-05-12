@@ -10,13 +10,16 @@ import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/controller/quiz_details_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/index.dart';
+import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_tags.dart';
 import 'package:pick_champ/feature/quiz/match/widget/mod_and_round_selection_dialog.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 @RoutePage()
 class QuizDetailView extends ConsumerWidget {
   const QuizDetailView({required this.quizId, super.key});
+
   final String quizId;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final detailsFuture = ref.watch(quizDetailsFutureProvider(quizId));
@@ -34,7 +37,7 @@ class QuizDetailView extends ConsumerWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: context.screenHeight * 0.5,
+                    height: context.screenHeight * 0.4,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
@@ -44,27 +47,25 @@ class QuizDetailView extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  10.verticalSpace,
                   Text(
                     quiz.title!,
                     style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  10.verticalSpace,
+
                   DetailCountRow(
                     textColor: context.themeData.indicatorColor,
                     quiz: quiz,
                   ),
-                  20.verticalSpace,
+                  5.verticalSpace,
                   UserAndPlayedInfo(
                     photo: quiz.photoSnapshot!,
                     history: quiz.history!.length,
                     isAnonymous: quiz.isAnonymous,
-                    name:
-                        quiz.displayNameSnapshot ??
-                        LocaleKeys.undefined.tr(),
+                    name: quiz.displayNameSnapshot ?? LocaleKeys.undefined.tr(),
                   ),
+                  QuizDetailTags(tags: quiz.tags),
                 ],
               ),
             ),

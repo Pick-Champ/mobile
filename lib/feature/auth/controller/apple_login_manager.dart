@@ -13,16 +13,12 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 class AppleLoginManager {
   Future<void> login(BuildContext context, WidgetRef ref) async {
     try {
-      debugPrint('Apple Login: Giriş işlemi başlatıldı.');
-
       final credential = await SignInWithApple.getAppleIDCredential(
         scopes: [
           AppleIDAuthorizationScopes.email,
           AppleIDAuthorizationScopes.fullName,
         ],
       );
-      debugPrint('Apple User Identifier: ${credential.userIdentifier}');
-
       if (credential.userIdentifier == null) {
         debugPrint('Apple Login: Kullanıcı kimliği NULL döndü!');
         return;
@@ -31,14 +27,7 @@ class AppleLoginManager {
       final credentialState = await SignInWithApple.getCredentialState(
         credential.userIdentifier!,
       );
-      debugPrint('Apple Credential State: $credentialState');
-
-      await handleCredentialState(
-        context,
-        ref,
-        credentialState,
-        credential,
-      );
+      await handleCredentialState(context, ref, credentialState, credential);
     } catch (e) {
       debugPrint('Apple Login Hatası: $e');
     }
@@ -67,8 +56,6 @@ class AppleLoginManager {
     WidgetRef ref,
     AuthorizationCredentialAppleID credential,
   ) async {
-    debugPrint('Apple User Identifier: ${credential.userIdentifier}');
-
     final loginRes = await AuthService.instance.loginSocial(
       credential.userIdentifier ?? '',
       SocialAuthType.apple.value,
@@ -77,15 +64,21 @@ class AppleLoginManager {
       await handleNotFoundState(context, ref, credential);
       return;
     } else {
-
-      await AuthController().saveUserAndNavigate(context, ref, loginRes.result!.id);
-
+      await AuthController().saveUserAndNavigate(
+        context,
+        ref,
+        loginRes.result!.id,
+      );
       final registerRes = await AuthService.instance.registerSocial(
         credential.userIdentifier ?? '',
         SocialAuthType.apple.value,
       );
       if (registerRes.success) {
-        await AuthController().saveUserAndNavigate(context, ref, registerRes.result!.id);
+        await AuthController().saveUserAndNavigate(
+          context,
+          ref,
+          registerRes.result!.id,
+        );
       } else {
         WarningAlert().show(context, LocaleKeys.error.tr(), false);
       }
@@ -102,19 +95,16 @@ class AppleLoginManager {
       SocialAuthType.apple.value,
     );
     if (registerRes.success) {
-      debugPrint(
-        'Apple Kayıt: Kullanıcı başarıyla kaydedildi, yönlendiriliyor.',
+      await AuthController().saveUserAndNavigate(
+        context,
+        ref,
+        registerRes.result!.id,
       );
-      await AuthController().saveUserAndNavigate(context, ref, registerRes.result!.id);
     } else {
-      debugPrint(
-        'Apple Kayıt: Kullanıcı kaydı başarısız, giriş sayfasına yönlendiriliyor.',
-      );
       await context.router.pushAndPopUntil(
         const LoginRoute(),
         predicate: (_) => false,
       );
     }
   }
-
 }

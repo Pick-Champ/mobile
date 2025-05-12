@@ -28,11 +28,7 @@ class AuthController {
     if (res.success) {
       await saveUserAndNavigate(context, ref, res.result!.id);
     } else {
-      WarningAlert().show(
-        context,
-        res.message ?? LocaleKeys.error.tr(),
-        false,
-      );
+      WarningAlert().show(context, res.message ?? LocaleKeys.error.tr(), false);
     }
   }
 
@@ -42,11 +38,7 @@ class AuthController {
     RegisterRequest req,
   ) async {
     if (req.displayName.trim().length < 5) {
-      WarningAlert().show(
-        context,
-        LocaleKeys.displayNameMust5.tr(),
-        false,
-      );
+      WarningAlert().show(context, LocaleKeys.displayNameMust5.tr(), false);
       return;
     }
     if (!RegexType.username.regex.hasMatch(req.userName)) {
@@ -54,11 +46,7 @@ class AuthController {
       return;
     }
     if (!RegexType.eMail.regex.hasMatch(req.email)) {
-      WarningAlert().show(
-        context,
-        LocaleKeys.invalidEmailFormat.tr(),
-        false,
-      );
+      WarningAlert().show(context, LocaleKeys.invalidEmailFormat.tr(), false);
       return;
     }
     if (!RegexType.password.regex.hasMatch(req.password)) {
@@ -73,11 +61,7 @@ class AuthController {
     if (res.success) {
       await saveUserAndNavigate(context, ref, res.result!.id);
     } else {
-      WarningAlert().show(
-        context,
-        res.message ?? LocaleKeys.error.tr(),
-        false,
-      );
+      WarningAlert().show(context, res.message ?? LocaleKeys.error.tr(), false);
     }
   }
 
@@ -85,10 +69,7 @@ class AuthController {
     CacheManager.instance.prefs.clear();
     ref.read(profileBodyProvider.notifier).clear();
     ref.read(createQuizProvider.notifier).clear();
-    context.router.pushAndPopUntil(
-      const LoginRoute(),
-      predicate: (_) => false,
-    );
+    context.router.pushAndPopUntil(const LoginRoute(), predicate: (_) => false);
   }
 
   Future<void> removeAccount(BuildContext context, WidgetRef ref) async {
@@ -108,6 +89,7 @@ class AuthController {
     String? userId,
   ) async {
     CacheManager.instance.setUserId(userId!);
+    debugPrint(userId);
     await ref.read(profileProvider.notifier).getUser();
     await ref.read(profileBodyProvider.notifier).get();
     await context.router.pushAndPopUntil(
