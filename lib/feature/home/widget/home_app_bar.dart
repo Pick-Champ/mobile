@@ -14,7 +14,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileVm = ref.watch(profileProvider).result;
     return AppBar(
-      backgroundColor: const Color(0xFF20232A),
+      backgroundColor: const Color(0xFF1F1F2E),
       elevation: 1,
       actions: const [SizedBox()],
       automaticallyImplyLeading: false,
@@ -23,7 +23,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
         children: [
           IconButton(
             onPressed: Scaffold.of(context).openDrawer,
-            icon: const Icon(Icons.category, color: Colors.white),
+            icon: const Icon(Icons.category, color: Colors.amberAccent),
           ),
           Row(
             children: [
@@ -36,7 +36,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                       LocaleKeys.haveANiceDay.tr(),
                       style: context.textTheme.labelMedium?.copyWith(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: Colors.amberAccent,
                       ),
                     ),
                     if (CacheManager.instance.getUserId() != null)
@@ -44,7 +44,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                         profileVm?.displayName ?? '',
                         style: context.textTheme.labelMedium?.copyWith(
                           fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                          color: Colors.amberAccent,
                         ),
                       ),
                   ],

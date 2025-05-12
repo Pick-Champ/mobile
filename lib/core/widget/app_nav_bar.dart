@@ -21,7 +21,7 @@ class AppNavBar extends StatelessWidget {
         iconStyle: IconStyle.animated,
         barAnimation: BarAnimation.transform3D,
       ),
-      backgroundColor: const Color(0xFF151414),
+      backgroundColor: const Color(0xFF1F1F2E),
       fabLocation: StylishBarFabLocation.center,
       hasNotch: true,
       currentIndex: tabsRouter.activeIndex,
@@ -32,7 +32,7 @@ class AppNavBar extends StatelessWidget {
           icon: SvgPicture.asset(
             Assets.assetImageExplore,
             width: 30,
-            color: Colors.white,
+            color: Colors.amberAccent,
           ),
         ),
         BottomBarItem(
@@ -40,7 +40,7 @@ class AppNavBar extends StatelessWidget {
           icon: SvgPicture.asset(
             Assets.assetImageProfile,
             width: 30,
-            color: Colors.white,
+            color: Colors.amberAccent,
           ),
         ),
       ],

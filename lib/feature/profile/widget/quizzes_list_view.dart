@@ -20,7 +20,7 @@ class QuizzesListView extends ConsumerWidget {
         child: Center(
           child: Text(
             LocaleKeys.quizNotFound.tr(),
-            style: context.textTheme.headlineSmall,
+            style: context.textTheme.labelLarge,
           ),
         ),
       );

@@ -59,6 +59,8 @@ class ReportDialog {
                 onTap:
                     () => handleReport(ref, context, detailsCnt, otherId),
                 text: LocaleKeys.send.tr(),
+                bgColor: const Color(0xFF1F1F2E),
+                txtColor: Colors.amberAccent,
               ),
               10.verticalSpace,
               CupertinoButton(

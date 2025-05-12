@@ -58,6 +58,13 @@ class SettingsView extends ConsumerWidget {
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
+                  iconData: Icons.leaderboard_outlined,
+                  text: LocaleKeys.leaderboard.tr(),
+                  onTap:
+                      () => context.router.push(const LeaderBoardRoute()),
+                ),
+                const SettingsDivider(),
+                SettingsListTile(
                   iconData: Icons.language,
                   text: LocaleKeys.changeLanguage.tr(),
                   onTap: () => ChangeLanguageDialog().show(context),

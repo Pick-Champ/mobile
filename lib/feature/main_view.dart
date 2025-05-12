@@ -26,7 +26,7 @@ class MainView extends ConsumerWidget {
             child: Image.asset(
               Assets.imageAdd,
               height: 25,
-              color: Colors.blue,
+              color: Colors.blueAccent,
             ),
           ),
 

@@ -15,7 +15,7 @@ class QuizDetailAppBar extends ConsumerWidget
   Widget build(BuildContext context, WidgetRef ref) {
     final quizDetailVm = ref.watch(quizDetailsProvider);
     return AppBar(
-      backgroundColor: context.themeData.scaffoldBackgroundColor,
+      backgroundColor: const Color(0xFF1F1F2E),
       automaticallyImplyLeading: false,
       actions: const [SizedBox()],
       title: Row(
@@ -25,7 +25,7 @@ class QuizDetailAppBar extends ConsumerWidget
             onPressed: () => context.router.pop(),
             icon: Icon(
               Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-              color: context.themeData.indicatorColor,
+              color: Colors.amberAccent,
             ),
           ),
           Row(
@@ -38,7 +38,7 @@ class QuizDetailAppBar extends ConsumerWidget
                     quizDetailVm.result![0],
                   );
                 },
-                icon: const Icon(Icons.history, color: Colors.blue),
+                icon: const Icon(Icons.history, color: Colors.amberAccent),
               ),
               IconButton(
                 onPressed: () {
@@ -47,7 +47,10 @@ class QuizDetailAppBar extends ConsumerWidget
                   );
                   Scaffold.of(context).openEndDrawer();
                 },
-                icon: const Icon(Icons.emoji_emotions, color: Colors.blue),
+                icon: const Icon(
+                  Icons.emoji_emotions,
+                  color: Colors.amberAccent,
+                ),
               ),
             ],
           ),

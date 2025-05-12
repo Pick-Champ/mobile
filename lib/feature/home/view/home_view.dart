@@ -89,9 +89,9 @@ class _ScrollBuilder extends StatelessWidget {
         SizedBox(
           height: 550,
           width: 400,
-          child: ListView.builder(
+          child: PageView.builder(
             itemCount: quizList.length,
-            scrollDirection: Axis.horizontal,
+            controller: PageController(viewportFraction: 0.8),
             itemBuilder: (context, index) {
               return HomeQuizCard(quiz: quizList[index]);
             },

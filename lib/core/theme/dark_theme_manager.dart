@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pick_champ/core/theme/app_color_scheme.dart';
 import 'package:pick_champ/core/theme/app_text_style.dart';
 import 'package:pick_champ/core/theme/custom_theme.dart';
@@ -10,12 +9,11 @@ class DarkThemeManager implements CustomTheme {
     useMaterial3: true,
     indicatorColor: Colors.white,
     canvasColor: const Color(0XFF4b5a60ff),
-    scaffoldBackgroundColor: const Color(0xFF121212),
+    scaffoldBackgroundColor: const Color(0xFF1F1F2E),
     primaryColor: Colors.brown,
     primaryColorDark: Colors.blue.shade200,
     dividerColor: Colors.white70,
     cardColor: Colors.blueAccent.shade200,
-    fontFamily: GoogleFonts.inter().fontFamily,
     colorScheme: AppColorScheme.darkColorScheme,
     iconTheme: const IconThemeData(color: Colors.white),
     appBarTheme: const AppBarTheme(centerTitle: false),

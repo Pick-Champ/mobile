@@ -38,7 +38,6 @@ class _NotificationWidgetState extends State<_NotificationWidget>
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-
     _offsetAnimation = TweenSequence<Offset>([
       TweenSequenceItem(
         tween: Tween<Offset>(
@@ -55,9 +54,7 @@ class _NotificationWidgetState extends State<_NotificationWidget>
         weight: 50,
       ),
     ]).animate(_controller);
-
     _controller.forward();
-
     Future.delayed(const Duration(milliseconds: 2500), widget.onRemove);
   }
 
@@ -83,7 +80,7 @@ class _NotificationWidgetState extends State<_NotificationWidget>
               vertical: 1,
             ),
             decoration: BoxDecoration(
-              color: Colors.teal,
+              color: const Color(0xFF1F1F2E),
               borderRadius: BorderRadius.circular(15),
             ),
             child: ListTile(
@@ -91,8 +88,9 @@ class _NotificationWidgetState extends State<_NotificationWidget>
               title: Center(
                 child: Text(
                   widget.text,
-                  style: context.themeData.textTheme.labelLarge?.copyWith(
+                  style: context.themeData.textTheme.labelMedium?.copyWith(
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
                 ),

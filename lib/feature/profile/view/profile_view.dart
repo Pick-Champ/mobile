@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/widget/no_data_widget.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/profile/widget/profile_body.dart';
@@ -17,15 +16,12 @@ class ProfileView extends ConsumerWidget {
     if (viewModel == null) {
       return const NoDataWidget();
     }
-    return Padding(
-      padding: PaddingInsets().medium,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfilePicture(photoName: viewModel.photo ?? 'profile.png'),
-            const ProfileBody(),
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ProfilePicture(photoName: viewModel.photo ?? 'profile.png'),
+          const ProfileBody(),
+        ],
       ),
     );
   }

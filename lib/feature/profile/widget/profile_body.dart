@@ -41,7 +41,6 @@ class _ProfileBodyState extends ConsumerState<ProfileBody>
         final created = viewModel.result?.created ?? [];
         final played = viewModel.result?.played ?? [];
         final reacted = viewModel.result?.reacted ?? [];
-
         return SizedBox(
           height: context.screenHeight * 0.8,
           child: Column(
@@ -106,8 +105,8 @@ class _Card extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              style: context.textTheme.labelLarge?.copyWith(
-                fontWeight: FontWeight.w500,
+              style: context.textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -115,7 +114,7 @@ class _Card extends StatelessWidget {
             child: Text(
               count,
               style: context.textTheme.labelLarge?.copyWith(
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

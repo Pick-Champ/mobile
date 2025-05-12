@@ -67,8 +67,8 @@ class BlindRankWinnerView extends ConsumerWidget {
               predicate: (_) => false,
             ),
         text: LocaleKeys.go_back_home.tr(),
-        bgColor: Colors.blue,
-        txtColor: Colors.white,
+        bgColor: const Color(0xFF1F1F2E),
+        txtColor: Colors.amberAccent,
       ),
     );
   }

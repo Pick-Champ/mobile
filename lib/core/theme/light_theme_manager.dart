@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pick_champ/core/theme/app_color_scheme.dart';
 import 'package:pick_champ/core/theme/app_text_style.dart';
 import 'package:pick_champ/core/theme/custom_theme.dart';
@@ -14,8 +13,6 @@ class LightThemeManager implements CustomTheme {
     primaryColor: Colors.teal,
     dividerColor: Colors.grey,
     cardColor: Colors.blueAccent.shade200,
-    fontFamily: GoogleFonts.inter().fontFamily,
-
     colorScheme: AppColorScheme.lightColorScheme,
     appBarTheme: const AppBarTheme(centerTitle: false),
     textTheme: TextTheme(

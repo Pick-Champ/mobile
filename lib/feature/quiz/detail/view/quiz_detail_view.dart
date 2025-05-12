@@ -47,12 +47,11 @@ class QuizDetailView extends ConsumerWidget {
                   10.verticalSpace,
                   Text(
                     quiz.title!,
-                    style: context.textTheme.headlineLarge?.copyWith(
+                    style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   10.verticalSpace,
-
                   DetailCountRow(
                     textColor: context.themeData.indicatorColor,
                     quiz: quiz,
@@ -75,8 +74,8 @@ class QuizDetailView extends ConsumerWidget {
               ModAndRoundSelectionDialog().show(context, ref, quiz);
             },
             text: LocaleKeys.play.tr(),
-            bgColor: Colors.blue,
-            txtColor: Colors.white,
+            bgColor: const Color(0xFF1F1F2E),
+            txtColor: Colors.amberAccent,
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
