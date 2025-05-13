@@ -32,7 +32,10 @@ enum EndPointEnums {
   changePw('/api/user/changePw'),
   removeUser('/api/user/remove'),
   photoUser('/api/user/photo'),
-  scoreboard('/api/user/scoreboard');
+  scoreboard('/api/user/scoreboard'),
+
+  block('/api/block/block'),
+  getBlocks('/api/block/get');
 
   const EndPointEnums(this.value);
 

@@ -57,7 +57,7 @@ class BlindRankWinnerView extends ConsumerWidget {
           ],
         ),
       ),
-      endDrawer: QuizDetailDrawer(quizId: quizVm.quizId!),
+      endDrawer: QuizDetailDrawer(quizId: quizVm.quizId!,userId: quizVm.userId!),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CreateTextButton(

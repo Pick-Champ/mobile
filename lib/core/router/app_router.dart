@@ -33,5 +33,6 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: LeaderBoardRoute.page),
     AutoRoute(page: ChangePasswordRoute.page),
     AutoRoute(page: EditProfileRoute.page),
+    AutoRoute(page: BlockedUsersRoute.page),
   ];
 }

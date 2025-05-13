@@ -33,6 +33,7 @@ class KingOfHillController extends StateNotifier<QuizState> {
       type: QuizType.kingOfHill,
       selections: filteredSelections,
       matches: [initialMatch],
+      userId:quizDetail.userId,
       description: quizDetail.description,
       title: quizDetail.title,
       quizId: quizDetail.id,

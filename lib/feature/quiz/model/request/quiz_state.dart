@@ -9,6 +9,7 @@ class QuizState with _$QuizState {
   factory QuizState({
     QuizType? type,
     String? quizId,
+    String? userId,
     String? title,
     String? description,
     List<Selection>? selections,

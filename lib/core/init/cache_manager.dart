@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final class CacheManager {
@@ -13,6 +14,7 @@ final class CacheManager {
   }
 
   String? getUserId() {
+    debugPrint('userId:${prefs.getString('userId')}');
     return prefs.getString('userId');
   }
 

@@ -20,6 +20,7 @@ class BlindRankingController extends StateNotifier<QuizState> {
     final firstBlind = selected.first;
     state = state.copyWith(
       quizId: quizDetail.id,
+      userId:quizDetail.userId,
       description: quizDetail.description,
       title: quizDetail.title,
       selections: selected,

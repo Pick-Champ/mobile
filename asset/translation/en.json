@@ -6,6 +6,13 @@
   "doNotYouHaveAnAccount":"Don't you have an account?",
   "created":"Created",
   "played":"Played",
+  "blockedUsers": "Blocked Users",
+  "blockThisUser": "Block This User",
+  "areYouSureYouWantToBlockThisUser": "Are you sure you want to block this user?",
+  "userBlocked": "User blocked",
+  "userUnblocked": "User unblocked",
+  "block": "Block",
+  "unblock": "Unblock",
 
   "leaderboard":"Leaderboard",
   "score":"Score",

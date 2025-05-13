@@ -40,4 +40,3 @@ app.*.map.json
 *.g.dart
 *.freezed.dart
 /android/app/google-services.json
-.env

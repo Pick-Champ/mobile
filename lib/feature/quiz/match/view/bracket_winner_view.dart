@@ -106,7 +106,7 @@ class BracketWinnerView extends ConsumerWidget {
           );
         },
       ),
-      endDrawer: QuizDetailDrawer(quizId: quizVm.quizId!),
+      endDrawer: QuizDetailDrawer(quizId: quizVm.quizId!,userId: quizVm.userId!,),
     );
   }
 }

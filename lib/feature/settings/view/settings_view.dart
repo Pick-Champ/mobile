@@ -6,6 +6,7 @@ import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
 import 'package:pick_champ/feature/auth/controller/auth_controller.dart';
+import 'package:pick_champ/feature/settings/controller/block_controller.dart';
 import 'package:pick_champ/feature/settings/widget/change_language_dialog.dart';
 import 'package:pick_champ/feature/settings/widget/setting_divider.dart';
 import 'package:pick_champ/feature/settings/widget/settings_app_bar.dart';
@@ -18,6 +19,7 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(blockFutureProvider);
     return Scaffold(
       // ignore: deprecated_member_use
       appBar: SettingsAppBar(
@@ -69,7 +71,14 @@ class SettingsView extends ConsumerWidget {
                   text: LocaleKeys.changeLanguage.tr(),
                   onTap: () => ChangeLanguageDialog().show(context),
                 ),
-
+                const SettingsDivider(),
+                SettingsListTile(
+                  iconData: Icons.block,
+                  iconColor: Colors.red,
+                  text: LocaleKeys.blockedUsers.tr(),
+                  onTap:
+                      () => context.router.push(const BlockedUsersRoute()),
+                ),
                 const SettingsDivider(),
                 SettingsListTile(
                   iconData: Icons.highlight_remove_outlined,
@@ -87,6 +96,7 @@ class SettingsView extends ConsumerWidget {
                         buttonText: LocaleKeys.removeAccount.tr(),
                       ),
                 ),
+
                 const SettingsDivider(),
                 SettingsListTile(
                   iconColor: Colors.red,

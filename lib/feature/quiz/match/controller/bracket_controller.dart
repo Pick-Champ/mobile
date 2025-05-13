@@ -24,6 +24,7 @@ class BracketController extends StateNotifier<QuizState> {
     state = state.copyWith(
       matches: rounds,
       selections: selections,
+      userId:quizDetail.userId,
       description: quizDetail.description,
       title: quizDetail.title,
       winner: null,

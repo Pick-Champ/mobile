@@ -28,7 +28,7 @@ class QuizDetailView extends ConsumerWidget {
       onData: (_) {
         final quiz = ref.watch(quizDetailsProvider).result![0];
         return Scaffold(
-          endDrawer: QuizDetailDrawer(quizId: quiz.id!),
+          endDrawer: QuizDetailDrawer(quizId: quiz.id!,userId: quiz.userId!),
           appBar: const QuizDetailAppBar(),
           body: Padding(
             padding: PaddingInsets().small,

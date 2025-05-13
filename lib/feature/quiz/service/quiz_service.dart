@@ -10,7 +10,6 @@ import 'package:pick_champ/feature/quiz/model/index.dart';
 
 class QuizService {
   QuizService._();
-
   static final QuizService instance = QuizService._();
 
   Future<QuizResponse> create(CreateQuiz req) async {
@@ -50,9 +49,10 @@ class QuizService {
   }
 
   Future<QuizResponse> getByCategory(int id) async {
+    final userId = CacheManager.instance.getUserId();
     final response = await NetworkManager.instance.baseRequest(
       EndPointEnums.getByCategory,
-      data: {'id': id},
+      data: {'id': id, 'userId': userId},
     );
     return response != null
         ? QuizResponse.fromJson(response)
@@ -90,9 +90,10 @@ class QuizService {
         : GetByUserResponse(success: false);
   }
 
-  Future<HomeResponse> home() async {
+  Future<HomeResponse> home(String? userId) async {
     final response = await NetworkManager.instance.baseRequest(
       EndPointEnums.home,
+      data: {'id': userId},
     );
     return response != null
         ? HomeResponse.fromJson(response)
