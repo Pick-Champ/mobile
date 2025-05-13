@@ -43,30 +43,33 @@ class HomeView extends ConsumerWidget {
               );
             },
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  10.verticalSpace,
-                  if (viewModel.editorsPick!.isNotEmpty)
-                    _ScrollBuilder(
-                      title: LocaleKeys.editorsPick.tr(),
-                      quizList: viewModel.editorsPick!,
-                    ),
-                  if (viewModel.latest!.isNotEmpty)
-                    _ScrollBuilder(
-                      title: LocaleKeys.latest.tr(),
-                      quizList: viewModel.latest!,
-                    ),
-                  if (viewModel.popular!.isNotEmpty)
-                    _ScrollBuilder(
-                      title: LocaleKeys.popular.tr(),
-                      quizList: viewModel.popular!,
-                    ),
-                  if (viewModel.trending!.isNotEmpty)
-                    _ScrollBuilder(
-                      title: LocaleKeys.trending.tr(),
-                      quizList: viewModel.trending!,
-                    ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 70),
+                child: Column(
+                  children: [
+                    10.verticalSpace,
+                    if (viewModel.editorsPick!.isNotEmpty)
+                      _ScrollBuilder(
+                        title: LocaleKeys.editorsPick.tr(),
+                        quizList: viewModel.editorsPick!,
+                      ),
+                    if (viewModel.latest!.isNotEmpty)
+                      _ScrollBuilder(
+                        title: LocaleKeys.latest.tr(),
+                        quizList: viewModel.latest!,
+                      ),
+                    if (viewModel.popular!.isNotEmpty)
+                      _ScrollBuilder(
+                        title: LocaleKeys.popular.tr(),
+                        quizList: viewModel.popular!,
+                      ),
+                    if (viewModel.trending!.isNotEmpty)
+                      _ScrollBuilder(
+                        title: LocaleKeys.trending.tr(),
+                        quizList: viewModel.trending!,
+                      ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -97,6 +100,7 @@ class _ScrollBuilder extends StatelessWidget {
             },
           ),
         ),
+        SizedBox(height: 20.h),
       ],
     );
   }
