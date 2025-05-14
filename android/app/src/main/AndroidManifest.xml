@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.okok.pick_champ">
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 <application
         android:label="pick_champ"
         android:name="${applicationName}"
