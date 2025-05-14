@@ -1,10 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pick_champ/core/const/extensions/context_extension.dart';
+import 'package:pick_champ/core/widget/custom_circular.dart';
 import 'package:pick_champ/feature/home/controller/category_view_mixin.dart';
 import 'package:pick_champ/feature/home/widget/home_quiz_card.dart';
 import 'package:pick_champ/feature/quiz/model/response/category_model.dart';
 import 'package:pick_champ/feature/settings/widget/settings_app_bar.dart';
+import 'package:pick_champ/generated/locale_keys.g.dart';
 
 @RoutePage()
 class CategoryView extends ConsumerStatefulWidget {
@@ -21,26 +25,36 @@ class CategoryViewState extends ConsumerState<CategoryView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SettingsAppBar(onTap: () => context.router.pop()),
-      body:
-          state.isLoading && visibleQuizzes.isEmpty
-              ? const Center(child: CircularProgressIndicator())
-              : Padding(
-                padding: const EdgeInsets.all(8),
-                child: ListView.builder(
-                  controller: scrollController,
-                  itemCount:
-                      visibleQuizzes.length + (state.hasNextPage ? 1 : 0),
-                  itemBuilder: (context, index) {
-                    if (index < visibleQuizzes.length) {
-                      return HomeQuizCard(quiz: visibleQuizzes[index]);
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  },
-                ),
+      body: Builder(
+        builder: (context) {
+          if (state.isLoading && visibleQuizzes.isEmpty) {
+            return const Center(child: CustomCircular());
+          } else if (!state.isLoading && visibleQuizzes.isEmpty) {
+            return Center(
+              child: Text(
+                LocaleKeys.noResultsFound.tr(),
+                style: context.textTheme.labelLarge,
               ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.all(8),
+              child: ListView.builder(
+                controller: scrollController,
+                itemCount:
+                    visibleQuizzes.length + (state.hasNextPage ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (index < visibleQuizzes.length) {
+                    return HomeQuizCard(quiz: visibleQuizzes[index]);
+                  } else {
+                    return const Center(child: CustomCircular());
+                  }
+                },
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }
