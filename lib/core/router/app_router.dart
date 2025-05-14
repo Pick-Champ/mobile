@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
+import 'package:pick_champ/core/router/guard/app_tracking_guard.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'View,Route')
 class AppRouter extends $AppRouter {
@@ -10,6 +11,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: OnboardingRoute.page),
     AutoRoute(
       page: MainRoute.page,
+      guards: [AppTrackingGuard()],
       initial: true,
       children: [
         AutoRoute(page: HomeRoute.page, initial: true),

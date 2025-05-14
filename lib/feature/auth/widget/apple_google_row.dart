@@ -1,9 +1,9 @@
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/feature/auth/controller/apple_login_manager.dart';
 import 'package:pick_champ/feature/auth/controller/google_login_manager.dart';
@@ -21,6 +21,7 @@ class AppleGoogleRow extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _Button(
+            isApple: false,
             onPressed: () => GoogleLoginManager().login(context, ref),
             logoPath: Assets.imageGooglelogo,
             buttonText: LocaleKeys.loginWithApple.tr(),
@@ -28,6 +29,7 @@ class AppleGoogleRow extends ConsumerWidget {
           20.verticalSpace,
           if (Platform.isIOS)
             _Button(
+              isApple: true,
               onPressed: () => AppleLoginManager().login(context, ref),
               logoPath: Assets.imageApplelogo,
               buttonText: LocaleKeys.loginWithApple.tr(),
@@ -41,6 +43,7 @@ class AppleGoogleRow extends ConsumerWidget {
 class _Button extends StatelessWidget {
   const _Button({
     required this.onPressed,
+    required this.isApple,
     required this.logoPath,
     required this.buttonText,
   });
@@ -48,6 +51,7 @@ class _Button extends StatelessWidget {
   final VoidCallback onPressed;
   final String logoPath;
   final String buttonText;
+  final bool isApple;
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +64,15 @@ class _Button extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
-              elevation: 0,
-              backgroundColor: context.themeData.scaffoldBackgroundColor,
+              backgroundColor: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            child: Image.asset(logoPath),
+            child:
+                isApple
+                    ? Image.asset(logoPath, color: Colors.white)
+                    : Image.asset(logoPath),
           ),
         ),
       ),
