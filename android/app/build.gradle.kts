@@ -7,7 +7,6 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// Key.properties dosyasını oku
 val keyProperties = Properties()
 val keyPropertiesFile = rootProject.file("key.properties")
 if (keyPropertiesFile.exists()) {
@@ -40,7 +39,7 @@ android {
         create("release") {
             keyAlias = keyProperties["keyAlias"] as String
             keyPassword = keyProperties["keyPassword"] as String
-            storeFile = file(keyProperties["storeFile"] as String)
+            storeFile = rootProject.file(keyProperties["storeFile"] as String)
             storePassword = keyProperties["storePassword"] as String
         }
     }
