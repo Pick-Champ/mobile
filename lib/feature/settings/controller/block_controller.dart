@@ -9,6 +9,7 @@ import 'package:pick_champ/feature/home/controller/home_controller.dart';
 import 'package:pick_champ/feature/profile/controller/profile_body_controller.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/profile/model/score_board_response.dart';
+import 'package:pick_champ/feature/profile/service/user_service.dart';
 import 'package:pick_champ/feature/settings/service/block_service.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -25,11 +26,19 @@ class BlockController extends StateNotifier<ScoreBoardResponse> {
     }
   }
 
-  Future<void> block(
-    BuildContext context,
-    WidgetRef ref,
-    String blockedId,
-  ) async {
+  Future<bool> isUserExist(String userId) async {
+    final res = await UserService.instance.get(userId);
+    if (res.success) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  Future<void> block(BuildContext context,
+      WidgetRef ref,
+      String blockedId,) async {
     final response = await BlockService.instance.block(blockedId, true);
     if (response.success) {
       InformationToast().show(context, LocaleKeys.userBlocked.tr());
@@ -71,9 +80,9 @@ class BlockController extends StateNotifier<ScoreBoardResponse> {
 }
 
 final blockProvider =
-    StateNotifierProvider<BlockController, ScoreBoardResponse>(
+StateNotifierProvider<BlockController, ScoreBoardResponse>(
       (ref) => BlockController(),
-    );
+);
 
 final blockFutureProvider = FutureProvider.autoDispose<bool>((ref) async {
   final success = await ref.read(blockProvider.notifier).getUsers();

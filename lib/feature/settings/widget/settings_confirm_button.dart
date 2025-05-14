@@ -24,14 +24,14 @@ class SettingsConfirmButton extends ConsumerWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            backgroundColor: Colors.teal,
+            backgroundColor: const Color(0xFF1F1F2E),
             padding: const EdgeInsets.symmetric(vertical: 15),
             side: BorderSide.none,
           ),
           child: Text(
             text,
             style: context.textTheme.labelMedium?.copyWith(
-              color: Colors.white,
+              color: Colors.amberAccent,
             ),
           ),
         );

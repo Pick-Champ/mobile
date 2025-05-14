@@ -13,15 +13,15 @@ final class WarningAlert {
         return CupertinoAlertDialog(
           title: Text(
             title,
-            style: context.themeData.textTheme.headlineSmall,
+            style: context.themeData.textTheme.labelMedium,
           ),
           actions: <Widget>[
             CupertinoDialogAction(
-              textStyle: context.themeData.textTheme.labelSmall,
+              textStyle: context.themeData.textTheme.labelMedium,
               onPressed: () => context.router.pop(),
               child: Text(
                 LocaleKeys.okay.tr(),
-                style: context.themeData.textTheme.labelLarge,
+                style: context.themeData.textTheme.labelMedium,
               ),
             ),
           ],

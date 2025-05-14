@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
+import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/comment/widget/comments_widget.dart';
 import 'package:pick_champ/feature/reaction/widget/reaction_widget.dart';
 import 'package:pick_champ/feature/settings/controller/block_controller.dart';
@@ -17,8 +18,10 @@ class QuizDetailDrawer extends ConsumerWidget {
     required this.quizId,
     super.key,
   });
+
   final String quizId;
   final String userId;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
@@ -41,19 +44,30 @@ class QuizDetailDrawer extends ConsumerWidget {
                   Row(
                     children: [
                       IconButton(
-                        onPressed:
-                            () => QuestionAlert().show(
+                        onPressed: () async {
+                          final isUserExist = await ref
+                              .read(blockProvider.notifier)
+                              .isUserExist(userId);
+                          if (isUserExist) {
+                            await QuestionAlert().show(
                               context,
                               bodyText:
-                                  LocaleKeys
-                                      .areYouSureYouWantToBlockThisUser
+                                  LocaleKeys.areYouSureYouWantToBlockThisUser
                                       .tr(),
                               buttonText: LocaleKeys.block.tr(),
                               onTap:
                                   () => ref
                                       .read(blockProvider.notifier)
                                       .block(context, ref, userId),
-                            ),
+                            );
+                          } else {
+                            WarningAlert().show(
+                              context,
+                              'User not found',
+                              true,
+                            );
+                          }
+                        },
                         icon: const Icon(Icons.block, color: Colors.red),
                       ),
                       IconButton(

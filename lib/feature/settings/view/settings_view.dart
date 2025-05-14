@@ -21,7 +21,6 @@ class SettingsView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(blockFutureProvider);
     return Scaffold(
-      // ignore: deprecated_member_use
       appBar: SettingsAppBar(
         onTap:
             () => context.router.pushAndPopUntil(
@@ -41,29 +40,23 @@ class SettingsView extends ConsumerWidget {
           child: Padding(
             padding: PaddingInsets().large,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SettingsListTile(
                   iconData: Icons.key,
                   text: LocaleKeys.changePassword.tr(),
-                  onTap:
-                      () =>
-                          context.router.push(const ChangePasswordRoute()),
+                  onTap: () => context.router.push(const ChangePasswordRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
                   iconData: Icons.edit_note,
                   text: LocaleKeys.editProfile.tr(),
-                  onTap:
-                      () => context.router.push(const EditProfileRoute()),
+                  onTap: () => context.router.push(const EditProfileRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
                   iconData: Icons.leaderboard_outlined,
                   text: LocaleKeys.leaderboard.tr(),
-                  onTap:
-                      () => context.router.push(const LeaderBoardRoute()),
+                  onTap: () => context.router.push(const LeaderBoardRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
@@ -76,8 +69,7 @@ class SettingsView extends ConsumerWidget {
                   iconData: Icons.block,
                   iconColor: Colors.red,
                   text: LocaleKeys.blockedUsers.tr(),
-                  onTap:
-                      () => context.router.push(const BlockedUsersRoute()),
+                  onTap: () => context.router.push(const BlockedUsersRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
@@ -88,10 +80,8 @@ class SettingsView extends ConsumerWidget {
                       () => QuestionAlert().show(
                         context,
                         onTap:
-                            () async => AuthController().removeAccount(
-                              context,
-                              ref,
-                            ),
+                            () async =>
+                                AuthController().removeAccount(context, ref),
                         bodyText: LocaleKeys.areYouSureRemoveAccount.tr(),
                         buttonText: LocaleKeys.removeAccount.tr(),
                       ),
@@ -105,8 +95,7 @@ class SettingsView extends ConsumerWidget {
                   onTap:
                       () => QuestionAlert().show(
                         context,
-                        onTap:
-                            () => AuthController().signOut(context, ref),
+                        onTap: () => AuthController().signOut(context, ref),
                         bodyText: LocaleKeys.areYouSureSignOut.tr(),
                         buttonText: LocaleKeys.signOut.tr(),
                       ),
