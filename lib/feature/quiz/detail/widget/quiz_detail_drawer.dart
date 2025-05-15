@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
+import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/comment/widget/comments_widget.dart';
@@ -24,8 +25,10 @@ class QuizDetailDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      width: context.screenWidth * 0.85,
+    final isLoggedIn = CacheManager.instance.getUserId() == null;
+    return Container(
+      width: context.screenWidth * 0.8,
+      color: context.themeData.scaffoldBackgroundColor,
       child: Drawer(
         child: SingleChildScrollView(
           child: Column(
@@ -41,49 +44,51 @@ class QuizDetailDrawer extends ConsumerWidget {
                       color: context.themeData.indicatorColor,
                     ),
                   ),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () async {
-                          final isUserExist = await ref
-                              .read(blockProvider.notifier)
-                              .isUserExist(userId);
-                          if (isUserExist) {
-                            await QuestionAlert().show(
-                              context,
-                              bodyText:
-                                  LocaleKeys.areYouSureYouWantToBlockThisUser
-                                      .tr(),
-                              buttonText: LocaleKeys.block.tr(),
-                              onTap:
-                                  () => ref
-                                      .read(blockProvider.notifier)
-                                      .block(context, ref, userId),
-                            );
-                          } else {
-                            WarningAlert().show(
-                              context,
-                              'User not found',
-                              true,
-                            );
-                          }
-                        },
-                        icon: const Icon(Icons.block, color: Colors.red),
-                      ),
-                      IconButton(
-                        onPressed:
-                            () => ReportDialog().show(
-                              context,
-                              ref,
-                              otherId: quizId,
-                            ),
-                        icon: const Icon(
-                          Icons.report_problem_outlined,
-                          color: Colors.red,
+                  if (!isLoggedIn)
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () async {
+                            final isUserExist = await ref
+                                .read(blockProvider.notifier)
+                                .isUserExist(userId);
+                            if (isUserExist) {
+                              await QuestionAlert().show(
+                                context,
+                                bodyText:
+                                    LocaleKeys
+                                        .areYouSureYouWantToBlockThisUser
+                                        .tr(),
+                                buttonText: LocaleKeys.block.tr(),
+                                onTap:
+                                    () => ref
+                                        .read(blockProvider.notifier)
+                                        .block(context, ref, userId),
+                              );
+                            } else {
+                              WarningAlert().show(
+                                context,
+                                'User not found',
+                                true,
+                              );
+                            }
+                          },
+                          icon: const Icon(Icons.block, color: Colors.red),
                         ),
-                      ),
-                    ],
-                  ),
+                        IconButton(
+                          onPressed:
+                              () => ReportDialog().show(
+                                context,
+                                ref,
+                                otherId: quizId,
+                              ),
+                          icon: const Icon(
+                            Icons.report_problem_outlined,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    ),
                 ],
               ),
               35.verticalSpace,

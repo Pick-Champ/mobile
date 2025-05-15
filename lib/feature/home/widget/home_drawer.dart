@@ -28,7 +28,7 @@ class HomeDrawer extends ConsumerWidget {
                     IconButton(
                       onPressed: () => context.router.pop(),
                       icon: Icon(
-                        Icons.cancel,
+                        Icons.cancel_outlined,
                         color: context.themeData.indicatorColor,
                       ),
                     ),

@@ -55,7 +55,7 @@ class _CoverImageState extends ConsumerState<CoverImage> {
             padding: const EdgeInsets.only(left: 8),
             child: Text(
               '* ${LocaleKeys.coverImage.tr()}',
-              style: context.textTheme.labelLarge?.copyWith(
+              style: context.textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -67,7 +67,7 @@ class _CoverImageState extends ConsumerState<CoverImage> {
               alignment: Alignment.bottomCenter,
               children: [
                 Container(
-                  height: 270,
+                  height: context.screenHeight * 0.35,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -79,7 +79,7 @@ class _CoverImageState extends ConsumerState<CoverImage> {
                         _selectedImage != null
                             ? DecorationImage(
                               image: FileImage(_selectedImage!),
-                              fit: BoxFit.contain,
+                              fit: BoxFit.cover,
                             )
                             : null,
                   ),

@@ -23,7 +23,7 @@ class AddTagsState extends ConsumerState<AddTags> with AddTagsMixin {
         children: [
           Text(
             '${LocaleKeys.tags.tr()} (${viewModelTags?.length ?? 0})',
-            style: context.textTheme.labelLarge?.copyWith(
+            style: context.textTheme.labelMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -37,7 +37,7 @@ class AddTagsState extends ConsumerState<AddTags> with AddTagsMixin {
                       backgroundColor: Colors.blue.shade400,
                       label: Text(
                         tag,
-                        style: context.textTheme.labelMedium?.copyWith(
+                        style: context.textTheme.labelSmall?.copyWith(
                           fontSize: 11,
                           color: Colors.white,
                         ),
@@ -67,7 +67,7 @@ class _AddTagTextField extends StatelessWidget {
     return Padding(
       padding: PaddingInsets().small,
       child: TextFormField(
-        style: context.themeData.textTheme.labelMedium,
+        style: context.themeData.textTheme.labelSmall,
         keyboardType: TextInputType.text,
         controller: tagsCnt,
         decoration: InputDecoration(
@@ -79,14 +79,14 @@ class _AddTagTextField extends StatelessWidget {
             onPressed: addTag,
             child: Text(
               LocaleKeys.add.tr(),
-              style: context.textTheme.labelMedium,
+              style: context.textTheme.labelSmall,
             ),
           ),
           fillColor:
               isDarkMode ? Colors.grey.shade600 : Colors.grey.shade200,
           filled: true,
           hintText: LocaleKeys.tags.tr(),
-          hintStyle: context.themeData.textTheme.labelMedium?.copyWith(
+          hintStyle: context.themeData.textTheme.labelSmall?.copyWith(
             fontWeight: FontWeight.w900,
           ),
           enabledBorder: OutlineInputBorder(

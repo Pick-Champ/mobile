@@ -16,58 +16,59 @@ class QuizDetailsTab extends ConsumerWidget {
     final titleCnt = TextEditingController();
     final descCnt = TextEditingController();
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          10.verticalSpace,
-          const CategoryAnonymousRow(),
-          10.verticalSpace,
-          QuizTextField(
-            controller: titleCnt,
-            hintText: LocaleKeys.title.tr(),
-            iconData: Icons.title,
-            requiredText: LocaleKeys.titleIsRequired.tr(),
-            onSubmitted:
-                (value) => ref
-                    .read(createQuizProvider.notifier)
-                    .setTitle(titleCnt.text),
-          ),
-          10.verticalSpace,
-          QuizTextField(
-            controller: descCnt,
-            hintText: LocaleKeys.description.tr(),
-            iconData: Icons.description_outlined,
-            isRequired: false,
-            onSubmitted:
-                (value) => ref
-                    .read(createQuizProvider.notifier)
-                    .setTitle(descCnt.text),
-          ),
-          10.verticalSpace,
-          const AddTags(),
-          10.verticalSpace,
-          const CoverImage(),
-          15.verticalSpace,
-          CreateTextButton(
-            onTap: () {
-              if (QuizDetailsFormValidator.validate(
-                context: context,
-                ref: ref,
-                titleCnt: titleCnt,
-                descCnt: descCnt,
-              )) {
-                pageCnt.nextPage(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.bounceIn,
-                );
-              }
-            },
-            text: LocaleKeys.next.tr(),
-            bgColor: Colors.blue,
-            txtColor: Colors.white,
-          ),
-          10.verticalSpace,
-        ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            5.verticalSpace,
+            const CategoryAnonymousRow(),
+            5.verticalSpace,
+            QuizTextField(
+              controller: titleCnt,
+              hintText: LocaleKeys.title.tr(),
+              iconData: Icons.title,
+              requiredText: LocaleKeys.titleIsRequired.tr(),
+              onSubmitted:
+                  (value) => ref
+                      .read(createQuizProvider.notifier)
+                      .setTitle(titleCnt.text),
+            ),
+            5.verticalSpace,
+            QuizTextField(
+              controller: descCnt,
+              hintText: LocaleKeys.description.tr(),
+              iconData: Icons.description_outlined,
+              isRequired: false,
+              onSubmitted:
+                  (value) => ref
+                      .read(createQuizProvider.notifier)
+                      .setTitle(descCnt.text),
+            ),
+            5.verticalSpace,
+            const AddTags(),
+            5.verticalSpace,
+            const CoverImage(),
+            10.verticalSpace,
+            CreateTextButton(
+              onTap: () {
+                if (QuizDetailsFormValidator.validate(
+                  context: context,
+                  ref: ref,
+                  titleCnt: titleCnt,
+                  descCnt: descCnt,
+                )) {
+                  pageCnt.nextPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.bounceIn,
+                  );
+                }
+              },
+              text: LocaleKeys.next.tr(),
+              bgColor: const Color(0xFF1F1F2E),
+              txtColor: Colors.amberAccent,
+            ),
+          ],
+        ),
       ),
     );
   }

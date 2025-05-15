@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pick_champ/core/widget/information_toast.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/comment/controller/bad_word_guard.dart';
 import 'package:pick_champ/feature/comment/model/request/add_comment.dart';
@@ -16,7 +18,6 @@ class CommentController extends StateNotifier<CommentResponse> {
     if (trimmedText.isEmpty) {
       return false;
     }
-
     if (BadWordGuard().isContain(trimmedText)) {
       WarningAlert().show(
         context,
@@ -31,22 +32,45 @@ class CommentController extends StateNotifier<CommentResponse> {
     return response.success;
   }
 
-  Future<bool> delete(String commentId, String quizId) async {
-    final response = await CommentService.instance.delete(
-      commentId,
-      quizId,
-    );
-    state = response;
-    return response.success;
+  Future<void> delete(
+    BuildContext context,
+    String commentId,
+    String quizId,
+  ) async {
+    final res = await CommentService.instance.delete(commentId, quizId);
+    await context.router.pop();
+    if (res.success) {
+      InformationToast().show(
+        context,
+        LocaleKeys.commentDeletedSuccessfully.tr(),
+      );
+      state = res;
+    } else {
+      WarningAlert().show(
+        context,
+        res.message ?? LocaleKeys.anErrorOccurred.tr(),
+        true,
+      );
+    }
   }
 
-  Future<bool> like(String commentId, String quizId) async {
-    final response = await CommentService.instance.delete(
-      commentId,
-      quizId,
-    );
-    state = response;
-    return response.success;
+  Future<void> like(
+    BuildContext context,
+    String commentId,
+    String quizId,
+  ) async {
+    final res = await CommentService.instance.like(commentId, quizId);
+    await context.router.pop();
+    if (res.success) {
+      InformationToast().show(context, LocaleKeys.commentLiked.tr());
+      state = res;
+    } else {
+      WarningAlert().show(
+        context,
+        res.message ?? LocaleKeys.error.tr(),
+        true,
+      );
+    }
   }
 
   Future<bool> get(String quizId) async {

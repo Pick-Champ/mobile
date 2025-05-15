@@ -3,8 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
-import 'package:pick_champ/core/widget/information_toast.dart';
-import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/comment/model/response/comment.dart';
 import 'package:pick_champ/feature/comment/widget/more_icon_list_tile.dart';
@@ -31,22 +29,9 @@ class CommentMoreIconDialog {
                 text: LocaleKeys.likeComment.tr(),
                 iconData: Icons.favorite_border,
                 onTap: () async {
-                  final res = await ref
+                  await ref
                       .read(commentProvider.notifier)
-                      .like(comment.id!, comment.quizId!);
-                  await context.router.pop();
-                  if (res) {
-                    InformationToast().show(
-                      context,
-                      LocaleKeys.commentLiked.tr(),
-                    );
-                  } else {
-                    WarningAlert().show(
-                      context,
-                      LocaleKeys.error.tr(),
-                      true,
-                    );
-                  }
+                      .like(context, comment.id!, comment.quizId!);
                 },
               ),
               if (comment.user!.id == CacheManager.instance.getUserId())
@@ -54,22 +39,9 @@ class CommentMoreIconDialog {
                   text: LocaleKeys.deleteComment.tr(),
                   iconData: Icons.delete_forever_sharp,
                   onTap: () async {
-                    final res = await ref
+                    await ref
                         .read(commentProvider.notifier)
-                        .delete(comment.id!, comment.quizId!);
-                    await context.router.pop();
-                    if (res) {
-                      InformationToast().show(
-                        context,
-                        LocaleKeys.commentDeletedSuccessfully.tr(),
-                      );
-                    } else {
-                      WarningAlert().show(
-                        context,
-                        LocaleKeys.anErrorOccurred.tr(),
-                        true,
-                      );
-                    }
+                        .delete(context, comment.id!, comment.quizId!);
                   },
                 ),
               MoreIconListTile(

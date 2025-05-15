@@ -74,7 +74,7 @@ class _QuizTextFieldState extends ConsumerState<QuizTextField> {
         children: [
           TextFormField(
             onFieldSubmitted: widget.onSubmitted,
-            style: context.themeData.textTheme.labelMedium,
+            style: context.themeData.textTheme.labelSmall,
             keyboardType: TextInputType.text,
             controller: widget.controller,
             textInputAction: TextInputAction.next,
@@ -83,7 +83,7 @@ class _QuizTextFieldState extends ConsumerState<QuizTextField> {
                 onPressed: widget.onIconButtonPressed,
                 child: Text(
                   widget.iconText ?? '',
-                  style: context.textTheme.labelMedium,
+                  style: context.textTheme.labelSmall,
                 ),
               ),
               prefixIcon: IconButton(
@@ -97,7 +97,7 @@ class _QuizTextFieldState extends ConsumerState<QuizTextField> {
                   isDarkMode ? Colors.grey.shade600 : Colors.grey.shade200,
               filled: true,
               hintText: widget.hintText,
-              hintStyle: context.themeData.textTheme.labelMedium?.copyWith(
+              hintStyle: context.themeData.textTheme.labelSmall?.copyWith(
                 fontWeight: FontWeight.w900,
               ),
               enabledBorder: OutlineInputBorder(

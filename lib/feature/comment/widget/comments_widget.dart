@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/widget/no_data_widget.dart';
@@ -48,6 +49,24 @@ class _CommentCard extends ConsumerWidget {
         backgroundColor: Colors.grey[200],
       ),
       title: Text(comment.text!, style: context.textTheme.labelSmall),
+      subtitle: Row(
+        children: [
+          Icon(
+            Icons.favorite,
+            color: context.themeData.cardColor,
+            size: 20,
+          ),
+          5.horizontalSpace,
+          Expanded(
+            child: Text(
+              comment.likeCount.toString(),
+              style: context.textTheme.labelSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
       trailing: IconButton(
         onPressed: () {
           CommentMoreIconDialog().show(context, ref, comment);
