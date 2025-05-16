@@ -39,8 +39,6 @@
 	<string>We need your permission to access your gallery while creating a quiz.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need your permission to access your camera while creating a quiz.</string>
-	<key>NSUserTrackingUsageDescription</key>
-    <string>This identifier will be used to deliver personalized ads to you.</string>
 
 	<key>NSAppTransportSecurity</key>
 	<dict>
