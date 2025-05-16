@@ -70,7 +70,7 @@ class _CategoryDropdownState extends ConsumerState<CategoryAnonymousRow> {
                             20.horizontalSpace,
                             Text(
                               category.name,
-                              style: context.textTheme.labelMedium,
+                              style: context.textTheme.labelSmall,
                             ),
                           ],
                         ),
@@ -104,7 +104,7 @@ class _CategoryDropdownState extends ConsumerState<CategoryAnonymousRow> {
                 Expanded(
                   child: Text(
                     LocaleKeys.isAnonymous.tr(),
-                    style: context.textTheme.labelMedium?.copyWith(
+                    style: context.textTheme.labelSmall?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
                   ),

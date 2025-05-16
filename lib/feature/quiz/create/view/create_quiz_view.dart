@@ -17,6 +17,7 @@ class CreateQuizView extends ConsumerWidget {
       appBar: CreateQuizAppBar(pageCnt: pageCnt),
       endDrawer: const PreviewDrawer(),
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageCnt,
         children: [
           QuizDetailsTab(pageCnt: pageCnt),
