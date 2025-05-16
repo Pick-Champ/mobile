@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,8 +24,16 @@ class HomeDrawer extends ConsumerWidget {
               children: [
                 20.verticalSpace,
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    IconButton(
+                      onPressed:
+                          () => context.router.push(const SearchRoute()),
+                      icon: Icon(
+                        CupertinoIcons.search,
+                        color: context.themeData.indicatorColor,
+                      ),
+                    ),
                     IconButton(
                       onPressed: () => context.router.pop(),
                       icon: Icon(

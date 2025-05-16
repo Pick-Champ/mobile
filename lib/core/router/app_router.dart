@@ -27,6 +27,7 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: KingOfHillWinnerRoute.page),
 
     AutoRoute(page: LoginRoute.page),
+    AutoRoute(page: SearchRoute.page),
     AutoRoute(page: RegisterRoute.page),
     AutoRoute(page: CategoryRoute.page),
     AutoRoute(page: SettingsRoute.page),

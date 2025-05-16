@@ -27,8 +27,6 @@ class CategoryViewState extends ConsumerState<CategoryView>
       appBar: SettingsAppBar(onTap: () => context.router.pop()),
       body: Builder(
         builder: (context) {
-          print(state);
-          print(state.quizzes.length);
           if (state.isLoading && visibleQuizzes.isEmpty) {
             return const Center(child: CustomCircular());
           } else if (!state.isLoading && visibleQuizzes.isEmpty) {
@@ -47,10 +45,8 @@ class CategoryViewState extends ConsumerState<CategoryView>
                     visibleQuizzes.length + (state.hasNextPage ? 1 : 0),
                 itemBuilder: (context, index) {
                   if (index < visibleQuizzes.length) {
-                    print("Rendering quiz card $index");
                     return HomeQuizCard(quiz: visibleQuizzes[index]);
                   } else {
-                    print("Rendering loading spinner at $index");
                     return const Center(child: CustomCircular());
                   }
                 },

@@ -16,6 +16,7 @@ enum EndPointEnums {
   toggleEditorSelect('/api/quiz/toggleEditorSelect'),
   getByUser('/api/quiz/getByUser'),
   getById('/api/quiz/getById'),
+  search('/api/quiz/search'),
   home('/api/quiz/home'),
   createQuiz('/api/quiz/create'),
   deleteQuiz('/api/quiz/delete'),

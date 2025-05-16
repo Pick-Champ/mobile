@@ -59,6 +59,16 @@ class QuizService {
         : QuizResponse(success: false);
   }
 
+  Future<QuizResponse> search(String keyword) async {
+    final response = await NetworkManager.instance.baseRequest(
+      EndPointEnums.search,
+      data: {'keyword': keyword},
+    );
+    return response != null
+        ? QuizResponse.fromJson(response)
+        : QuizResponse(success: false);
+  }
+
   Future<GetByIdResponse> getById(String id) async {
     final response = await NetworkManager.instance.baseRequest(
       EndPointEnums.getById,
