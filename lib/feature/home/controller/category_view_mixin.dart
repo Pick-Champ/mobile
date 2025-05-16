@@ -51,9 +51,7 @@ mixin CategoryViewMixin on ConsumerState<CategoryView> {
     final current = state.visibleCount;
     final total = state.quizzes.length;
     final nextCount = current + 10;
-
     if (current >= total) return;
-
     setState(() {
       state = state.copyWith(
         visibleCount: nextCount,
