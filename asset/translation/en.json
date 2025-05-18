@@ -13,7 +13,11 @@
   "userUnblocked": "User unblocked",
   "block": "Block",
   "unblock": "Unblock",
-
+  "search": "Search",
+  "couldNotFindAnyResult": "Could not find any result",
+  "seeTheWinner": "See the winner! 🏆",
+  "downloadAppStore": "Download the app from the App Store",
+  "downloadPlayStore": "Download the app from the Play Store",
   "leaderboard":"Leaderboard",
   "score":"Score",
   "points":"Points",

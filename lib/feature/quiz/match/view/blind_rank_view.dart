@@ -63,16 +63,23 @@ class BlindRankView extends ConsumerWidget {
                                 )
                                 : SizedBox(
                                   height: context.screenHeight / 6,
+                                  width: double.infinity,
                                   child: Center(
-                                    child: RichText(
-                                      textAlign: TextAlign.center,
-                                      text: TextSpan(
-                                        text: (index + 1).toString(),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius:
+                                            BorderRadius.circular(40),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 18,
+                                        vertical: 9,
+                                      ),
+                                      child: Text(
+                                        (index + 1).toString(),
                                         style: context.textTheme.labelLarge
                                             ?.copyWith(
                                               fontWeight: FontWeight.bold,
-                                              backgroundColor:
-                                                  Colors.black,
                                               color: Colors.white,
                                             ),
                                       ),

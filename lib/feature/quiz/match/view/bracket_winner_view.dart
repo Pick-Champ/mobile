@@ -13,6 +13,7 @@ import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/detail_count_row.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
 import 'package:pick_champ/feature/quiz/match/controller/bracket_controller.dart';
+import 'package:pick_champ/feature/quiz/match/controller/result_share_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_app_bar.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_bg.dart';
 import 'package:pick_champ/feature/quiz/match/widget/celebrate_json.dart';
@@ -30,7 +31,10 @@ class BracketWinnerView extends ConsumerWidget {
       return const NoDataWidget();
     }
     return Scaffold(
-      appBar: BracketKingWinnerAppBar(quizVm: quizVm),
+      appBar: BracketKingWinnerAppBar(
+        quizVm: quizVm,
+        shareKey: bracketKey,
+      ),
       extendBodyBehindAppBar: true,
       body: CustomFutureBuilder(
         future: QuizService.instance.getById(quizVm.quizId!),
@@ -38,68 +42,71 @@ class BracketWinnerView extends ConsumerWidget {
           final quiz = res.result![0];
           return Padding(
             padding: PaddingInsets().small,
-            child: Stack(
-              children: [
-                const CelebrateJson(),
-                BracketKingWinnerBg(path: quizVm.winner!.photo!),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    height: context.screenHeight * 0.5,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          CreateImageUrl().selection(
-                            quizVm.winner!.photo!,
+            child: RepaintBoundary(
+              key: bracketKey,
+              child: Stack(
+                children: [
+                  const CelebrateJson(),
+                  BracketKingWinnerBg(path: quizVm.winner!.photo!),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      height: context.screenHeight * 0.5,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            CreateImageUrl().selection(
+                              quizVm.winner!.photo!,
+                            ),
                           ),
+                          fit: BoxFit.contain,
                         ),
-                        fit: BoxFit.contain,
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  top: context.screenHeight * 0.52,
-                  child: Card(
-                    color: Colors.blue.shade400,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          Text(
-                            quiz.title!,
-                            style: context.textTheme.headlineSmall
-                                ?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                          ),
-                          20.verticalSpace,
-                          DetailCountRow(
-                            textColor: Colors.white,
-                            quiz: quiz,
-                          ),
-                        ],
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    top: context.screenHeight * 0.52,
+                    child: Card(
+                      color: Colors.blue.shade400,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Text(
+                              quiz.title!,
+                              style: context.textTheme.headlineSmall
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                            ),
+                            20.verticalSpace,
+                            DetailCountRow(
+                              textColor: Colors.white,
+                              quiz: quiz,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 60,
-                  left: 0,
-                  right: 0,
-                  child: CreateTextButton(
-                    onTap:
-                        () => context.router.pushAndPopUntil(
-                          const MainRoute(),
-                          predicate: (_) => false,
-                        ),
-                    text: LocaleKeys.go_back_home.tr(),
+                  Positioned(
+                    bottom: 60,
+                    left: 0,
+                    right: 0,
+                    child: CreateTextButton(
+                      onTap:
+                          () => context.router.pushAndPopUntil(
+                            const MainRoute(),
+                            predicate: (_) => false,
+                          ),
+                      text: LocaleKeys.go_back_home.tr(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

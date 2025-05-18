@@ -18,10 +18,7 @@ class QuestionAlert {
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            content: Text(
-              bodyText,
-              style: context.textTheme.headlineSmall,
-            ),
+            content: Text(bodyText, style: context.textTheme.labelLarge),
             actions: [
               CupertinoDialogAction(
                 onPressed: onTap,
@@ -51,7 +48,7 @@ class QuestionAlert {
           return AlertDialog(
             title: Text(
               LocaleKeys.warning.tr(),
-              style: context.textTheme.headlineSmall?.copyWith(
+              style: context.textTheme.labelLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),

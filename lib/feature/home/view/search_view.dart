@@ -48,7 +48,7 @@ class _SearchViewState extends ConsumerState<SearchView> with SearchMixin {
                   ),
                   fillColor: const Color(0xFF1F1F2E),
                   filled: true,
-                  hintText: 'Search',
+                  hintText: LocaleKeys.search.tr(),
                   hintStyle: context.themeData.textTheme.labelMedium
                       ?.copyWith(
                         fontWeight: FontWeight.w900,

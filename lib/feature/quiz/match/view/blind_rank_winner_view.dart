@@ -10,6 +10,7 @@ import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
 import 'package:pick_champ/feature/quiz/match/controller/blind_ranking_controller.dart';
+import 'package:pick_champ/feature/quiz/match/controller/result_share_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/blind_rank_winner_app_bar.dart';
 import 'package:pick_champ/feature/quiz/match/widget/celebrate_json.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -28,33 +29,36 @@ class BlindRankWinnerView extends ConsumerWidget {
       appBar: const BlindRankWinnerAppBar(),
       body: Padding(
         padding: PaddingInsets().small,
-        child: Stack(
-          children: [
-            const CelebrateJson(),
-            ListView.builder(
-              itemCount: quizVm.rankedSelections?.length ?? 0,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: ListTile(
-                    title: Image.network(
-                      CreateImageUrl().selection(
-                        quizVm.rankedSelections![index]!.photo!,
+        child: RepaintBoundary(
+          key: blindKey,
+          child: Stack(
+            children: [
+              const CelebrateJson(),
+              ListView.builder(
+                itemCount: quizVm.rankedSelections?.length ?? 0,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: ListTile(
+                      title: Image.network(
+                        CreateImageUrl().selection(
+                          quizVm.rankedSelections![index]!.photo!,
+                        ),
+                        fit: BoxFit.contain,
+                        height: 120,
                       ),
-                      fit: BoxFit.contain,
-                      height: 120,
-                    ),
-                    leading: Text(
-                      '${index + 1}.',
-                      style: context.textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
+                      leading: Text(
+                        '${index + 1}.',
+                        style: context.textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
       endDrawer: QuizDetailDrawer(

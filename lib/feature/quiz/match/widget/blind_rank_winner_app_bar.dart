@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/quiz/match/controller/blind_ranking_controller.dart';
+import 'package:pick_champ/feature/quiz/match/controller/result_share_controller.dart';
 
 class BlindRankWinnerAppBar extends ConsumerWidget
     implements PreferredSizeWidget {
@@ -33,6 +35,21 @@ class BlindRankWinnerAppBar extends ConsumerWidget
               ],
             ),
           ),
+          IconButton(
+            onPressed: () {
+              ResultShareController().share(blindKey);
+            },
+            icon: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.black54,
+                border: Border.all(color: Colors.white, width: 0.5),
+              ),
+              padding: const EdgeInsets.all(6),
+              child: const Icon(Icons.share, color: Colors.yellow),
+            ),
+          ),
+          10.horizontalSpace,
           if (CacheManager.instance.getUserId() != null)
             Builder(
               builder:
@@ -45,7 +62,10 @@ class BlindRankWinnerAppBar extends ConsumerWidget
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black54,
-                        border: Border.all(color: Colors.white, width: 0.5),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 0.5,
+                        ),
                       ),
                       padding: const EdgeInsets.all(6),
                       child: const Icon(
