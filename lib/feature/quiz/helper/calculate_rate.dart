@@ -7,7 +7,7 @@ class CalculateRate {
       return 0;
     }
     return ((selection.matchWonCount! / selection.matchCount!) * 100)
-        .toInt();
+        .round();
   }
 
   int champRate(Selection selection) {
@@ -16,6 +16,6 @@ class CalculateRate {
       return 0;
     }
     return ((selection.championCount! / selection.quizCount!) * 100)
-        .toInt();
+        .round();
   }
 }

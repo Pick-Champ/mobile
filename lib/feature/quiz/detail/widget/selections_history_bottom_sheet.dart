@@ -9,7 +9,6 @@ import 'package:pick_champ/feature/quiz/helper/calculate_rate.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz_detail.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
-// you should implement lazy load logic here
 class SelectionsHistoryBottomSheet {
   void show(BuildContext context, WidgetRef ref, QuizDetail quizDetail) {
     showModalBottomSheet<Widget>(
@@ -115,7 +114,7 @@ class _Row extends StatelessWidget {
                 ),
               ),
               Text(
-                '%${count.toStringAsFixed(1)}',
+                '%$count',
                 style: context.textTheme.labelMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
