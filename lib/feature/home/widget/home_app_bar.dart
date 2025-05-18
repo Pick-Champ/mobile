@@ -14,7 +14,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final profileVm = ref.watch(profileProvider).result;
     return AppBar(
-      backgroundColor: const Color(0xFF1F1F2E),
+      backgroundColor: const Color(0xFF292E55),
       elevation: 1,
       actions: const [SizedBox()],
       automaticallyImplyLeading: false,

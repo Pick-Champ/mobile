@@ -116,8 +116,6 @@ class _RoundSelectorWidgetState extends ConsumerState<RoundSelectorWidget>
                 navigateToQuiz(selectedQuizType);
               },
               text: LocaleKeys.play.tr(),
-              bgColor: const Color(0xFF1F1F2E),
-              txtColor: Colors.amberAccent,
             ),
           ),
         ],

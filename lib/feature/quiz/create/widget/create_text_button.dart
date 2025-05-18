@@ -5,14 +5,11 @@ class CreateTextButton extends StatelessWidget {
   const CreateTextButton({
     required this.onTap,
     required this.text,
-    this.bgColor,
-    this.txtColor,
+
     super.key,
   });
   final VoidCallback onTap;
   final String text;
-  final Color? bgColor;
-  final Color? txtColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +29,14 @@ class CreateTextButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
           ),
           backgroundColor: WidgetStateProperty.all<Color>(
-            bgColor ?? context.themeData.disabledColor,
+            const Color(0xFF292E55),
           ),
         ),
         child: Text(
           text,
           style: context.textTheme.labelLarge?.copyWith(
             fontWeight: FontWeight.w900,
-            color: txtColor ?? Colors.white,
+            color: Colors.amberAccent,
           ),
           textAlign: TextAlign.center,
           maxLines: 1,

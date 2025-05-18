@@ -64,8 +64,6 @@ class QuizDetailsTab extends ConsumerWidget {
                 }
               },
               text: LocaleKeys.next.tr(),
-              bgColor: const Color(0xFF1F1F2E),
-              txtColor: Colors.amberAccent,
             ),
           ],
         ),

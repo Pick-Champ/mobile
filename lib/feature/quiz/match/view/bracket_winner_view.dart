@@ -97,8 +97,6 @@ class BracketWinnerView extends ConsumerWidget {
                           predicate: (_) => false,
                         ),
                     text: LocaleKeys.go_back_home.tr(),
-                    bgColor: const Color(0xFF1F1F2E),
-                    txtColor: Colors.amberAccent,
                   ),
                 ),
               ],
@@ -106,7 +104,10 @@ class BracketWinnerView extends ConsumerWidget {
           );
         },
       ),
-      endDrawer: QuizDetailDrawer(quizId: quizVm.quizId!,userId: quizVm.userId!,),
+      endDrawer: QuizDetailDrawer(
+        quizId: quizVm.quizId!,
+        userId: quizVm.userId!,
+      ),
     );
   }
 }

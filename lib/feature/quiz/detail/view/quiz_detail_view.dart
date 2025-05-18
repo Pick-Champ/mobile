@@ -28,7 +28,10 @@ class QuizDetailView extends ConsumerWidget {
       onData: (_) {
         final quiz = ref.watch(quizDetailsProvider).result![0];
         return Scaffold(
-          endDrawer: QuizDetailDrawer(quizId: quiz.id!,userId: quiz.userId!),
+          endDrawer: QuizDetailDrawer(
+            quizId: quiz.id!,
+            userId: quiz.userId!,
+          ),
           appBar: const QuizDetailAppBar(),
           body: Padding(
             padding: PaddingInsets().small,
@@ -63,7 +66,9 @@ class QuizDetailView extends ConsumerWidget {
                     photo: quiz.photoSnapshot!,
                     history: quiz.history!.length,
                     isAnonymous: quiz.isAnonymous,
-                    name: quiz.displayNameSnapshot ?? LocaleKeys.undefined.tr(),
+                    name:
+                        quiz.displayNameSnapshot ??
+                        LocaleKeys.undefined.tr(),
                   ),
                   QuizDetailTags(tags: quiz.tags),
                 ],
@@ -75,8 +80,6 @@ class QuizDetailView extends ConsumerWidget {
               ModAndRoundSelectionDialog().show(context, ref, quiz);
             },
             text: LocaleKeys.play.tr(),
-            bgColor: const Color(0xFF1F1F2E),
-            txtColor: Colors.amberAccent,
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,

@@ -11,6 +11,7 @@ import 'package:pick_champ/core/widget/no_data_widget.dart';
 import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/detail_count_row.dart';
+import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
 import 'package:pick_champ/feature/quiz/match/controller/king_of_hill_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_app_bar.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_bg.dart';
@@ -31,6 +32,7 @@ class KingOfHillWinnerView extends ConsumerWidget {
     }
     return Scaffold(
       appBar: BracketKingWinnerAppBar(quizVm: quizVm),
+      extendBodyBehindAppBar: true,
       body: CustomFutureBuilder(
         future: QuizService.instance.getById(quizVm.quizId!),
         child: (res) {
@@ -86,14 +88,16 @@ class KingOfHillWinnerView extends ConsumerWidget {
                           predicate: (_) => false,
                         ),
                     text: LocaleKeys.go_back_home.tr(),
-                    bgColor: const Color(0xFF1F1F2E),
-                    txtColor: Colors.amberAccent,
                   ),
                 ),
               ],
             ),
           );
         },
+      ),
+      endDrawer: QuizDetailDrawer(
+        quizId: quizVm.quizId!,
+        userId: quizVm.userId!,
       ),
     );
   }

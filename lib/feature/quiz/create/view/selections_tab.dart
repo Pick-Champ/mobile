@@ -101,8 +101,6 @@ class _SelectionsTabState extends ConsumerState<SelectionsTab>
           if (ref.watch(createQuizProvider).selections?.length != null &&
               ref.watch(createQuizProvider).selections!.length >= 8)
             CreateTextButton(
-              bgColor: const Color(0xFF1F1F2E),
-              txtColor: Colors.amberAccent,
               onTap: () async {
                 await ref
                     .read(createQuizProvider.notifier)

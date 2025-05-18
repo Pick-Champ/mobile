@@ -46,15 +46,11 @@ class NotLoggedInDialog {
                   CreateTextButton(
                     onTap: () => context.router.push(const LoginRoute()),
                     text: LocaleKeys.login.tr(),
-                    bgColor: Colors.blue,
-                    txtColor: Colors.white,
                   ),
                   10.verticalSpace,
                   CreateTextButton(
                     onTap: () => context.router.pop(),
                     text: LocaleKeys.cancel.tr(),
-                    bgColor: Colors.grey.shade200,
-                    txtColor: Colors.black,
                   ),
                   20.verticalSpace,
                 ],

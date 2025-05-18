@@ -21,7 +21,7 @@ class AppNavBar extends StatelessWidget {
         iconStyle: IconStyle.animated,
         barAnimation: BarAnimation.transform3D,
       ),
-      backgroundColor: const Color(0xFF1F1F2E),
+      backgroundColor: const Color(0xFF292E55),
       fabLocation: StylishBarFabLocation.center,
       hasNotch: true,
       currentIndex: tabsRouter.activeIndex,

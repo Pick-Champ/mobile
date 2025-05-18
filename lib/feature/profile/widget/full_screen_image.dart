@@ -60,7 +60,7 @@ class FullScreenImage {
                     const SizedBox(height: 5),
                     ListTile(
                       onTap: () => context.router.pop(),
-                      tileColor: context.themeData.scaffoldBackgroundColor,
+                      tileColor: const Color(0xFF292E55),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
@@ -70,8 +70,9 @@ class FullScreenImage {
                       title: Text(
                         LocaleKeys.close.tr(),
                         textAlign: TextAlign.center,
-                        style: context.textTheme.headlineSmall?.copyWith(
+                        style: context.textTheme.labelLarge?.copyWith(
                           fontWeight: FontWeight.w600,
+                          color: Colors.amberAccent,
                         ),
                       ),
                     ),
