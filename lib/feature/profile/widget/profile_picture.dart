@@ -14,18 +14,14 @@ import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class ProfilePicture extends ConsumerWidget {
   const ProfilePicture({required this.photoName, super.key});
+
   final String photoName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(profileProvider).result;
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 40,
-        left: 8,
-        right: 8,
-        bottom: 8,
-      ),
+      padding: const EdgeInsets.only(top: 40, left: 8, right: 8, bottom: 8),
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF1F1F2E),
@@ -73,28 +69,26 @@ class ProfilePicture extends ConsumerWidget {
                   Expanded(
                     flex: 2,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           children: [
                             Text(
-                              user!.displayName ??
-                                  LocaleKeys.undefined.tr(),
-                              style: context.textTheme.labelMedium
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.amberAccent,
-                                  ),
+                              user!.displayName ?? LocaleKeys.undefined.tr(),
+                              style: context.textTheme.labelMedium?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.amberAccent,
+                              ),
                             ),
                             3.verticalSpace,
                             Padding(
                               padding: const EdgeInsets.only(left: 16),
                               child: Text(
                                 '@${user.userName ?? LocaleKeys.undefined.tr()}',
-                                style: context.textTheme.labelMedium
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.amberAccent,
-                                    ),
+                                style: context.textTheme.labelMedium?.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.amberAccent,
+                                ),
                               ),
                             ),
                             10.verticalSpace,
@@ -105,10 +99,7 @@ class ProfilePicture extends ConsumerWidget {
                                   ),
                               child: Row(
                                 children: [
-                                  Image.asset(
-                                    Assets.imageScore,
-                                    height: 30,
-                                  ),
+                                  Image.asset(Assets.imageScore, height: 30),
                                   15.horizontalSpace,
                                   Text(
                                     (user.score ?? 0).toString(),
@@ -123,6 +114,14 @@ class ProfilePicture extends ConsumerWidget {
                             ),
                           ],
                         ),
+                        if (user.isVerified ?? false)
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Image.asset(
+                              Assets.imageVerified,
+                              height: 30,
+                            ),
+                          ),
                       ],
                     ),
                   ),

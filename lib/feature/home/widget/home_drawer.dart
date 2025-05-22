@@ -27,8 +27,7 @@ class HomeDrawer extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      onPressed:
-                          () => context.router.push(const SearchRoute()),
+                      onPressed: () => context.router.push(const SearchRoute()),
                       icon: Icon(
                         CupertinoIcons.search,
                         color: context.themeData.indicatorColor,
@@ -69,9 +68,7 @@ class HomeDrawer extends ConsumerWidget {
                         ),
                       ),
                       onTap: () {
-                        context.router.push(
-                          CategoryRoute(category: category),
-                        );
+                        context.router.push(CategoryRoute(category: category));
                       },
                     );
                   },
