@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pick_champ/core/const/enums/report_type.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/comment/model/response/comment.dart';
@@ -50,6 +51,7 @@ class CommentMoreIconDialog {
                 onTap: () async {
                   await context.router.pop();
                   await ReportDialog().show(
+                    type: ReportType.comment,
                     context,
                     ref,
                     otherId: comment.quizId!,

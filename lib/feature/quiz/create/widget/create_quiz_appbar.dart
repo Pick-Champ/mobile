@@ -15,7 +15,7 @@ class CreateQuizAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFF1F1F2E),
+      backgroundColor: const Color(0xFF292E55),
       automaticallyImplyLeading: false,
       title: Row(
         children: [

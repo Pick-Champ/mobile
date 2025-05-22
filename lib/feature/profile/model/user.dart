@@ -15,6 +15,8 @@ class User with _$User {
     String? displayName,
     String? photo,
     String? userName,
+    bool? isAdmin,
+    bool? isVerified,
     String? email,
     String? password,
     String? appleToken,

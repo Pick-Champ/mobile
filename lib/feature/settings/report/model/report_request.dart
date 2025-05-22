@@ -8,9 +8,11 @@ part 'report_request.g.dart';
 @freezed
 class ReportRequest with _$ReportRequest {
   factory ReportRequest({
+    required String type,
     String? userId,
     String? otherId,
     String? reason,
+
     String? details,
   }) = _ReportRequest;
 

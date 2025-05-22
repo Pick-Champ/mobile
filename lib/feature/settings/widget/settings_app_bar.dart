@@ -10,7 +10,7 @@ class SettingsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color(0xFF1F1F2E),
+      backgroundColor: const Color(0xFF292E55),
       leading: IconButton(
         onPressed: onTap,
         icon: Icon(

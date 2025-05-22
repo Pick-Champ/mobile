@@ -14,7 +14,7 @@ class QuizDetailAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final quizDetailVm = ref.watch(quizDetailsProvider);
     return AppBar(
-      backgroundColor: const Color(0xFF1F1F2E),
+      backgroundColor: const Color(0xFF292E55),
       automaticallyImplyLeading: false,
       actions: const [SizedBox()],
       title: Row(

@@ -19,6 +19,7 @@ class ReportDialog {
     BuildContext context,
     WidgetRef ref, {
     required String otherId,
+    required String type,
   }) async {
     final detailsCnt = TextEditingController();
     return showModalBottomSheet(
@@ -51,13 +52,24 @@ class ReportDialog {
                 iconData: Icons.report_outlined,
                 isRequired: false,
                 onSubmitted:
-                    (value) =>
-                        handleReport(ref, context, detailsCnt, otherId),
+                    (value) => handleReport(
+                      ref,
+                      context,
+                      detailsCnt,
+                      otherId,
+                      type,
+                    ),
               ),
               10.verticalSpace,
               CreateTextButton(
                 onTap:
-                    () => handleReport(ref, context, detailsCnt, otherId),
+                    () => handleReport(
+                      ref,
+                      context,
+                      detailsCnt,
+                      otherId,
+                      type,
+                    ),
                 text: LocaleKeys.send.tr(),
               ),
               10.verticalSpace,
@@ -82,6 +94,7 @@ class ReportDialog {
     BuildContext context,
     TextEditingController cnt,
     String otherId,
+    String type,
   ) async {
     final reason = ref.watch(reportReasonProvider.notifier).state;
     if (reason == null) {
@@ -89,7 +102,12 @@ class ReportDialog {
       return;
     }
     final res = await ReportService.instance.report(
-      ReportRequest(details: cnt.text, reason: reason, otherId: otherId),
+      ReportRequest(
+        type: type,
+        details: cnt.text,
+        reason: reason,
+        otherId: otherId,
+      ),
     );
     if (res.success) {
       InformationToast().show(context, LocaleKeys.success.tr());
