@@ -40,8 +40,8 @@ class Assets {
   static const String imageMovie = 'asset/image/movie.png';
   static const String imageMusical = 'asset/image/musical.png';
   static const String imageNature = 'asset/image/nature.png';
-  static const String imagePickChampLogo =
-      'asset/image/pick_champ_logo.png';
+  static const String imageVerified = 'asset/image/verified.png';
+  static const String imagePickChampLogo = 'asset/image/pick_champ_logo.png';
   static const String imagePoland = 'asset/image/poland.svg';
   static const String imagePolitics = 'asset/image/politics.png';
   static const String imagePortugal = 'asset/image/portugal.svg';

@@ -81,6 +81,7 @@ class HomeView extends ConsumerWidget {
 
 class _ScrollBuilder extends StatelessWidget {
   const _ScrollBuilder({required this.title, required this.quizList});
+
   final List<Quiz> quizList;
   final String title;
 

@@ -6,6 +6,7 @@ import 'package:pick_champ/core/const/enums/regex_type.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/widget/information_toast.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
+import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/profile/model/user.dart';
 import 'package:pick_champ/feature/profile/model/user_response.dart';
 import 'package:pick_champ/feature/profile/service/user_service.dart';
@@ -14,23 +15,13 @@ import 'package:pick_champ/generated/locale_keys.g.dart';
 class EditProfileController extends StateNotifier<UserResponse> {
   EditProfileController() : super(UserResponse(success: false));
 
-  Future<void> update(
-    BuildContext context,
-    WidgetRef ref,
-    User req,
-  ) async {
-    if (req.email == null ||
-        req.displayName == null ||
-        req.userName == null) {
+  Future<void> update(BuildContext context, WidgetRef ref, User req) async {
+    if (req.email == null || req.displayName == null || req.userName == null) {
       WarningAlert().show(context, LocaleKeys.error.tr(), false);
       return;
     }
     if (req.displayName!.trim().length < 5) {
-      WarningAlert().show(
-        context,
-        LocaleKeys.displayNameMust5.tr(),
-        false,
-      );
+      WarningAlert().show(context, LocaleKeys.displayNameMust5.tr(), false);
       return;
     }
     if (!RegexType.username.regex.hasMatch(req.userName!)) {
@@ -38,23 +29,16 @@ class EditProfileController extends StateNotifier<UserResponse> {
       return;
     }
     if (!RegexType.eMail.regex.hasMatch(req.email!)) {
-      WarningAlert().show(
-        context,
-        LocaleKeys.invalidEmailFormat.tr(),
-        false,
-      );
+      WarningAlert().show(context, LocaleKeys.invalidEmailFormat.tr(), false);
       return;
     }
     final res = await UserService.instance.update(req);
     if (res.success) {
       await context.router.pop();
+      await ref.read(profileProvider.notifier).getUser();
       InformationToast().show(context, LocaleKeys.success.tr());
     } else {
-      WarningAlert().show(
-        context,
-        res.message ?? LocaleKeys.error.tr(),
-        false,
-      );
+      WarningAlert().show(context, res.message ?? LocaleKeys.error.tr(), false);
     }
   }
 
@@ -75,9 +59,7 @@ final editProfileProvider =
       (ref) => EditProfileController(),
     );
 
-final editProfileFutureProvider = FutureProvider.autoDispose<bool>((
-  ref,
-) async {
+final editProfileFutureProvider = FutureProvider.autoDispose<bool>((ref) async {
   final success = await ref.read(editProfileProvider.notifier).getUser();
   return success;
 });
