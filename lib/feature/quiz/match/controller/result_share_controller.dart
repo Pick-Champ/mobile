@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_dynamic_calls
 import 'dart:io';
 import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -15,8 +16,7 @@ final blindKey = GlobalKey();
 class ResultShareController {
   final appStoreLink =
       'https://play.google.com/store/apps/details?id=com.okok.pick_champ';
-  final playStoreLink =
-      'https://play.google.com/store/apps/details?id=com.okok.pick_champ';
+  final playStoreLink = 'https://apps.apple.com/us/app/pick-champ/id6745738449';
 
   Future<void> share(GlobalKey key) async {
     try {
