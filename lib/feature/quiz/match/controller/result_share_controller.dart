@@ -14,9 +14,9 @@ final kingOfKey = GlobalKey();
 final blindKey = GlobalKey();
 
 class ResultShareController {
-  final appStoreLink =
+  final appStoreLink = 'https://apps.apple.com/us/app/pick-champ/id6745738449';
+  final playStoreLink =
       'https://play.google.com/store/apps/details?id=com.okok.pick_champ';
-  final playStoreLink = 'https://apps.apple.com/us/app/pick-champ/id6745738449';
 
   Future<void> share(GlobalKey key) async {
     try {
