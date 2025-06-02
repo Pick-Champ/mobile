@@ -33,7 +33,7 @@ class CountRow extends ConsumerWidget {
                     10.horizontalSpace,
                     Text(
                       GetCategoryDetail().name(quiz.categoryId!),
-                      style: context.textTheme.labelMedium,
+                      style: context.textTheme.labelSmall,
                     ),
                   ],
                 ),
@@ -43,7 +43,7 @@ class CountRow extends ConsumerWidget {
                     10.horizontalSpace,
                     Text(
                       quiz.createdAt!.formattedDateTime,
-                      style: context.textTheme.labelMedium,
+                      style: context.textTheme.labelSmall,
                     ),
                   ],
                 ),
@@ -91,7 +91,7 @@ class _IconTextRow extends StatelessWidget {
       children: [
         Image.asset(imagePath, height: 22),
         10.horizontalSpace,
-        Text(text, style: context.textTheme.labelMedium),
+        Text(text, style: context.textTheme.labelSmall),
       ],
     );
   }

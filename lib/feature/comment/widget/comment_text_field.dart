@@ -27,7 +27,7 @@ class CommentTextField extends ConsumerWidget {
         children: [
           TextFormField(
             onFieldSubmitted: (value) => (),
-            style: context.themeData.textTheme.labelLarge,
+            style: context.themeData.textTheme.labelSmall,
             keyboardType: TextInputType.text,
             controller: commentCnt,
             textInputAction: TextInputAction.done,
@@ -55,7 +55,7 @@ class CommentTextField extends ConsumerWidget {
                 },
                 child: Text(
                   LocaleKeys.add.tr(),
-                  style: context.textTheme.labelMedium,
+                  style: context.textTheme.labelSmall,
                 ),
               ),
               prefixIcon: CircleAvatar(
@@ -69,7 +69,7 @@ class CommentTextField extends ConsumerWidget {
               filled: true,
               hintText: LocaleKeys.addComment.tr(),
               hintStyle:
-                  context.themeData.textTheme.labelMedium?.copyWith(),
+                  context.themeData.textTheme.labelSmall?.copyWith(),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(color: Colors.transparent),

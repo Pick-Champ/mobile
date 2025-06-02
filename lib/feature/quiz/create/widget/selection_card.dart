@@ -85,7 +85,7 @@ class _SelectionCardState extends State<SelectionCard> {
                                     widget.selection!.photo!,
                                   ),
                                 ),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                               ),
                             ),
                           ),
