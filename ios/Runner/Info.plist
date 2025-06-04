@@ -30,9 +30,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.6</string>
+	<string>1.0.7</string>
 	<key>CFBundleVersion</key>
-	<string>9</string>
+	<string>10</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need your permission to access your gallery while creating a quiz.</string>
 	<key>NSCameraUsageDescription</key>
