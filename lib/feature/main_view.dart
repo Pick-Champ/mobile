@@ -33,13 +33,7 @@ class MainView extends ConsumerWidget {
       floatingActionButtonLocation:
           FloatingActionButtonLocation.centerDocked,
       extendBody: true,
-      routes: [
-        const HomeRoute(),
-        if (CacheManager.instance.getUserId() != null)
-          const ProfileRoute()
-        else
-          const FakeProfileRoute(),
-      ],
+      routes: const [HomeRoute(), ProfileRoute()],
 
       bottomNavigationBuilder: (context, tabsRouter) {
         return AppNavBar(

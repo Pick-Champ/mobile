@@ -18,8 +18,22 @@ class QuestionAlert {
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            content: Text(bodyText, style: context.textTheme.labelLarge),
+            content: Text(
+              bodyText,
+              style: context.textTheme.labelLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             actions: [
+              CupertinoDialogAction(
+                onPressed: () => context.router.pop(),
+                child: Text(
+                  LocaleKeys.cancel.tr(),
+                  style: context.textTheme.labelMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
               CupertinoDialogAction(
                 onPressed: onTap,
                 child: Text(
@@ -28,13 +42,6 @@ class QuestionAlert {
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
-              ),
-              CupertinoDialogAction(
-                onPressed: () => context.router.pop(),
-                child: Text(
-                  LocaleKeys.cancel.tr(),
-                  style: context.textTheme.labelMedium,
                 ),
               ),
             ],
@@ -52,13 +59,20 @@ class QuestionAlert {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            content: Text(bodyText, style: context.textTheme.labelMedium),
+            content: Text(
+              bodyText,
+              style: context.textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             actions: [
               TextButton(
                 onPressed: () => context.router.pop(),
                 child: Text(
                   LocaleKeys.cancel.tr(),
-                  style: context.textTheme.labelMedium,
+                  style: context.textTheme.labelMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               TextButton(
