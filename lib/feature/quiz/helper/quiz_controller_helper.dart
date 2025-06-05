@@ -12,7 +12,8 @@ class QuizControllerHelper {
             .where((selection) => selection.matchWonCount != null)
             .toList()
           ..sort((a, b) => b.matchWonCount!.compareTo(a.matchWonCount!));
-    final selectedSelections = sortedSelections.take(count).toList();
+    final selectedSelections =
+        sortedSelections.take(count).toList()..shuffle();
     return selectedSelections;
   }
 

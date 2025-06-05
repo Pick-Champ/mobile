@@ -30,6 +30,7 @@ class Assets {
   static const String imageHistory = 'asset/image/history.png';
   static const String imageHome = 'asset/image/home.png';
   static const String imageItaly = 'asset/image/italy.svg';
+  static const String imageKing = 'asset/image/king.png';
   static const String imageLaugh = 'asset/image/laugh.png';
   static const String imageLeader = 'asset/image/leader.png';
   static const String imageLeaderboard = 'asset/image/leaderboard.png';

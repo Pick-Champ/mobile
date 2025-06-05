@@ -7,6 +7,7 @@ import 'package:pick_champ/feature/home/widget/count_row.dart';
 import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/user_and_played_info.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
+import 'package:pick_champ/generated/assets.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class HomeQuizCard extends StatelessWidget {
@@ -26,20 +27,37 @@ class HomeQuizCard extends StatelessWidget {
             children: [
               Expanded(
                 flex: 4,
-                child: Container(
-                  width: 250,
-                  height: 250,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        CreateImageUrl().quiz(quiz.coverImage!),
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              CreateImageUrl().quiz(quiz.coverImage!),
+                            ),
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
-                      fit: BoxFit.contain,
                     ),
-                  ),
+                    if (quiz.isEditorSelected)
+                      Positioned(
+                        top: 5,
+                        right: 5,
+                        child: Container(
+                          padding: const EdgeInsets.all(7),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF1E1E1E),
+                          ),
+                          child: Image.asset(Assets.imageKing, height: 30),
+                        ),
+                      ),
+                  ],
                 ),
               ),
-
               Expanded(
                 child: UserAndPlayedInfo(
                   photo: quiz.photoSnapshot ?? '',
