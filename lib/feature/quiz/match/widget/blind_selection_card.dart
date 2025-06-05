@@ -38,7 +38,7 @@ class BlindSelectionCard extends ConsumerWidget {
                     image: NetworkImage(
                       CreateImageUrl().selection(selection!.photo!),
                     ),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),

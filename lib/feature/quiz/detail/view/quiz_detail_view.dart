@@ -50,13 +50,14 @@ class QuizDetailView extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  5.verticalSpace,
                   Text(
                     quiz.title!,
                     style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
+                  5.verticalSpace,
                   DetailCountRow(
                     textColor: context.themeData.indicatorColor,
                     quiz: quiz,
@@ -70,6 +71,7 @@ class QuizDetailView extends ConsumerWidget {
                         quiz.displayNameSnapshot ??
                         LocaleKeys.undefined.tr(),
                   ),
+                  5.verticalSpace,
                   QuizDetailTags(tags: quiz.tags),
                 ],
               ),

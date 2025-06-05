@@ -33,34 +33,39 @@ class _RoundSelectorWidgetState extends ConsumerState<RoundSelectorWidget>
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: Wrap(
-              spacing: 3,
-              children:
-                  QuizType.values.map((type) {
-                    final typeName = getTypeName(type);
-                    return ChoiceChip(
-                      label: Text(
+          Wrap(
+            spacing: 10,
+            children:
+                QuizType.values.map((type) {
+                  final typeName = getTypeName(type);
+                  return ChoiceChip(
+                    label: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 65),
+                      child: Text(
                         typeName,
+                        maxLines: 2,
+                        softWrap: true,
+                        overflow: TextOverflow.visible,
                         style: context.textTheme.labelSmall?.copyWith(
                           fontWeight: FontWeight.w500,
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                      selected: selectedQuizType == type,
-                      onSelected: (_) {
-                        setState(() {
-                          selectedQuizType = type;
-                          final valid = getValidOptions(
-                            widget.quiz.selections!.length,
-                            type,
-                          );
-                          selectedValue =
-                              valid.isNotEmpty ? valid.first : null;
-                        });
-                      },
-                    );
-                  }).toList(),
-            ),
+                    ),
+                    selected: selectedQuizType == type,
+                    onSelected: (_) {
+                      setState(() {
+                        selectedQuizType = type;
+                        final valid = getValidOptions(
+                          widget.quiz.selections!.length,
+                          type,
+                        );
+                        selectedValue =
+                            valid.isNotEmpty ? valid.first : null;
+                      });
+                    },
+                  );
+                }).toList(),
           ),
           15.verticalSpace,
           SizedBox(

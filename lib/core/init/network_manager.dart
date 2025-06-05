@@ -20,7 +20,6 @@ class NetworkManager {
   }
 
   static late final Dio _dio;
-
   static final instance = NetworkManager._();
 
   Future<Map<String, dynamic>?> baseRequest(
