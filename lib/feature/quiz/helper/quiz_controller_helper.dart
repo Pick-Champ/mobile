@@ -28,28 +28,22 @@ class QuizControllerHelper {
   }
 
   String getRoundLabel(int roundNumber, int totalRounds) {
-    final names = {
-      5: [
-        LocaleKeys.last32.tr(),
-        LocaleKeys.last16.tr(),
-        LocaleKeys.quarterFinal.tr(),
-        LocaleKeys.halfFinal.tr(),
-        'Final',
-      ],
-      4: [
-        LocaleKeys.last16.tr(),
-        LocaleKeys.quarterFinal.tr(),
-        LocaleKeys.halfFinal.tr(),
-        'Final',
-      ],
-      3: [
-        LocaleKeys.quarterFinal.tr(),
-        LocaleKeys.halfFinal.tr(),
-        'Final',
-      ],
-    };
-    final label =
-        names[totalRounds]?[roundNumber - 1] ?? 'Tur $roundNumber';
-    return label;
+    final labels = [
+      LocaleKeys.last64.tr(),
+      LocaleKeys.last32.tr(),
+      LocaleKeys.last16.tr(),
+      LocaleKeys.quarterFinal.tr(),
+      LocaleKeys.halfFinal.tr(),
+      'Final',
+    ];
+
+    final startIndex = labels.length - totalRounds;
+    final index = roundNumber - 1;
+
+    if (index + startIndex >= 0 && index + startIndex < labels.length) {
+      return labels[index + startIndex];
+    }
+
+    return 'Tur $roundNumber';
   }
 }
