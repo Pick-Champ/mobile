@@ -10,6 +10,11 @@ final class CategoryModel {
 }
 
 final class Categories {
+  CategoryModel getById(int id) {
+    final category = categories.firstWhere((element) => element.id == id);
+    return category;
+  }
+
   final List<CategoryModel> categories = [
     CategoryModel(1, Assets.imageAnimal, LocaleKeys.category_animals.tr()),
     CategoryModel(2, Assets.imageAnime, LocaleKeys.category_anime.tr()),

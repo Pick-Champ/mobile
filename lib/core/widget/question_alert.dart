@@ -20,7 +20,7 @@ class QuestionAlert {
           return CupertinoAlertDialog(
             content: Text(
               bodyText,
-              style: context.textTheme.labelLarge?.copyWith(
+              style: context.textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -29,7 +29,7 @@ class QuestionAlert {
                 onPressed: () => context.router.pop(),
                 child: Text(
                   LocaleKeys.cancel.tr(),
-                  style: context.textTheme.labelMedium?.copyWith(
+                  style: context.textTheme.labelSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -38,7 +38,7 @@ class QuestionAlert {
                 onPressed: onTap,
                 child: Text(
                   buttonText,
-                  style: context.textTheme.labelMedium?.copyWith(
+                  style: context.textTheme.labelSmall?.copyWith(
                     color: Colors.red,
                     fontWeight: FontWeight.bold,
                   ),
@@ -70,7 +70,7 @@ class QuestionAlert {
                 onPressed: () => context.router.pop(),
                 child: Text(
                   LocaleKeys.cancel.tr(),
-                  style: context.textTheme.labelMedium?.copyWith(
+                  style: context.textTheme.labelSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -79,7 +79,7 @@ class QuestionAlert {
                 onPressed: onTap,
                 child: Text(
                   buttonText,
-                  style: context.textTheme.labelMedium?.copyWith(
+                  style: context.textTheme.labelSmall?.copyWith(
                     color: Colors.red,
                   ),
                 ),

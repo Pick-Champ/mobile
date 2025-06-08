@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/feature/quiz/create/controller/create_quiz_controller.dart';
-import 'package:pick_champ/feature/quiz/helper/get_category_detail.dart';
 import 'package:pick_champ/feature/quiz/model/response/category_model.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -63,10 +62,7 @@ class _CategoryDropdownState extends ConsumerState<CategoryAnonymousRow> {
                         value: category,
                         child: Row(
                           children: [
-                            Image.asset(
-                              GetCategoryDetail().img(category.id),
-                              width: 23,
-                            ),
+                            Image.asset(category.photo, width: 23),
                             20.horizontalSpace,
                             Text(
                               category.name,

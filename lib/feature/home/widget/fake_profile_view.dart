@@ -8,7 +8,7 @@ import 'package:pick_champ/core/const/mock_quiz_list.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/feature/home/widget/not_logged_in_dialog.dart';
 import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
-import 'package:pick_champ/feature/quiz/helper/get_category_detail.dart';
+import 'package:pick_champ/feature/quiz/model/response/category_model.dart';
 import 'package:pick_champ/generated/assets.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -55,6 +55,7 @@ class _Body extends StatelessWidget {
               itemCount: 3,
               itemBuilder: (context, index) {
                 final quiz = MockQuizList().list[index];
+                final category = Categories().getById(quiz.categoryId!);
                 return Card(
                   elevation: 5,
                   child: SizedBox(
@@ -158,18 +159,14 @@ class _Body extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: Image.asset(
-                                        GetCategoryDetail().img(
-                                          quiz.categoryId!,
-                                        ),
+                                        category.photo,
                                         height: 20,
                                       ),
                                     ),
                                     Expanded(
                                       flex: 2,
                                       child: Text(
-                                        GetCategoryDetail().name(
-                                          quiz.categoryId!,
-                                        ),
+                                        category.name,
                                         style:
                                             context.textTheme.labelSmall,
                                       ),

@@ -3,17 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/const/extensions/date_time_extension.dart';
-import 'package:pick_champ/feature/quiz/helper/get_category_detail.dart';
-import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
+import 'package:pick_champ/feature/quiz/model/index.dart';
 import 'package:pick_champ/generated/assets.dart';
 
 class CountRow extends ConsumerWidget {
   const CountRow({required this.quiz, super.key});
-
   final Quiz quiz;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final category = Categories().getById(quiz.categoryId!);
     return SizedBox(
       height: context.screenHeight * 0.1,
       width: double.infinity,
@@ -26,13 +25,10 @@ class CountRow extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      GetCategoryDetail().img(quiz.categoryId!),
-                      height: 22,
-                    ),
+                    Image.asset(category.photo, height: 22),
                     10.horizontalSpace,
                     Text(
-                      GetCategoryDetail().name(quiz.categoryId!),
+                      category.name,
                       style: context.textTheme.labelSmall,
                     ),
                   ],

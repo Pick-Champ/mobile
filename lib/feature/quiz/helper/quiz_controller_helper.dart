@@ -39,11 +39,9 @@ class QuizControllerHelper {
 
     final startIndex = labels.length - totalRounds;
     final index = roundNumber - 1;
-
     if (index + startIndex >= 0 && index + startIndex < labels.length) {
       return labels[index + startIndex];
     }
-
     return 'Tur $roundNumber';
   }
 }
