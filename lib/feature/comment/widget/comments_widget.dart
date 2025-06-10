@@ -42,28 +42,50 @@ class _CommentCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       leading: CircleAvatar(
-        radius: 20,
+        radius: 25,
         backgroundImage: NetworkImage(
-          CreateImageUrl().user(comment.user!.photo!),
+          CreateImageUrl().user(
+            comment.user != null ? comment.user!.photo! : 'profile.png',
+          ),
         ),
         backgroundColor: Colors.grey[200],
       ),
-      title: Text(comment.text!, style: context.textTheme.labelSmall),
-      subtitle: Row(
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            Icons.favorite,
-            color: context.themeData.cardColor,
-            size: 20,
-          ),
-          5.horizontalSpace,
-          Expanded(
-            child: Text(
-              comment.likeCount.toString(),
-              style: context.textTheme.labelSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          Text(
+            '@${comment.user?.userName ?? 'PickChampUser'}',
+            style: context.textTheme.labelSmall?.copyWith(
+              fontWeight: FontWeight.bold,
             ),
+          ),
+          5.verticalSpace,
+          Text(comment.text!, style: context.textTheme.labelSmall),
+          5.verticalSpace,
+          Row(
+            children: [
+              IconButton(
+                onPressed: () async {
+                  await ref
+                      .read(commentProvider.notifier)
+                      .like(context, comment.id!, comment.quizId!);
+                },
+                icon: Icon(
+                  Icons.favorite,
+                  color: context.themeData.cardColor,
+                  size: 20,
+                ),
+              ),
+              5.horizontalSpace,
+              Expanded(
+                child: Text(
+                  comment.likeCount.toString(),
+                  style: context.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

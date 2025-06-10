@@ -7,6 +7,7 @@ import 'package:pick_champ/core/widget/custom_future_builder.dart';
 import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/profile/model/user.dart';
 import 'package:pick_champ/feature/profile/service/user_service.dart';
+import 'package:pick_champ/feature/profile/widget/leader_board_app_bar.dart';
 import 'package:pick_champ/feature/settings/widget/settings_app_bar.dart';
 import 'package:pick_champ/generated/assets.dart';
 
@@ -17,7 +18,7 @@ class LeaderBoardView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: SettingsAppBar(onTap: () => context.router.pop()),
+      appBar: const LeaderBoardAppBar(),
       body: CustomFutureBuilder(
         future: UserService.instance.scoreBoard(),
         child: (res) {

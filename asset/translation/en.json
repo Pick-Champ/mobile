@@ -6,7 +6,12 @@
   "doNotYouHaveAnAccount":"Don't you have an account?",
   "created":"Created",
   "played":"Played",
-  "blockedUsers": "Blocked Users",
+  "comment2Point": "You earn 2 points by commenting.",
+  "create5Point": "You earn 5 points by creating a quiz.",
+  "complete3Point": "You earn 3 points by completing a quiz.",
+  "react2Point": "You earn 2 points by reacting to a quiz.",
+
+"blockedUsers": "Blocked Users",
   "blockThisUser": "Block This User",
   "areYouSureYouWantToBlockThisUser": "Are you sure you want to block this user?",
   "userBlocked": "User blocked",

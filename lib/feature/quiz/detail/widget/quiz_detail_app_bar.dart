@@ -7,7 +7,8 @@ import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/controller/quiz_details_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/index.dart';
 
-class QuizDetailAppBar extends ConsumerWidget implements PreferredSizeWidget {
+class QuizDetailAppBar extends ConsumerWidget
+    implements PreferredSizeWidget {
   const QuizDetailAppBar({super.key});
 
   @override
@@ -31,7 +32,7 @@ class QuizDetailAppBar extends ConsumerWidget implements PreferredSizeWidget {
             children: [
               IconButton(
                 onPressed: () {
-                  SelectionsHistoryBottomSheet().show(
+                  SelectionHistoryBottomSheet().show(
                     context,
                     ref,
                     quizDetailVm.result![0],
@@ -41,7 +42,9 @@ class QuizDetailAppBar extends ConsumerWidget implements PreferredSizeWidget {
               ),
               IconButton(
                 onPressed: () {
-                  ref.read(commentFutureProvider(quizDetailVm.result![0].id!));
+                  ref.read(
+                    commentFutureProvider(quizDetailVm.result![0].id!),
+                  );
                   Scaffold.of(context).openEndDrawer();
                 },
                 icon: const Icon(

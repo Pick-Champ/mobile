@@ -27,6 +27,7 @@ class QuizDetailView extends ConsumerWidget {
       value: detailsFuture,
       onData: (_) {
         final quiz = ref.watch(quizDetailsProvider).result![0];
+        debugPrint('quizId:${quiz.id}');
         return Scaffold(
           endDrawer: QuizDetailDrawer(
             quizId: quiz.id!,

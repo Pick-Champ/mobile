@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
@@ -18,15 +19,35 @@ class BracketKingAppBar extends ConsumerWidget
     final currentMatch = quizVm.matches?[quizVm.currentRoundIndex ?? 0];
     return AppBar(
       backgroundColor: Colors.transparent,
-      title: RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(
-          text: currentMatch?.roundLabel ?? '',
-          style: context.textTheme.labelLarge?.copyWith(
-            fontWeight: FontWeight.w600,
-            backgroundColor: Colors.black26,
-            color: Colors.white,
-          ),
+
+      title: Padding(
+        padding: const EdgeInsets.only(left: 25),
+        child: Column(
+          children: [
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: quizVm.title,
+                style: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  backgroundColor: Colors.black26,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            5.verticalSpace,
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: currentMatch?.roundLabel ?? '',
+                style: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  backgroundColor: Colors.black26,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       leading: IconButton(

@@ -14,7 +14,10 @@ class Assets {
   static const String imageApplelogo = 'asset/image/applelogo.png';
   static const String imageBeauty = 'asset/image/beauty.png';
   static const String imageCalendar = 'asset/image/calendar.png';
+  static const String imageComment = 'asset/image/comment.png';
   static const String imageComments = 'asset/image/comments.png';
+  static const String imageComplete = 'asset/image/complete.png';
+  static const String imageCreate = 'asset/image/create.png';
   static const String imageDarkBg = 'asset/image/dark_bg.svg';
   static const String imageEntertainment = 'asset/image/entertainment.png';
   static const String imageExplore = 'asset/image/explore.png';
@@ -47,6 +50,8 @@ class Assets {
   static const String imagePolitics = 'asset/image/politics.png';
   static const String imagePortugal = 'asset/image/portugal.svg';
   static const String imageProfile = 'asset/image/profile.png';
+  static const String imageQuestion = 'asset/image/question.png';
+  static const String imageReaction = 'asset/image/reaction.png';
   static const String imageSad = 'asset/image/sad.png';
   static const String imageScience = 'asset/image/science.png';
   static const String imageScore = 'asset/image/score.png';

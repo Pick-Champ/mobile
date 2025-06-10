@@ -60,9 +60,8 @@ class CommentController extends StateNotifier<CommentResponse> {
     String quizId,
   ) async {
     final res = await CommentService.instance.like(commentId, quizId);
-    await context.router.pop();
     if (res.success) {
-      InformationToast().show(context, LocaleKeys.commentLiked.tr());
+      InformationToast().show(context, LocaleKeys.success.tr());
       state = res;
     } else {
       WarningAlert().show(

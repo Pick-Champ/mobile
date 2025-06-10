@@ -20,7 +20,16 @@ mixin RoundSelectorMixin on ConsumerState<RoundSelectorWidget> {
       widget.quiz.selections!.length,
       selectedQuizType,
     );
-    selectedValue = valid.contains(8) ? 8 : valid.first;
+    if (selectedQuizType == QuizType.blindRanking) {
+      selectedValue =
+          valid.contains(10)
+              ? 10
+              : valid.isNotEmpty
+              ? valid.last
+              : null;
+    } else {
+      selectedValue = valid.isNotEmpty ? valid.last : null;
+    }
   }
 
   List<int> getValidOptions(int count, QuizType type) {

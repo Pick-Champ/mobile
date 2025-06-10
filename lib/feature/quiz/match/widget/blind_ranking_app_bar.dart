@@ -16,14 +16,21 @@ class BlindRankingAppBar extends ConsumerWidget
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quizVm = ref.watch(blindRankingProvider);
-    final currentMatch = quizVm.matches?[quizVm.currentRoundIndex ?? 0];
 
     return AppBar(
       backgroundColor: Colors.transparent,
-      title: Text(
-        currentMatch?.roundLabel ?? '',
-        style: context.textTheme.labelLarge?.copyWith(
-          fontWeight: FontWeight.w600,
+      title: Padding(
+        padding: const EdgeInsets.only(left: 30),
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text: quizVm.title,
+            style: context.textTheme.labelLarge?.copyWith(
+              fontWeight: FontWeight.w600,
+              backgroundColor: Colors.black26,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
       leading: IconButton(

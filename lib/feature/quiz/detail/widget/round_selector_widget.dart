@@ -61,7 +61,7 @@ class _RoundSelectorWidgetState extends ConsumerState<RoundSelectorWidget>
                           type,
                         );
                         selectedValue =
-                            valid.isNotEmpty ? valid.first : null;
+                            valid.isNotEmpty ? valid.last : null;
                       });
                     },
                   );

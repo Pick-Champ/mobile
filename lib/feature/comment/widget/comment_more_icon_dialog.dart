@@ -26,16 +26,8 @@ class CommentMoreIconDialog {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              MoreIconListTile(
-                text: LocaleKeys.likeComment.tr(),
-                iconData: Icons.favorite_border,
-                onTap: () async {
-                  await ref
-                      .read(commentProvider.notifier)
-                      .like(context, comment.id!, comment.quizId!);
-                },
-              ),
-              if (comment.user!.id == CacheManager.instance.getUserId())
+              if (comment.user != null &&
+                  comment.user!.id == CacheManager.instance.getUserId())
                 MoreIconListTile(
                   text: LocaleKeys.deleteComment.tr(),
                   iconData: Icons.delete_forever_sharp,
@@ -54,7 +46,7 @@ class CommentMoreIconDialog {
                     type: ReportType.comment,
                     context,
                     ref,
-                    otherId: comment.quizId!,
+                    otherId: comment.id!,
                   );
                 },
               ),

@@ -7,10 +7,17 @@ import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/helper/calculate_rate.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz_detail.dart';
+import 'package:pick_champ/feature/quiz/model/response/selection.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
-class SelectionsHistoryBottomSheet {
+class SelectionHistoryBottomSheet {
   void show(BuildContext context, WidgetRef ref, QuizDetail quizDetail) {
+    final sortedSelections = List<Selection>.from(
+      quizDetail.selections!,
+    )..sort(
+      (a, b) =>
+          CalculateRate().winRate(b).compareTo(CalculateRate().winRate(a)),
+    );
     showModalBottomSheet<Widget>(
       isScrollControlled: true,
       context: context,
@@ -41,7 +48,7 @@ class SelectionsHistoryBottomSheet {
                 child: ListView.builder(
                   itemCount: quizDetail.selections!.length,
                   itemBuilder: (context, index) {
-                    final selection = quizDetail.selections![index];
+                    final selection = sortedSelections[index];
                     final winRate = CalculateRate().winRate(selection);
                     final championRate = CalculateRate().champRate(
                       selection,
