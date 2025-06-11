@@ -8,7 +8,6 @@ import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/profile/model/user.dart';
 import 'package:pick_champ/feature/profile/service/user_service.dart';
 import 'package:pick_champ/feature/profile/widget/leader_board_app_bar.dart';
-import 'package:pick_champ/feature/settings/widget/settings_app_bar.dart';
 import 'package:pick_champ/generated/assets.dart';
 
 @RoutePage()
