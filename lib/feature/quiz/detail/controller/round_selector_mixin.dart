@@ -25,10 +25,10 @@ mixin RoundSelectorMixin on ConsumerState<RoundSelectorWidget> {
           valid.contains(10)
               ? 10
               : valid.isNotEmpty
-              ? valid.last
+              ? valid.first
               : null;
     } else {
-      selectedValue = valid.isNotEmpty ? valid.last : null;
+      selectedValue = valid.isNotEmpty ? valid.first : null;
     }
   }
 
