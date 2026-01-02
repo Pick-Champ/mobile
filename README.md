@@ -62,7 +62,7 @@ https://play.google.com/store/apps/details?id=com.okok.pick_champ
 ---
 
 ## 🏗 Proje Yapısı
-
+```
 lib/
 ├─ core/ # App temeli, extensions, constants
 ├─ feature/
@@ -74,3 +74,4 @@ lib/
 ├─ main.dart
 ├─ app.dart
 └─ bootstrap.dart
+```
