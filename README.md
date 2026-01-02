@@ -2,6 +2,8 @@ IOS :şuan kullanılmıyor developer süresi bittiği için:  [# pick_champ](htt
 
 https://play.google.com/store/apps/details?id=com.okok.pick_champ
 
+Ürün videosu: https://www.instagram.com/p/DKr9zYcp1bv/
+
 # Pick Champ 🎮
 
 **Pick Champ**, eğlenceli ve etkileşimli quizler oluşturabileceğiniz ve oynayabileceğiniz bir mobil uygulamadır. Flutter ile geliştirilmiş olup, modern state management ve navigation yöntemleri kullanır.
