@@ -37,6 +37,9 @@ app.*.map.json
 
 # My secret
 *.gr.dart
+.env
+key.jks
+upload_certificate.pem
 *.g.dart
 *.freezed.dart
 /android/app/google-services.json
