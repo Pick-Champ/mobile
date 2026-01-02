@@ -8,7 +8,6 @@ import 'package:pick_champ/core/const/extensions/date_time_extension.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/feature/home/controller/search_mixin.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
 import 'package:pick_champ/feature/settings/widget/settings_app_bar.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -116,7 +115,7 @@ class _ResultCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      CreateImageUrl().quiz(quiz.coverImage!),
+                      quiz.coverImage!,
                       fit: BoxFit.cover,
                     ),
                   ),

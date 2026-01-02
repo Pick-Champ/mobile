@@ -8,7 +8,6 @@ import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/comment/model/response/comment.dart';
 import 'package:pick_champ/feature/comment/widget/comment_more_icon_dialog.dart';
 import 'package:pick_champ/feature/comment/widget/comment_text_field.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 
 class CommentsWidget extends ConsumerWidget {
   const CommentsWidget({required this.quizId, super.key});
@@ -44,9 +43,7 @@ class _CommentCard extends ConsumerWidget {
       leading: CircleAvatar(
         radius: 25,
         backgroundImage: NetworkImage(
-          CreateImageUrl().user(
-            comment.user != null ? comment.user!.photo! : 'profile.png',
-          ),
+          comment.user != null ? comment.user!.photo! : 'profile.png',
         ),
         backgroundColor: Colors.grey[200],
       ),

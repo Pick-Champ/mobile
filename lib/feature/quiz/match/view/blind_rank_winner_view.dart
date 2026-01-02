@@ -6,7 +6,6 @@ import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/no_data_widget.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
 import 'package:pick_champ/feature/quiz/match/controller/blind_ranking_controller.dart';
@@ -41,9 +40,7 @@ class BlindRankWinnerView extends ConsumerWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: ListTile(
                       title: Image.network(
-                        CreateImageUrl().selection(
-                          quizVm.rankedSelections![index]!.photo!,
-                        ),
+                        quizVm.rankedSelections![index]!.photo!,
                         fit: BoxFit.contain,
                         height: 120,
                       ),

@@ -9,7 +9,6 @@ import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
 import 'package:pick_champ/feature/home/widget/count_row.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/user_and_played_info.dart';
 import 'package:pick_champ/feature/quiz/helper/delete_quiz.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
@@ -66,9 +65,7 @@ class ProfileQuizCard extends ConsumerWidget {
                           height: 250,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: NetworkImage(
-                                CreateImageUrl().quiz(quiz.coverImage!),
-                              ),
+                              image: NetworkImage(quiz.coverImage!),
                               fit: BoxFit.contain,
                             ),
                           ),

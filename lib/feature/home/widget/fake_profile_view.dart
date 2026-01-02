@@ -100,9 +100,7 @@ class _Body extends StatelessWidget {
                                       child: CircleAvatar(
                                         radius: 20,
                                         backgroundImage: NetworkImage(
-                                          CreateImageUrl().user(
-                                            quiz.photoSnapshot!,
-                                          ),
+                                          quiz.photoSnapshot!,
                                         ),
                                       ),
                                     ),

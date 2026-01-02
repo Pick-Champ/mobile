@@ -7,7 +7,6 @@ import 'package:pick_champ/core/widget/information_toast.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/comment/model/request/add_comment.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -60,9 +59,7 @@ class CommentTextField extends ConsumerWidget {
               ),
               prefixIcon: CircleAvatar(
                 radius: 10,
-                backgroundImage: NetworkImage(
-                  CreateImageUrl().user(user!.photo!),
-                ),
+                backgroundImage: NetworkImage(user!.photo!),
               ),
               fillColor:
                   isDarkMode ? Colors.grey.shade600 : Colors.grey.shade200,

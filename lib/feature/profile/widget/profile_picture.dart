@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/feature/profile/controller/change_photo.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/profile/widget/full_screen_image.dart';
 import 'package:pick_champ/generated/assets.dart';
@@ -21,7 +20,12 @@ class ProfilePicture extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(profileProvider).result;
     return Padding(
-      padding: const EdgeInsets.only(top: 40, left: 8, right: 8, bottom: 8),
+      padding: const EdgeInsets.only(
+        top: 40,
+        left: 8,
+        right: 8,
+        bottom: 8,
+      ),
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF1F1F2E),
@@ -57,9 +61,7 @@ class ProfilePicture extends ConsumerWidget {
                             ),
                             child: CircleAvatar(
                               radius: 55,
-                              backgroundImage: NetworkImage(
-                                CreateImageUrl().user(photoName),
-                              ),
+                              backgroundImage: NetworkImage(photoName),
                             ),
                           ),
                         ),
@@ -74,21 +76,24 @@ class ProfilePicture extends ConsumerWidget {
                         Column(
                           children: [
                             Text(
-                              user!.displayName ?? LocaleKeys.undefined.tr(),
-                              style: context.textTheme.labelMedium?.copyWith(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.amberAccent,
-                              ),
+                              user!.displayName ??
+                                  LocaleKeys.undefined.tr(),
+                              style: context.textTheme.labelMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.amberAccent,
+                                  ),
                             ),
                             3.verticalSpace,
                             Padding(
                               padding: const EdgeInsets.only(left: 16),
                               child: Text(
                                 '@${user.userName ?? LocaleKeys.undefined.tr()}',
-                                style: context.textTheme.labelMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.amberAccent,
-                                ),
+                                style: context.textTheme.labelMedium
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.amberAccent,
+                                    ),
                               ),
                             ),
                             10.verticalSpace,
@@ -99,7 +104,10 @@ class ProfilePicture extends ConsumerWidget {
                                   ),
                               child: Row(
                                 children: [
-                                  Image.asset(Assets.imageScore, height: 30),
+                                  Image.asset(
+                                    Assets.imageScore,
+                                    height: 30,
+                                  ),
                                   15.horizontalSpace,
                                   Text(
                                     (user.score ?? 0).toString(),

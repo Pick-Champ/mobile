@@ -37,7 +37,10 @@ class BlindRankWinnerAppBar extends ConsumerWidget
           ),
           IconButton(
             onPressed: () {
-              ResultShareController().share(blindKey);
+              ResultShareController().share(
+                blindKey,
+                quizId: quizVm.quizId!,
+              );
             },
             icon: Container(
               decoration: BoxDecoration(

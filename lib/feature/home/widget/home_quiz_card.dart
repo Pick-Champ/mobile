@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/feature/home/widget/count_row.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/user_and_played_info.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz.dart';
 import 'package:pick_champ/generated/assets.dart';
@@ -34,9 +33,7 @@ class HomeQuizCard extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(
-                              CreateImageUrl().quiz(quiz.coverImage!),
-                            ),
+                            image: NetworkImage(quiz.coverImage!),
                             fit: BoxFit.contain,
                           ),
                         ),

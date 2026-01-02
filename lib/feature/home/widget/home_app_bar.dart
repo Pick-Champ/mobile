@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -56,9 +55,7 @@ class HomeAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   child: CircleAvatar(
                     radius: 24,
                     backgroundImage: NetworkImage(
-                      CreateImageUrl().user(
-                        profileVm?.photo! ?? 'profile.png',
-                      ),
+                      profileVm?.photo! ?? 'profile.png',
                     ),
                   ),
                 ),

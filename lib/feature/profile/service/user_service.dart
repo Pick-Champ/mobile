@@ -26,6 +26,26 @@ class UserService {
         : UserResponse(success: false);
   }
 
+  Future<UserResponse> startGame(String id) async {
+    final response = await NetworkManager.instance.baseRequest(
+      EndPointEnums.startGame,
+      data: {'id': id},
+    );
+    return response != null
+        ? UserResponse.fromJson(response)
+        : UserResponse(success: false);
+  }
+
+  Future<UserResponse> adReward(String id) async {
+    final response = await NetworkManager.instance.baseRequest(
+      EndPointEnums.adReward,
+      data: {'id': id},
+    );
+    return response != null
+        ? UserResponse.fromJson(response)
+        : UserResponse(success: false);
+  }
+
   Future<UserResponse> update(User update) async {
     final userId = CacheManager.instance.getUserId();
     final response = await NetworkManager.instance.baseRequest(

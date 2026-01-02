@@ -19,7 +19,6 @@ class BracketKingAppBar extends ConsumerWidget
     final currentMatch = quizVm.matches?[quizVm.currentRoundIndex ?? 0];
     return AppBar(
       backgroundColor: Colors.transparent,
-
       title: Padding(
         padding: const EdgeInsets.only(left: 25),
         child: Column(
@@ -28,7 +27,7 @@ class BracketKingAppBar extends ConsumerWidget
               textAlign: TextAlign.center,
               text: TextSpan(
                 text: quizVm.title,
-                style: context.textTheme.labelLarge?.copyWith(
+                style: context.textTheme.labelSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                   backgroundColor: Colors.black26,
                   color: Colors.white,
@@ -40,7 +39,7 @@ class BracketKingAppBar extends ConsumerWidget
               textAlign: TextAlign.center,
               text: TextSpan(
                 text: currentMatch?.roundLabel ?? '',
-                style: context.textTheme.labelLarge?.copyWith(
+                style: context.textTheme.labelSmall?.copyWith(
                   fontWeight: FontWeight.w600,
                   backgroundColor: Colors.black26,
                   color: Colors.white,

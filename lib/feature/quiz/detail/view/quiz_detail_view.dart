@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/widget/async_value_handler.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/controller/quiz_details_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/index.dart';
@@ -44,9 +43,7 @@ class QuizDetailView extends ConsumerWidget {
                     height: context.screenHeight * 0.4,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(
-                          CreateImageUrl().quiz(quiz.coverImage!),
-                        ),
+                        image: NetworkImage(quiz.coverImage!),
                         fit: BoxFit.contain,
                       ),
                     ),

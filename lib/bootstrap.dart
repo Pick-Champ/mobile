@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:app_links/app_links.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,9 +8,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/init/app_localization.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 
+final initialDeepLink = Provider<Uri?>((ref) => null);
+
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  final appLinks = AppLinks();
+  Uri? initialUri;
+  try {
+    initialUri = await appLinks.getInitialLink();
+    if (initialUri != null) debugPrint('🔥 INITIAL URI: $initialUri');
+  } catch (e) {
+    debugPrint('❌ Deeplink error: $e');
+  }
 
   await EasyLocalization.ensureInitialized();
   EasyLocalization.logger.enableBuildModes = [];
@@ -22,5 +35,12 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   // debugPrint('Unity Ads Initialized Successfully!');
 
   await CacheManager.instance.init();
-  runApp(AppLocalization(child: ProviderScope(child: await builder())));
+  runApp(
+    AppLocalization(
+      child: ProviderScope(
+        overrides: [initialDeepLink.overrideWithValue(initialUri)],
+        child: await builder(),
+      ),
+    ),
+  );
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/helper/calculate_rate.dart';
 import 'package:pick_champ/feature/quiz/model/response/quiz_detail.dart';
 import 'package:pick_champ/feature/quiz/model/response/selection.dart';
@@ -61,11 +60,7 @@ class SelectionHistoryBottomSheet {
                             height: 150,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage(
-                                  CreateImageUrl().selection(
-                                    selection.photo!,
-                                  ),
-                                ),
+                                image: NetworkImage(selection.photo!),
                                 fit: BoxFit.contain,
                               ),
                             ),

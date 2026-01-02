@@ -7,9 +7,10 @@ class AppRouter extends $AppRouter {
   RouteType get defaultRouteType => const RouteType.adaptive();
   @override
   final List<AutoRoute> routes = [
-    AutoRoute(page: OnboardingRoute.page),
+    //AutoRoute(path: '*', page: OnboardingPage.page),
     AutoRoute(
       page: MainRoute.page,
+      //guards: [DeepLinkGuard()],
       initial: true,
       children: [
         AutoRoute(page: HomeRoute.page, initial: true),

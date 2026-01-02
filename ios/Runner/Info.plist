@@ -17,6 +17,10 @@
 		</array>
 	  </dict>
 	</array>
+	<key>AssociatedDomains</key>
+    <array>
+      <string>applinks:pick-champ-v2.duckdns.org</string>
+    </array>
 	<key>CFBundleDisplayName</key>
 	<string>Pick Champ</string>
 	<key>CFBundleExecutable</key>

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/model/response/selection.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -35,9 +34,7 @@ class BlindSelectionCard extends ConsumerWidget {
                   border: Border.all(color: Colors.blue, width: 4),
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
-                    image: NetworkImage(
-                      CreateImageUrl().selection(selection!.photo!),
-                    ),
+                    image: NetworkImage(selection!.photo!),
                     fit: BoxFit.contain,
                   ),
                 ),

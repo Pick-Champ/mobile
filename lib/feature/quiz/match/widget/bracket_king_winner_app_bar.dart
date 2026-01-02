@@ -42,7 +42,10 @@ class BracketKingWinnerAppBar extends ConsumerWidget
           ),
           IconButton(
             onPressed: () {
-              ResultShareController().share(shareKey);
+              ResultShareController().share(
+                shareKey,
+                quizId: quizVm.quizId!,
+              );
             },
             icon: Container(
               decoration: BoxDecoration(

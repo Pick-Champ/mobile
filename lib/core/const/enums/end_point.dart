@@ -29,6 +29,8 @@ enum EndPointEnums {
   getReports('/api/report/getReports'),
 
   getUser('/api/user/get'),
+  startGame('/api/user/startGame'),
+  adReward('/api/user/adReward'),
   updateUser('/api/user/update'),
   changePw('/api/user/changePw'),
   removeUser('/api/user/remove'),

@@ -8,7 +8,6 @@ import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/custom_future_builder.dart';
 import 'package:pick_champ/core/widget/no_data_widget.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/detail_count_row.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
@@ -52,11 +51,7 @@ class KingOfHillWinnerView extends ConsumerWidget {
                       height: context.screenHeight * 0.5,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(
-                            CreateImageUrl().selection(
-                              quizVm.winner!.photo!,
-                            ),
-                          ),
+                          image: NetworkImage(quizVm.winner!.photo!),
                           fit: BoxFit.contain,
                         ),
                       ),

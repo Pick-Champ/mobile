@@ -4,14 +4,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/widget/custom_future_builder.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class FullScreenImage {
   late NetworkImage imageProvider;
 
   void show(BuildContext context, String photoName) {
-    imageProvider = NetworkImage(CreateImageUrl().user(photoName));
+    imageProvider = NetworkImage(photoName);
     showModalBottomSheet<Widget>(
       context: context,
       isScrollControlled: true,

@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/widget/custom_future_builder.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/profile/model/user.dart';
 import 'package:pick_champ/feature/profile/service/user_service.dart';
 import 'package:pick_champ/feature/profile/widget/leader_board_app_bar.dart';
@@ -64,9 +63,7 @@ class LeaderBoardView extends ConsumerWidget {
                           20.horizontalSpace,
                           CircleAvatar(
                             radius: 30,
-                            backgroundImage: NetworkImage(
-                              CreateImageUrl().user(user.photo!),
-                            ),
+                            backgroundImage: NetworkImage(user.photo!),
                           ),
                           20.horizontalSpace,
                           Expanded(
@@ -119,9 +116,7 @@ class _AwardedUsers extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 35,
-            backgroundImage: NetworkImage(
-              CreateImageUrl().user(user.photo!),
-            ),
+            backgroundImage: NetworkImage(user.photo!),
           ),
           Text(
             user.displayName ?? '',

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_dynamic_calls
 import 'dart:io';
 import 'dart:ui';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,24 +13,28 @@ final kingOfKey = GlobalKey();
 final blindKey = GlobalKey();
 
 class ResultShareController {
-  final appStoreLink = 'https://apps.apple.com/us/app/pick-champ/id6745738449';
+  final appStoreLink =
+      'https://apps.apple.com/us/app/pick-champ/id6745738449';
   final playStoreLink =
       'https://play.google.com/store/apps/details?id=com.okok.pick_champ';
 
-  Future<void> share(GlobalKey key) async {
+  final apiBaseUrl = 'https://pick-champ-v2.duckdns.org/api/quiz';
+
+  Future<void> share(GlobalKey key, {required String quizId}) async {
     try {
       final boundary =
           key.currentContext!.findRenderObject()! as RenderRepaintBoundary;
       final image = await boundary.toImage(pixelRatio: 3);
       final byteData = await image.toByteData(format: ImageByteFormat.png);
       final pngBytes = byteData!.buffer.asUint8List();
-
       final tempDir = await getTemporaryDirectory();
       final file = await File('${tempDir.path}/winner_share.png').create();
       await file.writeAsBytes(pngBytes);
+      final quizLink = '$apiBaseUrl/$quizId';
 
       final shareText =
           '${LocaleKeys.seeTheWinner.tr()}\n'
+          'Quiz Linki: $quizLink\n'
           '${LocaleKeys.downloadAppStore.tr()}: $appStoreLink\n'
           '${LocaleKeys.downloadPlayStore.tr()}: $playStoreLink';
 

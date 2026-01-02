@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pick_champ/core/const/app_env.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/settings/controller/block_controller.dart';
 import 'package:pick_champ/feature/settings/widget/settings_app_bar.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
@@ -29,7 +29,7 @@ class BlockedUsersView extends ConsumerWidget {
                     leading: CircleAvatar(
                       radius: 25,
                       backgroundImage: NetworkImage(
-                        CreateImageUrl().user(user.photo ?? 'profile.png'),
+                        user.photo ?? AppEnv.defaultProfilePhoto,
                       ),
                     ),
                     title: Text(

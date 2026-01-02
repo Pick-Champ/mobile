@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:pick_champ/core/const/app_env.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
 class UserAndPlayedInfo extends StatelessWidget {
@@ -55,11 +55,9 @@ class UserAndPlayedInfo extends StatelessWidget {
                                 backgroundImage:
                                     isAnonymous
                                         ? NetworkImage(
-                                          CreateImageUrl().user('profile.png'),
+                                          AppEnv.defaultProfilePhoto,
                                         )
-                                        : NetworkImage(
-                                          CreateImageUrl().user(photo),
-                                        ),
+                                        : NetworkImage(photo),
                               ),
                             ),
                             Expanded(
@@ -71,7 +69,9 @@ class UserAndPlayedInfo extends StatelessWidget {
                                       ? LocaleKeys.anonymous.tr()
                                       : name,
                                   style: context.textTheme.labelMedium
-                                      ?.copyWith(fontWeight: FontWeight.w700),
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                 ),
                               ),
                             ),
@@ -87,9 +87,10 @@ class UserAndPlayedInfo extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 history.toString(),
-                                style: context.textTheme.labelMedium?.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
+                                style: context.textTheme.labelMedium
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                    ),
                               ),
                             ),
                           ],

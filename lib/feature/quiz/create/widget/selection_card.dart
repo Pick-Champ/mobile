@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/model/response/selection.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -50,7 +49,7 @@ class _SelectionCardState extends State<SelectionCard> {
             child: ImageFiltered(
               imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
               child: Image.network(
-                CreateImageUrl().selection(widget.selection!.photo!),
+                widget.selection!.photo!,
                 fit: BoxFit.cover,
               ),
             ),
@@ -81,9 +80,7 @@ class _SelectionCardState extends State<SelectionCard> {
                               borderRadius: BorderRadius.circular(12),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  CreateImageUrl().selection(
-                                    widget.selection!.photo!,
-                                  ),
+                                  widget.selection!.photo!,
                                 ),
                                 fit: BoxFit.contain,
                               ),

@@ -3,7 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
-import 'package:pick_champ/feature/profile/controller/create_image_url.dart';
 import 'package:pick_champ/feature/quiz/match/controller/blind_ranking_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/animated_blind_selection.dart';
 import 'package:pick_champ/feature/quiz/match/widget/blind_ranking_app_bar.dart';
@@ -26,10 +25,7 @@ class BlindRankView extends ConsumerWidget {
           if (bgImage != null)
             ImageFiltered(
               imageFilter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Image.network(
-                CreateImageUrl().selection(bgImage),
-                fit: BoxFit.cover,
-              ),
+              child: Image.network(bgImage, fit: BoxFit.cover),
             ),
           Row(
             children: [
