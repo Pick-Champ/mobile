@@ -4,62 +4,73 @@ Android: https://play.google.com/store/apps/details?id=com.okok.pick_champ
 
 Ürün videosu: https://www.instagram.com/p/DKr9zYcp1bv/
 
-# Pick Champ 🎮
+Pick Champ 🎮
 
-**Pick Champ**, eğlenceli ve etkileşimli quizler oluşturabileceğiniz ve oynayabileceğiniz bir mobil uygulamadır. Flutter ile geliştirilmiş olup, modern state management ve navigation yöntemleri kullanır.
+Pick Champ is a mobile app where you can create and play fun, interactive quizzes. It is developed with Flutter and uses modern state management and navigation techniques.
+
+🚀 Features
+
+Different Quiz Modes
+
+Bracket (Tournament system)
+
+King of the Hill
+
+Blind Ranking
+
+Selection-Based Tournaments
+
+Dynamic round/slot options based on the number of choices in quizzes
+
+Automatic default selection for starting
+
+Leaderboard & Profile
+
+User profile viewing
+
+Leaderboard system
+
+Multilingual Support
+
+Localization with easy_localization
+
+Advanced Navigation
+
+Page transitions with auto_route
+
+State Management
+
+Quiz state management using flutter_riverpod
+
+Multiplatform Ready
+
+Compatible with Android and iOS
+
+Media & Animations
+
+Lottie animations
+
+Image picking and cropping (image_picker, image_cropper)
 
 ---
 
-## 🚀 Özellikler
+📦 Packages Used
 
-- **Farklı Quiz Modları**
-  - Bracket (Turnuva sistemi)
-  - King of the Hill
-  - Blind Ranking
-- **Seçim Bazlı Turnuvalar**
-  - Quizlerdeki seçim sayısına göre dinamik round/slot seçenekleri
-  - Başlangıç için otomatik default seçim
-- **Liderlik ve Profil**
-  - Kullanıcı profili görüntüleme
-  - Leaderboard sistemi
-- **Çoklu Dil Desteği**
-  - `easy_localization` ile yerelleştirme
-- **Gelişmiş Navigation**
-  - `auto_route` ile sayfalar arası geçişler
-- **State Management**
-  - `flutter_riverpod` kullanımı ile quiz state yönetimi
-- **Multiplatform Ready**
-  - Android ve iOS uyumlu
-- **Medya ve Animasyonlar**
-  - Lottie animasyonları
-  - Resim seçme ve kırpma (`image_picker`, `image_cropper`)
-
----
-
-## 📦 Kullanılan Paketler
-
-- **State Management & Dependency Injection**
-  - `flutter_riverpod`
-- **Routing**
-  - `auto_route` + `auto_route_generator`
-- **Localization**
-  - `easy_localization`
-- **UI & Design**
-  - `flutter_screenutil` (responsive tasarım)
-  - `google_fonts`
-  - `flutter_svg`
-  - `stylish_bottom_bar`
-- **Networking**
-  - `dio`
-  - `connectivity_plus`
-- **Storage**
-  - `shared_preferences`
-  - `path_provider`
-- **Authentication**
-  - `google_sign_in`
-  - `sign_in_with_apple`
-- **Others**
-  - `permission_handler`, `share_plus`, `flutter_dotenv`
+State Management & Dependency Injection
+flutter_riverpod
+auto_route + auto_route_generator
+easy_localization
+flutter_screenutil (responsive design)
+google_fonts
+flutter_svg
+stylish_bottom_bar
+dio
+connectivity_plus
+shared_preferences
+path_provider
+google_sign_in
+sign_in_with_apple
+permission_handler, share_plus, flutter_dotenv
 
 ---
 
