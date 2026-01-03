@@ -36,7 +36,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.4</string>
 	<key>CFBundleVersion</key>
-	<string>18</string>
+	<string>19</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need your permission to access your gallery while creating a quiz.</string>
 	<key>NSCameraUsageDescription</key>
