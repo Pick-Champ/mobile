@@ -5,7 +5,7 @@ import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/quiz/match/controller/blind_ranking_controller.dart';
-import 'package:pick_champ/feature/quiz/match/controller/result_share_controller.dart';
+import 'package:pick_champ/feature/quiz/match/controller/share_controller.dart';
 
 class BlindRankWinnerAppBar extends ConsumerWidget
     implements PreferredSizeWidget {
@@ -37,7 +37,7 @@ class BlindRankWinnerAppBar extends ConsumerWidget
           ),
           IconButton(
             onPressed: () {
-              ResultShareController().share(
+              ShareController().shareResult(
                 blindKey,
                 quizId: quizVm.quizId!,
               );

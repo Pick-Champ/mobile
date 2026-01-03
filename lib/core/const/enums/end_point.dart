@@ -9,13 +9,14 @@ enum EndPointEnums {
 
   addComment('/api/comment/add'),
   deleteComment('/api/comment/delete'),
-  getComment('/api/comment/get'),
+  getByQuizComment('/api/comment/get'),
+  getByIdComment('/api/comment/getById'),
   likeComment('/api/comment/like'),
 
   getByCategory('/api/quiz/getByCategory'),
   toggleEditorSelect('/api/quiz/toggleEditorSelect'),
-  getByUser('/api/quiz/getByUser'),
-  getById('/api/quiz/getById'),
+  getByUserQuiz('/api/quiz/getByUser'),
+  getByIdQuiz('/api/quiz/getById'),
   search('/api/quiz/search'),
   home('/api/quiz/home'),
   createQuiz('/api/quiz/create'),
@@ -27,6 +28,7 @@ enum EndPointEnums {
 
   report('/api/report/report'),
   getReports('/api/report/getReports'),
+  deleteReport('/api/report/delete'),
 
   getUser('/api/user/get'),
   startGame('/api/user/startGame'),

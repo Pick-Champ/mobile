@@ -9,7 +9,7 @@ class ReportResponse with _$ReportResponse {
   factory ReportResponse({
     required bool success,
     String? message,
-    Report? result,
+    List<Report?>? result,
   }) = _ReportResponse;
 
   factory ReportResponse.fromJson(Map<String, dynamic> json) =>

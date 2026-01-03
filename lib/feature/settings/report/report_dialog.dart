@@ -80,7 +80,7 @@ class ReportDialog {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                onPressed: () => context.router.pop,
+                onPressed: () => context.router.pop(),
               ),
             ],
           ),

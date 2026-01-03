@@ -45,10 +45,20 @@ class CommentService {
         : CommentResponse(success: false);
   }
 
-  Future<CommentResponse> get(String quizId) async {
+  Future<CommentResponse> getByQuiz(String quizId) async {
     final response = await NetworkManager.instance.baseRequest(
-      EndPointEnums.getComment,
+      EndPointEnums.getByQuizComment,
       data: {'quizId': quizId},
+    );
+    return response != null
+        ? CommentResponse.fromJson(response)
+        : CommentResponse(success: false);
+  }
+
+  Future<CommentResponse> getById(String commentId) async {
+    final response = await NetworkManager.instance.baseRequest(
+      EndPointEnums.getByIdComment,
+      data: {'id': commentId},
     );
     return response != null
         ? CommentResponse.fromJson(response)

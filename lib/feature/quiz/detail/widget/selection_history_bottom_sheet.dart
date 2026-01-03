@@ -55,7 +55,16 @@ class SelectionHistoryBottomSheet {
                     return Padding(
                       padding: const EdgeInsets.all(4),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Text(
+                              '${index + 1}. ${selection.description}',
+                              style: context.textTheme.labelMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                          ),
                           Container(
                             height: 150,
                             decoration: BoxDecoration(
@@ -111,14 +120,14 @@ class _Row extends StatelessWidget {
             children: [
               Text(
                 text,
-                style: context.textTheme.labelMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                style: context.textTheme.labelSmall?.copyWith(
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               Text(
                 '%$count',
-                style: context.textTheme.labelMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
+                style: context.textTheme.labelSmall?.copyWith(
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ],

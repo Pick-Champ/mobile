@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
-import 'package:pick_champ/feature/quiz/match/controller/result_share_controller.dart';
+import 'package:pick_champ/feature/quiz/match/controller/share_controller.dart';
 import 'package:pick_champ/feature/quiz/model/request/quiz_state.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
@@ -42,7 +42,7 @@ class BracketKingWinnerAppBar extends ConsumerWidget
           ),
           IconButton(
             onPressed: () {
-              ResultShareController().share(
+              ShareController().shareResult(
                 shareKey,
                 quizId: quizVm.quizId!,
               );

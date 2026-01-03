@@ -4,6 +4,10 @@ class Assets {
 
   static const String assetImageExplore = 'asset/image/explore.svg';
   static const String assetImageProfile = 'asset/image/profile.svg';
+  static const String fontsSpaceMonoBold =
+      'asset/fonts/SpaceMono-Bold.ttf';
+  static const String fontsSpaceMonoRegular =
+      'asset/fonts/SpaceMono-Regular.ttf';
   static const String image1 = 'asset/image/1.png';
   static const String image2 = 'asset/image/2.png';
   static const String image3 = 'asset/image/3.png';

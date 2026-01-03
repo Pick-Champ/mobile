@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/widget/async_value_handler.dart';
+import 'package:pick_champ/core/widget/video_ad.dart';
 import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/controller/quiz_details_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/index.dart';
@@ -49,6 +50,12 @@ class QuizDetailView extends ConsumerWidget {
                     ),
                   ),
                   5.verticalSpace,
+                  TextButton(
+                    onPressed: () {
+                      context.router.pushWidget(VideoAdView());
+                    },
+                    child: Text('REKLAM'),
+                  ),
                   Text(
                     quiz.title!,
                     style: context.textTheme.labelLarge?.copyWith(

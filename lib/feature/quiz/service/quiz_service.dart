@@ -71,7 +71,7 @@ class QuizService {
 
   Future<GetByIdResponse> getById(String id) async {
     final response = await NetworkManager.instance.baseRequest(
-      EndPointEnums.getById,
+      EndPointEnums.getByIdQuiz,
       data: {'id': id},
     );
     return response != null
@@ -92,7 +92,7 @@ class QuizService {
   Future<GetByUserResponse> getByUser() async {
     final userId = CacheManager.instance.getUserId();
     final response = await NetworkManager.instance.baseRequest(
-      EndPointEnums.getByUser,
+      EndPointEnums.getByUserQuiz,
       data: {'id': userId},
     );
     return response != null

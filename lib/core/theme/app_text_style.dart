@@ -1,50 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyle {
-  static final TextStyle headline38 = GoogleFonts.spaceMono(fontSize: 38);
-  static final TextStyle headline34 = GoogleFonts.spaceMono(
+  static const String _font = 'SpaceMono';
+
+  static const TextStyle headline38 = TextStyle(
+    fontFamily: _font,
+    fontSize: 38,
+  );
+
+  static const TextStyle headline34 = TextStyle(
+    fontFamily: _font,
     fontSize: 34,
-    letterSpacing: 0.1,
   );
-  static final TextStyle headline28 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline28 = TextStyle(
+    fontFamily: _font,
     fontSize: 28,
-    letterSpacing: 0.1,
   );
-  static final TextStyle headline26 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline26 = TextStyle(
+    fontFamily: _font,
     fontSize: 26,
-    letterSpacing: 0.1,
   );
-  static final TextStyle headline24 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline24 = TextStyle(
+    fontFamily: _font,
     fontSize: 24,
-    letterSpacing: 0.1,
   );
-  static final TextStyle headline20 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline20 = TextStyle(
+    fontFamily: _font,
     fontSize: 20,
-    letterSpacing: 0.5,
   );
-  static final TextStyle headline18 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline18 = TextStyle(
+    fontFamily: _font,
     fontSize: 18,
-    letterSpacing: 0.5,
   );
-  static final TextStyle headline16 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline16 = TextStyle(
+    fontFamily: _font,
     fontSize: 16,
-    letterSpacing: 0.15,
   );
-  static final TextStyle headline14 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline14 = TextStyle(
+    fontFamily: _font,
     fontSize: 14,
-    letterSpacing: 0.15,
   );
-  static final TextStyle headline12 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline12 = TextStyle(
+    fontFamily: _font,
     fontSize: 12,
-    letterSpacing: 0.25,
   );
-  static final TextStyle headline10 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline10 = TextStyle(
+    fontFamily: _font,
     fontSize: 10,
-    letterSpacing: 0.4,
   );
-  static final TextStyle headline8 = GoogleFonts.spaceMono(
+
+  static const TextStyle headline8 = TextStyle(
+    fontFamily: _font,
     fontSize: 8,
-    letterSpacing: 0.4,
   );
 }

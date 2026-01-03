@@ -6,6 +6,7 @@ import 'package:pick_champ/core/theme/custom_theme.dart';
 class DarkThemeManager implements CustomTheme {
   @override
   ThemeData get themeData => ThemeData(
+    fontFamily: 'SpaceMono',
     useMaterial3: true,
     indicatorColor: Colors.white,
     canvasColor: const Color(0XFF4b5a60ff),

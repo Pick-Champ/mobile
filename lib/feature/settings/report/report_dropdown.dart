@@ -31,7 +31,7 @@ class _ReportDropdownState extends ConsumerState<ReportDropdown> {
         padding: const EdgeInsets.all(8),
         child: Text(
           LocaleKeys.selectReason.tr(),
-          style: context.textTheme.labelLarge,
+          style: context.textTheme.labelMedium,
         ),
       ),
       onChanged: (value) {

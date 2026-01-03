@@ -6,6 +6,7 @@ import 'package:pick_champ/core/const/padding_insets.dart';
 import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
 import 'package:pick_champ/feature/auth/controller/auth_controller.dart';
+import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/settings/controller/block_controller.dart';
 import 'package:pick_champ/feature/settings/widget/change_language_dialog.dart';
 import 'package:pick_champ/feature/settings/widget/setting_divider.dart';
@@ -44,19 +45,23 @@ class SettingsView extends ConsumerWidget {
                 SettingsListTile(
                   iconData: Icons.key,
                   text: LocaleKeys.changePassword.tr(),
-                  onTap: () => context.router.push(const ChangePasswordRoute()),
+                  onTap:
+                      () =>
+                          context.router.push(const ChangePasswordRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
                   iconData: Icons.edit_note,
                   text: LocaleKeys.editProfile.tr(),
-                  onTap: () => context.router.push(const EditProfileRoute()),
+                  onTap:
+                      () => context.router.push(const EditProfileRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
                   iconData: Icons.leaderboard_outlined,
                   text: LocaleKeys.leaderboard.tr(),
-                  onTap: () => context.router.push(const LeaderBoardRoute()),
+                  onTap:
+                      () => context.router.push(const LeaderBoardRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
@@ -69,7 +74,8 @@ class SettingsView extends ConsumerWidget {
                   iconData: Icons.block,
                   iconColor: Colors.red,
                   text: LocaleKeys.blockedUsers.tr(),
-                  onTap: () => context.router.push(const BlockedUsersRoute()),
+                  onTap:
+                      () => context.router.push(const BlockedUsersRoute()),
                 ),
                 const SettingsDivider(),
                 SettingsListTile(
@@ -80,8 +86,10 @@ class SettingsView extends ConsumerWidget {
                       () => QuestionAlert().show(
                         context,
                         onTap:
-                            () async =>
-                                AuthController().removeAccount(context, ref),
+                            () async => AuthController().removeAccount(
+                              context,
+                              ref,
+                            ),
                         bodyText: LocaleKeys.areYouSureRemoveAccount.tr(),
                         buttonText: LocaleKeys.removeAccount.tr(),
                       ),
@@ -95,11 +103,19 @@ class SettingsView extends ConsumerWidget {
                   onTap:
                       () => QuestionAlert().show(
                         context,
-                        onTap: () => AuthController().signOut(context, ref),
+                        onTap:
+                            () => AuthController().signOut(context, ref),
                         bodyText: LocaleKeys.areYouSureSignOut.tr(),
                         buttonText: LocaleKeys.signOut.tr(),
                       ),
                 ),
+                if (ref.watch(profileProvider).result!.isAdmin ?? false)
+                  SettingsListTile(
+                    iconData: Icons.admin_panel_settings_outlined,
+                    iconColor: Colors.red,
+                    text: 'Admin Panel',
+                    onTap: () => context.router.push(const AdminRoute()),
+                  ),
               ],
             ),
           ),

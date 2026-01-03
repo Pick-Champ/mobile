@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:pick_champ/feature/comment/controller/word_data.dart';
 
 class BadWordGuard {
@@ -28,7 +27,10 @@ class BadWordGuard {
 
     for (final badWord in _badWords) {
       result = result.replaceAllMapped(
-        RegExp(r'\b' + RegExp.escape(badWord) + r'\b', caseSensitive: false),
+        RegExp(
+          r'\b' + RegExp.escape(badWord) + r'\b',
+          caseSensitive: false,
+        ),
         (match) => '*' * match.group(0)!.length,
       );
     }

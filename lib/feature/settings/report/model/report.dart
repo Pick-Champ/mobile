@@ -11,6 +11,7 @@ class Report with _$Report {
     String? userId,
     String? otherId,
     String? reason,
+    String? type,
     String? details,
     DateTime? createdAt,
     DateTime? updatedAt,

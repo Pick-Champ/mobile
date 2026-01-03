@@ -8,8 +8,12 @@ import 'package:pick_champ/feature/profile/controller/profile_body_controller.da
 import 'package:pick_champ/feature/quiz/service/quiz_service.dart';
 import 'package:pick_champ/generated/locale_keys.g.dart';
 
-class DeleteQuiz {
-  Future<void> deleteQuiz(BuildContext context,WidgetRef ref, String quizId) async {
+final class DeleteQuiz {
+  Future<void> deleteQuiz(
+    BuildContext context,
+    WidgetRef ref,
+    String quizId,
+  ) async {
     final res = await QuizService.instance.delete(quizId);
     await context.router.pop();
     if (res.success) {

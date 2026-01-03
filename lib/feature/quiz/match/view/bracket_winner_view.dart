@@ -12,7 +12,7 @@ import 'package:pick_champ/feature/quiz/create/widget/create_text_button.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/detail_count_row.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/quiz_detail_drawer.dart';
 import 'package:pick_champ/feature/quiz/match/controller/bracket_controller.dart';
-import 'package:pick_champ/feature/quiz/match/controller/result_share_controller.dart';
+import 'package:pick_champ/feature/quiz/match/controller/share_controller.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_app_bar.dart';
 import 'package:pick_champ/feature/quiz/match/widget/bracket_king_winner_bg.dart';
 import 'package:pick_champ/feature/quiz/match/widget/celebrate_json.dart';

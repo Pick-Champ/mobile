@@ -16,6 +16,7 @@ class ReportService {
         'userId': userId,
         'otherId': req.otherId,
         'reason': req.reason,
+        'type': req.type,
         'details': req.details,
       },
     );
@@ -24,9 +25,18 @@ class ReportService {
         : ReportResponse(success: false);
   }
 
-  Future<ReportResponse> getReports(String id) async {
+  Future<ReportResponse> getReports() async {
     final response = await NetworkManager.instance.baseRequest(
       EndPointEnums.getReports,
+    );
+    return response != null
+        ? ReportResponse.fromJson(response)
+        : ReportResponse(success: false);
+  }
+
+  Future<ReportResponse> delete(String id) async {
+    final response = await NetworkManager.instance.baseRequest(
+      EndPointEnums.deleteReport,
       data: {'id': id},
     );
     return response != null

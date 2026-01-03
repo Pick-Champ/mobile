@@ -7,6 +7,7 @@ import 'package:pick_champ/core/router/app_router.gr.dart';
 import 'package:pick_champ/feature/comment/controller/comment_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/controller/quiz_details_controller.dart';
 import 'package:pick_champ/feature/quiz/detail/widget/index.dart';
+import 'package:pick_champ/feature/quiz/match/controller/share_controller.dart';
 
 class QuizDetailAppBar extends ConsumerWidget
     implements PreferredSizeWidget {
@@ -37,6 +38,14 @@ class QuizDetailAppBar extends ConsumerWidget
             children: [
               IconButton(
                 onPressed: () {
+                  ShareController().shareQuizLink(
+                    quizId: quizDetailVm.result![0].id!,
+                  );
+                },
+                icon: const Icon(Icons.share, color: Colors.amberAccent),
+              ),
+              IconButton(
+                onPressed: () {
                   SelectionHistoryBottomSheet().show(
                     context,
                     ref,
@@ -45,6 +54,7 @@ class QuizDetailAppBar extends ConsumerWidget
                 },
                 icon: const Icon(Icons.history, color: Colors.amberAccent),
               ),
+
               IconButton(
                 onPressed: () {
                   ref.read(

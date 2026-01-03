@@ -73,7 +73,7 @@ class CommentController extends StateNotifier<CommentResponse> {
   }
 
   Future<bool> get(String quizId) async {
-    final response = await CommentService.instance.get(quizId);
+    final response = await CommentService.instance.getByQuiz(quizId);
     state = response;
     return response.success;
   }

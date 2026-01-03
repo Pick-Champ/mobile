@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pick_champ/core/init/ad_manager.dart';
 import 'package:pick_champ/core/init/app_localization.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
+import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
 final initialDeepLink = Provider<Uri?>((ref) => null);
 
@@ -29,10 +31,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   EasyLocalization.logger.enableBuildModes = [];
   await dotenv.load();
 
-  // await UnityAds.init(
-  //   gameId: AdManager.gameId,
-  // );
-  // debugPrint('Unity Ads Initialized Successfully!');
+  await UnityAds.init(gameId: AdManager.gameId);
+  debugPrint('Unity Ads Initialized Successfully!');
 
   await CacheManager.instance.init();
   runApp(

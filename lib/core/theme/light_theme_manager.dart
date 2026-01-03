@@ -7,6 +7,7 @@ class LightThemeManager implements CustomTheme {
   @override
   ThemeData get themeData => ThemeData(
     useMaterial3: true,
+    fontFamily: 'SpaceMono',
     indicatorColor: Colors.black,
     scaffoldBackgroundColor: const Color(0xFFEAF0FF),
     canvasColor: const Color(0xff4b5a60ff),

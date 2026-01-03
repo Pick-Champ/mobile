@@ -9,6 +9,8 @@ import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/widget/question_alert.dart';
 import 'package:pick_champ/core/widget/warning_alert.dart';
 import 'package:pick_champ/feature/comment/widget/comments_widget.dart';
+import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
+import 'package:pick_champ/feature/quiz/helper/delete_quiz.dart';
 import 'package:pick_champ/feature/reaction/widget/reaction_widget.dart';
 import 'package:pick_champ/feature/settings/controller/block_controller.dart';
 import 'package:pick_champ/feature/settings/report/report_dialog.dart';
@@ -48,6 +50,26 @@ class QuizDetailDrawer extends ConsumerWidget {
                   if (!isLoggedIn)
                     Row(
                       children: [
+                        if (ref.watch(profileProvider).result!.isAdmin!)
+                          IconButton(
+                            onPressed:
+                                () => QuestionAlert().show(
+                                  context,
+                                  bodyText: 'Quizi silecek misin?',
+                                  buttonText: 'Evet',
+                                  onTap: () async {
+                                    await DeleteQuiz().deleteQuiz(
+                                      context,
+                                      ref,
+                                      quizId,
+                                    );
+                                  },
+                                ),
+                            icon: const Icon(
+                              Icons.delete_forever_sharp,
+                              color: Colors.red,
+                            ),
+                          ),
                         IconButton(
                           onPressed: () async {
                             final isUserExist = await ref
