@@ -56,6 +56,5 @@ flutter:
     - family: SpaceMono
       fonts:
         - asset: asset/fonts/SpaceMono-Regular.ttf
-
         - asset: asset/fonts/SpaceMono-Bold.ttf
           weight: 700

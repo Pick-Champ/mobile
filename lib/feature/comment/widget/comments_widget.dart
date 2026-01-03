@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pick_champ/core/const/app_env.dart';
 import 'package:pick_champ/core/const/extensions/context_extension.dart';
 import 'package:pick_champ/core/init/cache_manager.dart';
 import 'package:pick_champ/core/widget/no_data_widget.dart';
@@ -11,7 +12,9 @@ import 'package:pick_champ/feature/comment/widget/comment_text_field.dart';
 
 class CommentsWidget extends ConsumerWidget {
   const CommentsWidget({required this.quizId, super.key});
+
   final String quizId;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final commentVm = ref.watch(commentProvider);
@@ -36,14 +39,18 @@ class CommentsWidget extends ConsumerWidget {
 
 class _CommentCard extends ConsumerWidget {
   const _CommentCard({required this.comment});
+
   final Comment comment;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       leading: CircleAvatar(
         radius: 25,
         backgroundImage: NetworkImage(
-          comment.user != null ? comment.user!.photo! : 'profile.png',
+          comment.user != null
+              ? comment.user!.photo!
+              : AppEnv.defaultProfilePhoto,
         ),
         backgroundColor: Colors.grey[200],
       ),
@@ -90,10 +97,7 @@ class _CommentCard extends ConsumerWidget {
         onPressed: () {
           CommentMoreIconDialog().show(context, ref, comment);
         },
-        icon: Icon(
-          Icons.more_vert,
-          color: context.themeData.indicatorColor,
-        ),
+        icon: Icon(Icons.more_vert, color: context.themeData.indicatorColor),
       ),
     );
   }

@@ -69,8 +69,9 @@ class LeaderBoardView extends ConsumerWidget {
                           Expanded(
                             child: Text(
                               user.displayName ?? '',
-                              style: context.textTheme.labelMedium
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              style: context.textTheme.labelMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           Text(
@@ -100,40 +101,39 @@ class _AwardedUsers extends StatelessWidget {
     required this.padding,
     required this.user,
   });
+
   final User user;
   final double padding;
   final String img;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        bottom: padding,
-        top: 12,
-        left: 12,
-        right: 12,
-      ),
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 35,
-            backgroundImage: NetworkImage(user.photo!),
-          ),
-          Text(
-            user.displayName ?? '',
-            style: context.textTheme.labelMedium?.copyWith(
-              fontWeight: FontWeight.bold,
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.only(bottom: padding, top: 12, left: 12, right: 12),
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 35,
+              backgroundImage: NetworkImage(user.photo!),
             ),
-          ),
-          Card(
-            child: Text(
-              user.score.toString(),
-              style: context.textTheme.labelLarge?.copyWith(
+            Text(
+              user.displayName ?? '',
+              style: context.textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          Image.asset(img, height: 50),
-        ],
+            Card(
+              child: Text(
+                user.score.toString(),
+                style: context.textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Image.asset(img, height: 50),
+          ],
+        ),
       ),
     );
   }

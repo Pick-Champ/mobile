@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pick_champ/core/const/app_env.dart';
 import 'package:pick_champ/core/widget/no_data_widget.dart';
 import 'package:pick_champ/feature/profile/controller/profile_controller.dart';
 import 'package:pick_champ/feature/profile/widget/profile_body.dart';
@@ -19,7 +20,9 @@ class ProfileView extends ConsumerWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProfilePicture(photoName: viewModel.photo ?? 'profile.png'),
+          ProfilePicture(
+            photoName: viewModel.photo ?? AppEnv.defaultProfilePhoto,
+          ),
           const ProfileBody(),
         ],
       ),

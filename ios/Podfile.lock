@@ -61,6 +61,10 @@ PODS:
   - sign_in_with_apple (0.0.1):
     - Flutter
   - TOCropViewController (2.7.4)
+  - unity_ads_plugin (0.0.1):
+    - Flutter
+    - UnityAds (= 4.16.3)
+  - UnityAds (4.16.3)
   - url_launcher_ios (0.0.1):
     - Flutter
 
@@ -76,6 +80,7 @@ DEPENDENCIES:
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
+  - unity_ads_plugin (from `.symlinks/plugins/unity_ads_plugin/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -88,6 +93,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - PromisesObjC
     - TOCropViewController
+    - UnityAds
 
 EXTERNAL SOURCES:
   app_links:
@@ -112,6 +118,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sign_in_with_apple:
     :path: ".symlinks/plugins/sign_in_with_apple/ios"
+  unity_ads_plugin:
+    :path: ".symlinks/plugins/unity_ads_plugin/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
@@ -135,8 +143,10 @@ SPEC CHECKSUMS:
   shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
   sign_in_with_apple: c5dcc141574c8c54d5ac99dd2163c0c72ad22418
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
+  unity_ads_plugin: a395fc9070b05e4ce875523d880b7265c1fcd048
+  UnityAds: 64164885dd38214bfc556eb074ab1995cc613fbf
   url_launcher_ios: 694010445543906933d732453a59da0a173ae33d
 
-PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
+PODFILE CHECKSUM: 35a2496d953b78d5fb37339ae9ffb08c120bebdc
 
 COCOAPODS: 1.16.2
